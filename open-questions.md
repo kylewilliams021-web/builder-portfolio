@@ -5,16 +5,20 @@ that asked, and the question is deleted from here.
 
 ## About me
 
-- [ ] Name and headline as I want them (draft: "Kyle Williams — Product Builder").
-- [ ] My role at Pacific Wellness, in one line.
+- [ ] Headline OK? (draft: "Kyle Williams — Operator turned product builder").
+- [ ] What did those 17 years look like: roles, and how long running Pacific Wellness?
 - [ ] Where do most of my product ideas come from? One concrete example.
-- [ ] The role I'm aiming for: product builder, or AI PM titles at companies that want builders?
+- [ ] Two or three of my own LinkedIn posts or messages, so drafts sound like me.
+- [ ] kylewilliams.co: what is it built on today (Squarespace, Wix, other)? Plan: point it at this
+      portfolio once it's public.
 
 ## SouthBay420
 
 - [ ] What was broken before it, and why build instead of buying Dutchie, Jane or Treez?
 - [ ] When did 1.1.1 start, and what made me start from a pizza-ordering template?
-- [ ] Who uses it today, and how many people?
+- [ ] Is SouthBay420 used at the store today, and by whom? What happens to it after the move to Dutchie?
+- [ ] Why is Pacific Wellness moving to Dutchie even though I built SouthBay420? (The heart of the Dutchie
+      story.)
 - [ ] My North Star metric, and the numbers I'm OK publishing.
 - [ ] Do the three jobs-to-be-done statements match how I'd say them?
 - [ ] Why a visit ladder rather than more points? What did I see at the counter?
@@ -32,7 +36,15 @@ that asked, and the question is deleted from here.
 
 - [ ] What it is, who it's for, where it lives. Push it to GitHub so it gets the harness and build log.
 
+## Showcase
+
+- [ ] Record the 2–3 minute walkthrough ().
+- [ ] Demo site with sample data: a separate copy (its own Cloudflare project and database) filled by the
+      demo script, which I upload. Decide the address (e.g. demo.southbay420.com).
+
 ## Before going public
+
+- [ ] Delete .
 
 - [ ] Canna Cash's public repository: it needs a real README (it's one line today); the temporary
       diagnostic endpoint marked "remove after verifying" should go; and its history is mostly "Add files

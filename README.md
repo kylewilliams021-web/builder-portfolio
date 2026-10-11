@@ -1,8 +1,15 @@
-# Kyle Williams — Product Builder
+# Kyle Williams — Operator turned product builder
 
-I build real products for a real business with AI. I find the problem, make the product calls, set the
-quality bar and test every workflow myself; Claude writes the code inside a harness I designed so I can
-trust it. I'm not a developer by training. In the AI era, I don't have to be one to ship.
+Seventeen years in cannabis. Managing partner of Pacific Wellness, a licensed California dispensary,
+where I make the day-to-day decisions. I've wanted to move into tech since 2023; AI made it possible to
+build the software my store needed myself.
+
+I find the problem, make the product calls, set the quality bar and test every workflow myself. Claude
+writes the code inside a harness I designed, so I can trust it. I'm not a developer by training. In the AI
+era, I don't have to be one to ship.
+
+I know the customer of cannabis software because I am one: the counter, the compliance, the vendors, the
+loyalty program, the POS.
 
 > Draft — private until reviewed. Lines marked **[ask]** are waiting on an interview answer; numbers marked
 > **[OK?]** are waiting on approval to publish.
@@ -15,7 +22,7 @@ trust it. I'm not a developer by training. In the AI era, I don't have to be one
 | [Canna Cash](projects/canna-cash.md)       | A loyalty and referral program for Pacific Wellness, connected to the store's Blaze point-of-sale                            | Built in six weeks; balance search cut from 2.7 s to 0.03 s per keystroke at 19,500 transactions **[OK?]**                                                                 |
 | [TV screen app](projects/tv-screen-app.md) | **[ask]** In progress                                                                                                        | **[ask]**                                                                                                                                                                  |
 
-All three solve problems I had first. **[ask]** My role at Pacific Wellness, in one line.
+All three solve problems I had first, at my own store.
 
 ## How I work, in 30 seconds
 

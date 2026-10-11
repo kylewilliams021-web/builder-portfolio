@@ -10,6 +10,16 @@ California compliance built in, live at southbay420.com.
 | -------- | --------------- | ---------------- | -------------------------- | -------------------------- |
 | 26       | 168             | 26 migrations    | 7 technical + 5 product    | **[ask]** staff, customers |
 
+## Screens
+
+_Demo shop with sample data (no real customers or sales)._
+
+| The register: member, points to redeem, "repeat last order", quick cash | The owner's console: today, the last 14 days, what needs attention |
+| ----------------------------------------------------------------------- | ------------------------------------------------------------------ |
+| ![Register](img/southbay420/register.png)                               | ![Console home](img/southbay420/console-home.png)                  |
+| **The online menu:** delivery or pickup, filters, live stock            | **On a phone**                                                     |
+| ![Shop menu](img/southbay420/shop-menu.png)                             | ![Shop on a phone](img/southbay420/shop-phone.png)                 |
+
 ## The problem
 
 **[ask]** In your words: what was broken at the store before SouthBay420, and why build instead of buying

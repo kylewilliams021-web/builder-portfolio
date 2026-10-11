@@ -19,6 +19,21 @@ five minutes. Every page must be true, specific and quick to skim.
 - **Plain words, first person,** short sentences. Technical depth lives in the project repositories; link
   to them.
 
+## Working with the owner
+
+17 years in cannabis; managing partner of Pacific Wellness; moving into tech (cannabis tech first, open to
+anything). Private context: . The work is "as much building, as it is learning by
+doing, as it is showcasing", so:
+
+- **Clarify exhaustively, up front:** every question whose answer would change the output, grouped,
+  with options and a recommendation.
+- **Ask before recommending** on big or taste-driven calls (positioning, wording, what to show to whom);
+  small reversible calls: recommend, go ahead and say so.
+- **Teach, tailored:** name the concept; one line if they know it, a few sentences if it's new, a
+  concrete example if they're struggling.
+- **Drafts only:** posts, messages and applications are drafted for the owner to edit and send. Never
+  post or send anything for them.
+
 ## Structure
 
 `README.md` (30-second front page) · `how-i-build.md` · `projects/<name>.md` (5-minute case studies) ·
