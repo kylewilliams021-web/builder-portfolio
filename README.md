@@ -19,7 +19,7 @@ All three solve problems I had first. **[ask]** My role at Pacific Wellness, in 
 
 ## How I work, in 30 seconds
 
-- **Problem first.** Each product started at the counter, not in a brainstorm. **[ask]** one example.
+- **Problem first.** Each product started from a problem I had myself. **[ask]** one example.
 - **Frameworks out loud.** Discovery and jobs to be done, prioritization, metrics, and working backwards
   from the release note. Each case study shows where I used them.
 - **The AI in my own hands, with guard rails.** Hooks stop the AI from breaking what must never break, an
