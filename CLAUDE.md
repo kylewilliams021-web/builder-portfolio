@@ -22,7 +22,7 @@ five minutes. Every page must be true, specific and quick to skim.
 ## Working with the owner
 
 17 years in cannabis; managing partner of Pacific Wellness; moving into tech (cannabis tech first, open to
-anything). Private context: . The work is "as much building, as it is learning by
+anything). Private context: `private/job-search.md`. The work is "as much building, as it is learning by
 doing, as it is showcasing", so:
 
 - **Clarify exhaustively, up front:** every question whose answer would change the output, grouped,
@@ -37,7 +37,8 @@ doing, as it is showcasing", so:
 ## Structure
 
 `README.md` (30-second front page) · `how-i-build.md` · `projects/<name>.md` (5-minute case studies) ·
-`timeline.md` · `learning-log.md` · `open-questions.md`.
+`timeline.md` · `learning-log.md` · `open-questions.md` · `showcase/` (walkthrough script) · `posts/`
+(build-in-public drafts) · `private/` (job search; deleted before going public).
 
 ## Keeping it current
 

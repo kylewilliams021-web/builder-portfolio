@@ -38,13 +38,13 @@ that asked, and the question is deleted from here.
 
 ## Showcase
 
-- [ ] Record the 2–3 minute walkthrough ().
+- [ ] Record the 2–3 minute walkthrough (`showcase/walkthrough-script.md`).
 - [ ] Demo site with sample data: a separate copy (its own Cloudflare project and database) filled by the
       demo script, which I upload. Decide the address (e.g. demo.southbay420.com).
 
 ## Before going public
 
-- [ ] Delete .
+- [ ] Delete `private/`.
 
 - [ ] Canna Cash's public repository: it needs a real README (it's one line today); the temporary
       diagnostic endpoint marked "remove after verifying" should go; and its history is mostly "Add files
