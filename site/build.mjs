@@ -86,9 +86,24 @@ function receipt(key) {
   return `<aside class="receipt" aria-label="${esc(m.title)} at a glance"><div class="head">${esc(m.title)}</div><dl>${rows}</dl><div class="foot">Printed ${esc(printed)}</div></aside>`;
 }
 
+// Voice lint: AI writing habits (research/not-ai-checklist.md). Warnings only; the owner decides.
+const voice = [];
+const VOICE_RULES = [
+  [/—/, 'em dash'],
+  [/, (with \w+|on purpose|by choice|too|for now|for good|of course|obviously|and that's on purpose)[.!]/i, 'trailing tag after a comma'],
+  [/^(#{1,2} |\s*<h[12][^>]*>).*,/, 'comma in a headline'],
+  [/\b(delve|tapestry|seamless|unlock|leverage|robust|game-changer|elevate)\b/i, 'AI vocabulary'],
+];
+function lintVoice(file, text) {
+  text.replace(/^---\n[\s\S]*?\n---\n/, '').split('\n').forEach((line, i) => {
+    for (const [re, name] of VOICE_RULES) if (re.test(line)) voice.push(`${file}:${i + 1}  ${name}: ${line.trim().slice(0, 90)}`);
+  });
+}
+
 // The quality gate: placeholders never reach the public site.
 const problems = [];
 function gate(file, text) {
+  lintVoice(file, text);
   text.split('\n').forEach((line, i) => {
     if (/\[ask\]|\[OK\?\]/.test(line)) problems.push(`${file}:${i + 1}  ${line.trim().slice(0, 100)}`);
   });
@@ -208,6 +223,7 @@ const files = {};
     else files[path.relative(dist, full).split(path.sep).join('/')] = fs.readFileSync(full);
   }
 })(dist);
+if (voice.length) console.warn(`Voice check: ${voice.length} line(s) read like AI writing (warnings, not blocking):\n  ${voice.join('\n  ')}`);
 const zipName = preview ? `kylewilliams-co-PREVIEW-${theme}.zip` : 'kylewilliams-co.zip';
 fs.writeFileSync(path.join(root, zipName), zipSync(files));
 console.log(`${preview ? 'Preview' : 'Site'} built (${theme}): ${Object.keys(files).length} files → ${zipName}${problems.length ? ` (${problems.length} spot(s) marked)` : ''}`);

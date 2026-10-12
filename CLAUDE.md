@@ -39,8 +39,8 @@ doing, as it is showcasing", so:
 Every page, post and design follows `research/not-ai-checklist.md` (researched 2026-10-12). In short:
 be specific rather than merely different; show evidence (real photos, exact dated numbers) instead of
 decoration; every visible choice has a reason the owner can state; rank, don't repeat; insider fluency, not
-cannabis imagery; say plainly that Claude writes the code. In writing: at most one em dash and one "not X
-but Y" per piece, no arrow bullets or hashtag stacks, no quotable closer, a concrete anchor in every
+cannabis imagery; say plainly that Claude writes the code. In writing: no trailing tags (", with Claude.", ", on purpose.") and no commas
+in headlines; at most one em dash and one "not X but Y" per piece, no arrow bullets or hashtag stacks, no quotable closer, a concrete anchor in every
 paragraph, one name per thing.
 
 ## Structure

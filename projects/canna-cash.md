@@ -1,4 +1,4 @@
-# Loyalty and referrals for Pacific Wellness, connected to Blaze
+# Loyalty and referrals for Pacific Wellness
 
 **In short.** A store-credit loyalty and referral program for Pacific Wellness, a licensed California
 dispensary, connected to the store's Blaze point-of-sale. Customers check their balance on a public page.

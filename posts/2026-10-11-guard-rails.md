@@ -28,5 +28,5 @@ more that the fixes had opened. Every one was fixed with a test that fails on th
 I think the job now, for someone like me, is knowing what good looks like and building the system that
 holds the AI to it. I don't think that's proven yet, and I'm writing down how I build as I go.
 
-No store runs on SouthBay420 yet, and that's on purpose. My bar for going live is months in the Metrc
+No store runs on SouthBay420 yet. My bar for going live is months in the Metrc
 sandbox with no errors I can't fix, and every feature at least as good as what's on the market.

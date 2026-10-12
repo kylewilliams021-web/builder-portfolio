@@ -1,4 +1,4 @@
-# Kyle Williams — Operator turned product builder
+# Kyle Williams: operator turned product builder
 
 Fifteen years in California cannabis. I founded a medical delivery service in 2011, spent a decade in
 wholesale brokering, and I'm now managing partner of Pacific Wellness, a licensed dispensary in Sherman
@@ -7,13 +7,13 @@ through years of delays, took operational control in September 2025 and opened t
 CareerFoundry; AI finally let me build, and I haven't stopped.
 
 I find the problem, make the product calls, set the quality bar and test every workflow myself. Claude
-writes the code inside a harness I designed, so I can trust it. I'm not a developer by training. In the AI
-era, I don't have to be one to ship.
+writes the code inside a harness I designed so I can trust it. I'm not a developer by training. I'm a man
+of the AI era and I'm addicted to building.
 
 I know the customer of cannabis software because I am one: the counter, the compliance, the vendors, the
 loyalty program, the POS.
 
-> Draft — private until reviewed. Lines marked **[ask]** are waiting on an interview answer; numbers marked
+> Draft. Private until reviewed. Lines marked **[ask]** are waiting on an interview answer; numbers marked
 > **[OK?]** are waiting on approval to publish.
 
 ## What I've built
@@ -39,6 +39,6 @@ All three started from problems I see at my own store.
 
 ## Read more
 
-- [How I build](how-i-build.md) — my loop, my frameworks with real examples, how I split work with AI
-- [Timeline](timeline.md) — from the first upload of Canna Cash to today
-- [What I'm learning](learning-log.md) — concepts I've picked up by building
+- [How I build](how-i-build.md): my loop, the frameworks I use and how I split the work with AI
+- [Timeline](timeline.md): from Sampson's in 2011 to today
+- [What I'm learning](learning-log.md): concepts I've picked up by building

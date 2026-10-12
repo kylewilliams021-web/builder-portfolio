@@ -28,7 +28,7 @@ The split is explicit, because it's the honest answer to "did you build this?":
 6. **Build with AI, inside the harness.** Then test the workflow myself.
 7. **Ship and log.** Release, upload, and a build-log entry: what I decided, why, and what I learned.
 
-## Frameworks, with real examples
+## The frameworks I use and where I used them
 
 Most of these I learned in CareerFoundry's product management certificate (2023). These are my calls,
 described in framework terms. Since October 2026 I name the framework at the moment I
@@ -44,7 +44,7 @@ use it, and the build logs record it.
 | **Working backwards / specs**              | Release notes written for shop owners; the loyalty plan as a settings spec with defaults, approved before any code                                                                                                                               |
 | **Build vs buy**                           | I build to learn and explore; as an operator I buy the best. SouthBay420 keeps growing, and my store is moving to Dutchie: "Building it is different from ready to go live. I need the best now for the store"                                   |
 
-## The quality bar, for someone who doesn't read code
+## How I check work I can't read
 
 - **Automated tests** on every change: SouthBay420 has 168, including real-browser journeys.
 - **Every shipped release is a test.** Each new version must upgrade a database created by the one before

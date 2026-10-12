@@ -13,6 +13,12 @@ sources: `not-ai-research.json`.
 - Show you belong through fluency with how the business works, not through cannabis imagery. Operator vocabulary, compliance constraints, Metrc and the move from the legacy market to licensing prove you are an insider. Leaves, puns and slang prove you are not.
 - Say openly that Claude does the coding, and say exactly what it did. Plain disclosure plus specific detail earns more trust than hidden polish, and suspected AI costs about half of reader trust whether or not it is true.
 
+## Added by Kyle (2026-10-12)
+
+- [ ] No trailing tags: a short phrase hung on the end of a sentence after a comma ("Now I build
+      software for it, with Claude.", "No store runs on it yet, on purpose."). Spotted by Kyle as "Claude
+      speak 101". Headlines carry no commas at all. The site build warns on both.
+
 ## Design checks
 
 - [ ] Headings use a typeface that is not Inter, Roboto, Open Sans, Lato, Geist or the system sans. No page uses Space Grotesk, Instrument Serif, Syne or Fraunces as its default face. Monospace is not used as shorthand for 'technical'. _(Anthropic's own guidance names Inter, Roboto, Open Sans and Lato as what its model converges on, and admits it still drifts to Space Grotesk. Krebs's checker flags the trendy alternatives as the new defaults.)_

@@ -95,7 +95,7 @@ I direct and decide; Claude writes the code. Quality comes from:
 
 ## Results
 
-No store runs on it yet, by choice. My go-live criteria: months in the Metrc sandbox with no errors (or only
+No store runs on it yet. My go-live criteria: months in the Metrc sandbox with no errors (or only
 errors I can fix), and every feature at least as good as what's on the market. After launch, the number
 I'd watch is stores running it.
 
