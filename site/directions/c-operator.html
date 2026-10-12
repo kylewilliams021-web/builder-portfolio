@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kyle Williams — Operator turned product builder</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root { --forest: #12301f; --forest-2: #1b4430; --sage: #dfe8d9; --cream: #f6f1e6; --ink: #13261b; --muted: #5d6b60; --gold: #d9a441; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--cream); color: var(--ink); font: 400 17px/1.6 Inter, system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+  a { color: inherit; text-decoration: none; }
+  .wrap { max-width: 1140px; margin: 0 auto; padding: 0 32px; }
+  .display { font-family: "Bricolage Grotesque", Inter, sans-serif; letter-spacing: -.02em; }
+  .top { background: var(--forest); color: var(--cream); border-radius: 0 0 40px 40px; }
+  header { display: flex; justify-content: space-between; align-items: center; padding: 28px 0; }
+  header .mark { display: inline-grid; place-items: center; width: 40px; height: 40px; border-radius: 12px; background: var(--gold); color: var(--forest); font-weight: 800; margin-right: 12px; }
+  header nav a { margin-left: 24px; opacity: .85; }
+  .hero { display: grid; grid-template-columns: 1.15fr .85fr; gap: 56px; align-items: center; padding: 56px 0 88px; }
+  .pill { display: inline-block; background: rgba(246,241,230,.1); border: 1px solid rgba(246,241,230,.2); padding: 6px 14px; border-radius: 999px; font-size: 14px; }
+  h1 { font: 800 clamp(44px, 6.4vw, 80px)/1 "Bricolage Grotesque", sans-serif; letter-spacing: -.035em; margin: 22px 0 22px; }
+  h1 span { color: var(--gold); }
+  .hero p { font-size: 19px; color: #dfe6d9; max-width: 32em; }
+  .hero .cta { display: flex; gap: 12px; margin-top: 30px; flex-wrap: wrap; }
+  .btn { background: var(--gold); color: var(--forest); font-weight: 600; padding: 13px 22px; border-radius: 14px; }
+  .btn.ghost { background: transparent; color: var(--cream); border: 1px solid rgba(246,241,230,.3); }
+  .shot { border-radius: 22px; overflow: hidden; box-shadow: 0 30px 70px rgba(0,0,0,.35); border: 6px solid var(--forest-2); }
+  .shot img { width: 100%; display: block; }
+  .journey { margin-top: -44px; background: #fff; border-radius: 28px; box-shadow: 0 16px 40px rgba(19,38,27,.08); padding: 28px 32px; display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; position: relative; }
+  .journey div { border-left: 2px solid var(--sage); padding-left: 14px; }
+  .journey b { display: block; font: 700 22px "Bricolage Grotesque", sans-serif; color: var(--forest); }
+  .journey span { font-size: 14px; color: var(--muted); }
+  section { padding: 88px 0 0; }
+  h2 { font: 800 40px/1.1 "Bricolage Grotesque", sans-serif; letter-spacing: -.03em; margin-bottom: 28px; }
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .card { background: #fff; border-radius: 24px; padding: 28px; border: 1px solid #e8e2d3; display: flex; flex-direction: column; }
+  .card.feature { background: var(--sage); border-color: transparent; }
+  .card .k { font-size: 13px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+  .card h3 { font: 700 28px "Bricolage Grotesque", sans-serif; margin: 10px 0; letter-spacing: -.02em; }
+  .card p { color: #33463a; }
+  .card .proof { margin-top: auto; padding-top: 18px; font-weight: 600; color: var(--forest-2); }
+  .how { background: var(--forest); color: var(--cream); border-radius: 32px; padding: 48px; display: grid; grid-template-columns: .8fr 1.2fr; gap: 48px; }
+  .how h2 { color: var(--cream); }
+  .how ol { list-style: none; display: grid; gap: 22px; counter-reset: s; }
+  .how li { counter-increment: s; display: grid; grid-template-columns: 44px 1fr; gap: 14px; }
+  .how li::before { content: counter(s); display: grid; place-items: center; width: 44px; height: 44px; border-radius: 12px; background: var(--gold); color: var(--forest); font-weight: 800; }
+  .how li b { display: block; font: 700 20px "Bricolage Grotesque", sans-serif; }
+  .how li span { color: #cfd9cb; }
+  .post { background: #fff; border-radius: 28px; padding: 40px; border: 1px solid #e8e2d3; display: grid; grid-template-columns: 1fr auto; gap: 32px; align-items: end; }
+  .post h3 { font: 700 34px/1.1 "Bricolage Grotesque", sans-serif; letter-spacing: -.02em; margin: 10px 0 12px; }
+  .post p { color: #33463a; max-width: 40em; }
+  footer { margin: 88px 0 48px; background: var(--sage); border-radius: 32px; padding: 56px; display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap; }
+  footer h2 { margin: 0; }
+  footer .btn.ghost { color: var(--forest); border-color: rgba(18,48,31,.25); }
+  @media (max-width: 860px) {
+    .wrap { padding: 0 20px; }
+    header nav { display: none; }
+    .hero, .how, .post { grid-template-columns: 1fr; }
+    .journey { grid-template-columns: 1fr 1fr; }
+    .grid { grid-template-columns: 1fr; }
+    .how, footer { padding: 32px; }
+  }
+</style>
+</head>
+<body>
+<div class="top">
+  <div class="wrap">
+    <header>
+      <div><span class="mark">KW</span><b>Kyle Williams</b></div>
+      <nav><a href="#work">Work</a><a href="#how">How I build</a><a href="#writing">Writing</a><a href="#contact">Contact</a></nav>
+    </header>
+    <div class="hero">
+      <div>
+        <span class="pill">Operator turned product builder</span>
+        <h1>I run a dispensary. <span>I build cannabis software.</span></h1>
+        <p>Seventeen years in California cannabis, now managing partner of Pacific Wellness. I know the customer of cannabis software because I am one, and with AI I build the products myself.</p>
+        <div class="cta"><a class="btn" href="#work">See the work</a><a class="btn ghost" href="#contact">Get in touch</a></div>
+      </div>
+      <div class="shot"><img src="../../projects/img/southbay420/console-home.png" alt="SouthBay420 owner console"></div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="journey">
+    <div><b>17 yrs</b><span>California cannabis</span></div>
+    <div><b>2023</b><span>Signed on at Pacific Wellness</span></div>
+    <div><b>2025</b><span>Took operational control</span></div>
+    <div><b>Apr 2026</b><span>Opened the doors</span></div>
+    <div><b>3 products</b><span>Built with AI</span></div>
+  </div>
+
+  <section id="work">
+    <h2>What I've built</h2>
+    <div class="grid">
+      <div class="card feature"><span class="k">Flagship</span><h3>SouthBay420</h3><p>Ordering, delivery, loyalty, a staff console and a register for a California dispensary, with compliance built in.</p><div class="proof">26 releases · 168 tests</div></div>
+      <div class="card"><span class="k">First product</span><h3>Canna Cash</h3><p>Store credit and referrals for Pacific Wellness, connected to the store's point-of-sale.</p><div class="proof">Search: 2.7 s → 0.03 s</div></div>
+      <div class="card"><span class="k">In progress</span><h3>TV screen app</h3><p>Something new for the store floor.</p><div class="proof">Coming soon</div></div>
+    </div>
+  </section>
+
+  <section id="how">
+    <div class="how">
+      <div><h2>How I build</h2><p style="color:#cfd9cb">I'm not a developer by training. I make the calls and test every workflow; Claude writes the code inside guard rails I designed.</p></div>
+      <ol>
+        <li><div><b>Start at the counter</b><span>Every product began with a problem I saw at my own store.</span></div></li>
+        <li><div><b>Name the framework</b><span>Jobs to be done, prioritization, go-live criteria, a North Star.</span></div></li>
+        <li><div><b>Hold the AI to a bar</b><span>Rules enforced by code, a check before "done", and a second AI reviewing the first.</span></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="writing">
+    <h2>From the build log</h2>
+    <div class="post">
+      <div><span class="k" style="font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)">October 2026</span><h3>Guard rails for an AI whose code I can't read</h3><p>The hard part isn't getting AI to write code. It's trusting code you can't read. On day one, the reviewer caught 15 mistakes.</p></div>
+      <a class="btn" href="#" style="background:var(--forest);color:var(--cream)">Read it</a>
+    </div>
+  </section>
+
+  <footer id="contact">
+    <h2>Let's talk cannabis and product.</h2>
+    <div style="display:flex;gap:12px;flex-wrap:wrap"><a class="btn" href="#">Email</a><a class="btn ghost" href="#">LinkedIn</a><a class="btn ghost" href="#">Resume</a></div>
+  </footer>
+</div>
+</body>
+</html>

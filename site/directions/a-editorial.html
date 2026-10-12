@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kyle Williams — Operator turned product builder</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root { --paper: #faf8f3; --ink: #1c1b18; --muted: #6b675e; --rule: #e4dfd3; --accent: #2f5d46; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--paper); color: var(--ink); font: 400 17px/1.6 Inter, system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+  a { color: inherit; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 32px; }
+  header { display: flex; justify-content: space-between; align-items: baseline; padding: 32px 0; border-bottom: 1px solid var(--rule); }
+  header .name { font: 500 18px Newsreader, Georgia, serif; letter-spacing: .01em; }
+  header nav a { margin-left: 28px; font-size: 14px; color: var(--muted); text-decoration: none; }
+  header nav a:hover { color: var(--ink); }
+  .hero { padding: 96px 0 72px; display: grid; grid-template-columns: 1.3fr .7fr; gap: 64px; align-items: end; }
+  .eyebrow { font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); font-weight: 600; margin-bottom: 24px; }
+  h1 { font: 400 clamp(44px, 6vw, 76px)/1.02 Newsreader, Georgia, serif; letter-spacing: -.02em; }
+  h1 em { color: var(--accent); }
+  .lede { font-size: 19px; color: #3a3832; margin-top: 28px; max-width: 34em; }
+  .facts { border-left: 1px solid var(--rule); padding-left: 32px; display: grid; gap: 22px; }
+  .facts b { display: block; font: 400 40px/1 Newsreader, Georgia, serif; }
+  .facts span { font-size: 13px; color: var(--muted); }
+  section { padding: 72px 0; border-top: 1px solid var(--rule); }
+  .label { display: flex; gap: 16px; align-items: baseline; margin-bottom: 40px; }
+  .label .n { font: italic 400 18px Newsreader, Georgia, serif; color: var(--accent); }
+  .label h2 { font: 500 28px Newsreader, Georgia, serif; }
+  .work { display: grid; gap: 0; }
+  .item { display: grid; grid-template-columns: 220px 1fr 300px; gap: 40px; padding: 36px 0; border-top: 1px solid var(--rule); align-items: start; }
+  .item:first-child { border-top: 0; padding-top: 0; }
+  .item h3 { font: 500 26px/1.15 Newsreader, Georgia, serif; }
+  .item .tag { font-size: 13px; color: var(--muted); margin-top: 6px; }
+  .item p { color: #3a3832; }
+  .item .proof { font-size: 14px; color: var(--muted); margin-top: 14px; }
+  .item img { width: 100%; border: 1px solid var(--rule); border-radius: 4px; display: block; }
+  .item .ph { aspect-ratio: 16/10; border: 1px dashed var(--rule); border-radius: 4px; display: grid; place-items: center; color: var(--muted); font-size: 13px; }
+  .principles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+  .principles h3 { font: 500 21px Newsreader, Georgia, serif; margin-bottom: 10px; }
+  .principles p { color: #3a3832; font-size: 16px; }
+  .post { display: grid; grid-template-columns: 220px 1fr; gap: 40px; }
+  .post .date { font-size: 14px; color: var(--muted); }
+  .post h3 { font: 400 32px/1.15 Newsreader, Georgia, serif; margin-bottom: 14px; }
+  .post p { color: #3a3832; max-width: 38em; }
+  .more { display: inline-block; margin-top: 18px; color: var(--accent); font-weight: 500; text-decoration: none; border-bottom: 1px solid currentColor; }
+  footer { padding: 72px 0 96px; border-top: 1px solid var(--rule); display: flex; justify-content: space-between; align-items: end; flex-wrap: wrap; gap: 24px; }
+  footer h2 { font: 400 40px/1.1 Newsreader, Georgia, serif; }
+  footer .links a { margin-left: 28px; font-weight: 500; text-decoration: none; border-bottom: 1px solid var(--rule); }
+  @media (max-width: 820px) {
+    .wrap { padding: 0 20px; }
+    header nav { display: none; }
+    .hero { grid-template-columns: 1fr; padding: 56px 0 48px; gap: 40px; }
+    .facts { border-left: 0; padding-left: 0; grid-template-columns: 1fr 1fr; }
+    .item, .post { grid-template-columns: 1fr; gap: 16px; }
+    .principles { grid-template-columns: 1fr; gap: 28px; }
+    footer .links a { margin: 0 24px 0 0; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="name">Kyle Williams</div>
+    <nav><a href="#work">Work</a><a href="#how">How I build</a><a href="#writing">Writing</a><a href="#contact">Contact</a></nav>
+  </header>
+
+  <div class="hero">
+    <div>
+      <div class="eyebrow">Operator turned product builder</div>
+      <h1>Seventeen years in cannabis. Now I build the <em>software</em>, too.</h1>
+      <p class="lede">I'm managing partner of Pacific Wellness, a licensed California dispensary. With AI, I ship real products: I find the problem, make the calls and test every workflow, and Claude writes the code inside guard rails I designed.</p>
+    </div>
+    <div class="facts">
+      <div><b>17</b><span>years in California cannabis</span></div>
+      <div><b>26</b><span>releases of SouthBay420</span></div>
+      <div><b>168</b><span>automated tests</span></div>
+      <div><b>3</b><span>products, built with AI</span></div>
+    </div>
+  </div>
+
+  <section id="work">
+    <div class="label"><span class="n">01</span><h2>Work</h2></div>
+    <div class="work">
+      <div class="item">
+        <div><h3>SouthBay420</h3><div class="tag">Ordering, register, loyalty</div></div>
+        <div><p>A full system for a California dispensary: online menu and delivery, customer accounts with loyalty, a staff console and an in-store register, with state compliance built in.</p><p class="proof">26 releases · purchase limits, ID checks, potency caps · hardened after an outside security review</p></div>
+        <img src="../../projects/img/southbay420/register.png" alt="SouthBay420 register">
+      </div>
+      <div class="item">
+        <div><h3>Canna Cash</h3><div class="tag">Loyalty and referrals</div></div>
+        <div><p>Store credit and referrals for Pacific Wellness, connected to the store's point-of-sale. My first product.</p><p class="proof">Balance search from 2.7 s to 0.03 s per keystroke</p></div>
+        <div class="ph">Screenshot</div>
+      </div>
+      <div class="item">
+        <div><h3>TV screen app</h3><div class="tag">In progress</div></div>
+        <div><p>Something new for the store floor. Coming soon.</p></div>
+        <div class="ph">Coming soon</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="how">
+    <div class="label"><span class="n">02</span><h2>How I build</h2></div>
+    <div class="principles">
+      <div><h3>Problem first</h3><p>Every product started from something I saw at my own store, not in a brainstorm.</p></div>
+      <div><h3>Frameworks out loud</h3><p>Jobs to be done, prioritization, go-live criteria and a North Star — named when I use them, recorded in a build log.</p></div>
+      <div><h3>AI in my hands, with guard rails</h3><p>Hooks stop the AI from breaking what must never break, and a second AI reviews the first. I can't read the code, so I built a system I can trust.</p></div>
+    </div>
+  </section>
+
+  <section id="writing">
+    <div class="label"><span class="n">03</span><h2>Writing</h2></div>
+    <div class="post">
+      <div class="date">October 2026</div>
+      <div>
+        <h3>Guard rails for an AI whose code I can't read</h3>
+        <p>The hard part isn't getting AI to write code. It's trusting code you can't read. So I built rules enforced by code, a check before it may say "done", and a second AI to review the first. On day one, the reviewer caught 15 mistakes.</p>
+        <a class="more" href="#">Read the post</a>
+      </div>
+    </div>
+  </section>
+
+  <footer id="contact">
+    <h2>Let's talk.</h2>
+    <div class="links"><a href="#">Email</a><a href="#">LinkedIn</a><a href="#">Resume (PDF)</a></div>
+  </footer>
+</div>
+</body>
+</html>
