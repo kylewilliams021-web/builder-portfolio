@@ -4,11 +4,12 @@
 delivery tracking, customer accounts with loyalty, a staff console and an in-store register (POS). It
 runs on the shop's own Cloudflare account and upgrades by uploading one ZIP, with no monthly POS vendor in
 between. It began as a pizza-ordering template. Twenty-six releases later it's a dispensary system with
-California compliance built in, live at southbay420.com.
+California compliance built in. It's deployed at southbay420.com but doesn't run a store yet; it's in
+development toward the go-live bar I set for it.
 
-| Releases | Automated tests | Database changes | Design decisions on record | Users                      |
-| -------- | --------------- | ---------------- | -------------------------- | -------------------------- |
-| 26       | 168             | 26 migrations    | 7 technical + 5 product    | **[ask]** staff, customers |
+| Releases | Automated tests | Database changes | Design decisions on record | Users                    |
+| -------- | --------------- | ---------------- | -------------------------- | ------------------------ |
+| 26       | 168             | 26 migrations    | 7 technical + 6 product    | None yet: in development |
 
 ## Screens
 
@@ -22,8 +23,10 @@ _Demo shop with sample data (no real customers or sales)._
 
 ## The problem
 
-**[ask]** In your words: what was broken at the store before SouthBay420, and why build instead of buying
-Dutchie, Jane or Treez?
+Why build it at all? _"I have come to learn, I have a huge passion for building these products."_ It's an
+exploration: _"I'm amazed at where it's at… I'm just enjoying the ride."_ I built it to production
+standards so it could become a real product, but my store comes first. Pacific Wellness is moving to
+Dutchie: _"Building it is different from ready to go live. I need the best now for the store."_
 
 Who it serves, as jobs to be done (hypotheses to confirm):
 
@@ -90,8 +93,9 @@ I direct and decide; Claude writes the code. Quality comes from:
 
 ## Results
 
-**[ask] [OK?]** Orders per week, share of sales from members, typical seconds per register sale, and what
-staff and customers say.
+No store runs on it yet, by choice. My go-live criteria: months in the Metrc sandbox with no errors (or only
+errors I can fix), and every feature at least as good as what's on the market. After launch, the number
+I'd watch is stores running it.
 
 ## What I learned
 
@@ -102,4 +106,4 @@ checks live outside the AI.
 ## Evidence
 
 Private repository: product doc, build log, decision records, changelog and architecture docs, available
-on request. Live: southbay420.com.
+on request. Deployed: southbay420.com.

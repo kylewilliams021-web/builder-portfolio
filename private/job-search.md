@@ -24,9 +24,19 @@ How a Dutchie hiring manager might read each:
 | Background only                               | A credible operator with a referral                                                                                                  | (It doesn't come up)           | Wastes the strongest proof           |
 | **Operator who built it, then chose Dutchie** | "I've built this software myself, so I know what's worth paying for, and my store still chose Dutchie. I can tell other owners why." | Depth plus judgment            | Needs the true reason for the switch |
 
+**My answer, in my words (2026-10-12):** "It's so exploratory. I'm amazed at where it's at. It's ignited a passion
+in me and I'm just enjoying the ride." And on the store: "Building it is different from ready to go live. I need the
+best now for the store… for now we will go with the best in the business." Together they make the
+fourth framing, said naturally.
+
 Recommendation (AI): the last one. Lead with operator credibility and the Blaze → Dutchie migration; use
 SouthBay420 as proof of depth and work ethic, not as a product. Save the full SouthBay420 walkthrough for
-whoever is involved in product. **Pending:** why the store is moving to Dutchie, in my words.
+whoever is involved in product. **Answered** above. Public history wording: "wholesale brokering, then managing partner" (true but neutral).
+
+## Ideas to think through (not decisions)
+
+- Open-sourcing SouthBay420 to see whether other stores would use it (online, trade shows). Big tradeoffs,
+  including timing while applying to Dutchie: decide after the application settles.
 
 ## This week
 
