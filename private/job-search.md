@@ -43,6 +43,12 @@ whoever is involved in product. **Answered** above. Public history wording: "who
 - Direction **B (bold)**: "it looks the least like AI." Public email: Gmail for now. Resume download: off
   for now. Canna Cash: set aside, "the project that sparked the passion."
 
+## Website status (2026-10-12)
+
+- Theme: dark by default, light for visitors whose device prefers it, with a switch in the header.
+- Launch after the photos; post held. Steps in `LAUNCH.md`.
+- AI-design checker: every page 0/14.
+
 ## This week
 
 - [ ] Decide the framing above.

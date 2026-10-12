@@ -1,4 +1,5 @@
-/* kylewilliams.co. Two themes share one layout; <html data-theme="dark|paper"> picks the colors.
+/* kylewilliams.co. Two themes share one layout. Dark is the default; a visitor whose device prefers light
+   gets paper; the header switch (theme.js) sets <html data-theme="dark|paper"> and wins over both.
    Color sources (see the colophon): thermal receipt paper and black register ink. No green. */
 
 :root {
@@ -6,7 +7,9 @@
   --font-body: 'Barlow', system-ui, sans-serif;
   --font-receipt: 'IBM Plex Mono', ui-monospace, monospace;
   --measure: 66ch;
+  color-scheme: dark light;
 }
+:root,
 :root[data-theme='dark'] {
   --bg: #161411;          /* near-black, tinted warm toward the receipt paper */
   --text: #f1ece1;        /* thermal receipt paper */
@@ -27,6 +30,20 @@
   --slip-rule: #b4ab98;
   --link: #171513;
 }
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme]) {
+    --bg: #efe9dc;
+    --text: #171513;
+    --muted: #5b564c;
+    --rule: #c8bfac;
+    --slip: #faf7f0;
+    --slip-ink: #171513;
+    --slip-rule: #b4ab98;
+    --link: #171513;
+  }
+}
+.theme-switch { margin-left: 26px; background: none; border: 1px solid var(--rule); color: var(--muted); font: 500 14px var(--font-body); padding: 4px 10px; cursor: pointer; }
+.theme-switch:hover { color: var(--text); }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html { background: var(--bg); }

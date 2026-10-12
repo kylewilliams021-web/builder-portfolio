@@ -25,7 +25,7 @@ const arg = (name) => {
 };
 const preview = process.argv.includes('--preview');
 const config = JSON.parse(fs.readFileSync(path.join(site, 'config.json'), 'utf8'));
-const theme = arg('--theme') || config.theme || 'dark';
+const theme = arg('--theme') || config.theme || 'auto'; // auto: dark unless the device prefers light
 const dist = path.resolve(root, arg('--out') || 'site/dist');
 const manifests = JSON.parse(fs.readFileSync(path.join(site, 'manifests.json'), 'utf8'));
 const printed = new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
@@ -112,7 +112,7 @@ function layout({ title, description, body, active = '' }) {
     .filter(Boolean)
     .join('');
   return `<!doctype html>
-<html lang="en" data-theme="${esc(theme)}">
+<html lang="en"${theme === 'auto' ? '' : ` data-theme="${esc(theme)}"`}>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -120,10 +120,11 @@ function layout({ title, description, body, active = '' }) {
 <meta name="description" content="${esc(description || config.description)}">
 <link rel="stylesheet" href="/fonts/fonts.css">
 <link rel="stylesheet" href="/style.css">
+<script src="/theme.js"></script>
 </head>
 <body>
 ${preview ? `<div class="preview-bar">Preview (${esc(theme)} theme)${problems.length ? ': highlighted spots are waiting on an answer or an approval and block the real build' : ''}.</div>` : ''}
-<header class="site-header"><div class="wrap"><a class="brand" href="/">${esc(config.name)}</a><nav>${nav}</nav></div></header>
+<header class="site-header"><div class="wrap"><a class="brand" href="/">${esc(config.name)}</a><nav>${nav}<button class="theme-switch" type="button" hidden>Light</button></nav></div></header>
 <main>${body}</main>
 <footer class="site-footer" id="contact"><div class="wrap"><div><h2>Email me.</h2><div class="contact">${contact}</div></div><p class="small"><a href="/colophon/">Colophon</a><a href="/now/">Now</a></p></div></footer>
 </body>
@@ -156,6 +157,7 @@ function markdownPage(file, out, active, { receiptKey, postMeta } = {}) {
 fs.rmSync(dist, { recursive: true, force: true });
 fs.mkdirSync(dist, { recursive: true });
 fs.copyFileSync(path.join(site, 'style.css'), path.join(dist, 'style.css'));
+fs.copyFileSync(path.join(site, 'theme.js'), path.join(dist, 'theme.js'));
 fs.cpSync(path.join(site, 'fonts'), path.join(dist, 'fonts'), { recursive: true });
 fs.cpSync(path.join(root, 'projects', 'img'), path.join(dist, 'img'), { recursive: true });
 
