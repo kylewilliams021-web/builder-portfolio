@@ -1,4 +1,4 @@
-# SouthBay420 — a dispensary's ordering, register and loyalty, owned by the shop
+# Online ordering and a register for a licensed California dispensary
 
 **In short.** A full system for a licensed California cannabis retailer: online menu and ordering,
 delivery tracking, customer accounts with loyalty, a staff console and an in-store register (POS). It
@@ -6,10 +6,6 @@ runs on the shop's own Cloudflare account and upgrades by uploading one ZIP, wit
 between. It began as a pizza-ordering template. Twenty-six releases later it's a dispensary system with
 California compliance built in. It's deployed at southbay420.com but doesn't run a store yet; it's in
 development toward the go-live bar I set for it.
-
-| Releases | Automated tests | Database changes | Design decisions on record | Users                    |
-| -------- | --------------- | ---------------- | -------------------------- | ------------------------ |
-| 26       | 168             | 26 migrations    | 7 technical + 6 product    | None yet: in development |
 
 ## Screens
 

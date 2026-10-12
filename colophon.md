@@ -11,7 +11,7 @@ How this site and the products on it get made.
 I describe what the shop needs, make the product calls and test every workflow myself. Claude
 (Anthropic's AI) writes the code. A second Claude agent, the reviewer, checks the work against the
 project's rules before it's committed. Hooks I set up refuse the actions that must never happen, such as
-touching the live database or deploying without me, and the tests run automatically before Claude is
+running commands against the live database or deploying without me, and the tests run automatically before Claude is
 allowed to say it's done.
 
 ## Type and color
