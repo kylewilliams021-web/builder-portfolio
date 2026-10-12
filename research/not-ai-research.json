@@ -1,0 +1,870 @@
+{
+ "research": [
+  {
+   "angle": "design-tells",
+   "summary": "A page reads as AI-made because of a cluster of statistical defaults, not one bad choice. Anthropic calls the cause \"distributional convergence\": given a vague prompt, a model picks the safest, most common choice from its training data. That means Inter, a purple-to-indigo gradient on white, a centered hero, three identical icon cards, a stat row and a fade-up on every element. The best evidence that these tells are real and measurable is Adrian Krebs's checker, which scored Show HN landing pages against 14 deterministic patterns. In his first sample of about 500 sites, 21% triggered 5 or more patterns. A later, secondary write-up reports 1,590 pages and 22% \"heavy\" (4 or more). Most other sources are practitioner catalogs (Impeccable, anti-slop ban lists), so treat individual items as strong conventions, not laws. The main lesson for Kyle: banning the first set of defaults isn't enough, because agents fall back to a second set. That second set is cream with an oversized italic serif, or near-black with a neon green accent, and the neon green trap is especially tempting for a cannabis brand. So his \"bold\" site has to be specific to him (his real numbers, his real artifacts, his own voice) and not just different from purple.",
+   "findings": [
+    {
+     "tell": "The meta-fingerprint: purple/indigo gradient + Inter + centered hero + a row of three equal rounded icon cards, all together",
+     "why": "Each piece is common, but together they are the model's 'median landing page'. Anthropic says that without guidance its model 'will almost always conform to Inter fonts, purple gradients on white backgrounds, and minimal animations,' because safe choices dominate the training data. Impeccable's catalog lists this exact combination as the #1 meta-fingerprint of unreviewed AI output.",
+     "instead": "Break at least three of the four on purpose. Pick a non-default typeface with character for headings. Use a brand color that isn't indigo or violet. Set the hero left-aligned or asymmetric. Show feature content at unequal sizes, for example one large proof piece (a real screenshot of the POS he built) beside two small notes. Run Krebs's open-source ai-design-checker on the finished page as a regression test.",
+     "example": "Typical v0/Lovable output: centered H1 'Build faster with AI', subhead, two buttons, a soft purple glow behind them, then three cards with Lucide icons in rounded squares.",
+     "source": "https://claude.com/blog/improving-frontend-design-through-skills ; https://raw.githubusercontent.com/wiki/Laith0003/ux-skill/Anti-AI-slop-ban-list.md ; https://github.com/AdrianKrebs/ai-design-checker"
+    },
+    {
+     "tell": "'Vibe purple': indigo/violet accents on buttons and links, and blue-to-purple gradient backgrounds",
+     "why": "This has a traceable origin. Tailwind's creator Adam Wathan posted on 7 Aug 2025: 'I'd like to formally apologize for making every button in Tailwind UI bg-indigo-500 five years ago, leading to every AI generated UI on earth also being indigo.' The tweet passed a million views. Krebs's checker treats 'Indigo/violet accent on CTAs and links' as its own pattern. Readers now link this hue with generated output on sight.",
+     "instead": "Build the palette from something real: one dominant color and one sharp accent, plus tinted neutrals (Impeccable: 'Don't use pure black/gray (always tint)'). Anthropic's guidance: 'Dominant colors with sharp accents outperform timid, evenly-distributed palettes.' For Kyle, pull colors from his actual world (a dispensary's signage, kraft-paper packaging, a Metrc tag's yellow) and avoid generic tech hues.",
+     "example": "bg-indigo-500 buttons; a 'from-purple-600 to-blue-500' hero background.",
+     "source": "https://x.com/adamwathan/status/1953510802159219096 ; https://github.com/AdrianKrebs/ai-design-checker"
+    },
+    {
+     "tell": "Gradient-clipped headline text, or one hero word set off in a second font, italic or color",
+     "why": "Krebs lists both 'gradient-clipped hero text' and 'Hero font mix: one hero word set apart with a second font, an italic, or a different color' as deterministic AI patterns. Impeccable calls gradient text 'decorative rather than meaningful,' especially on headings and metrics. Component libraries (Magic UI, Aceternity, shadcn.io) ship it as a one-line drop-in, which is why it appears everywhere.",
+     "instead": "Set the headline in one solid color and create emphasis with size, weight and line breaks. If a word has to stand out, make it a fact (a number, a license type, a city) rather than a styled adjective.",
+     "example": "'Build the future of <span class=\"bg-gradient-to-r ... bg-clip-text text-transparent\">commerce</span>' or 'Software that <em>actually</em> works' with the italic word in a serif.",
+     "source": "https://github.com/AdrianKrebs/ai-design-checker ; https://gist.github.com/darthv95/aeff3e44287e0fe782a8d482d67ef2cc"
+    },
+    {
+     "tell": "A thick colored stripe on one edge (usually left or top) of a rounded card",
+     "why": "Impeccable's slop catalog calls the 'side-tab accent border' 'the single most recognizable tell of AI-generated UI'. Its detector, Krebs's checker ('Accent stripe') and a React Doctor lint rule (one-sided borders of 3px or more with chroma) all flag it automatically. LLMs add it to make a plain card look 'designed'.",
+     "instead": "Use a hairline full border or no border at all, and let spacing and type do the grouping. Save colored edges for real status (an alert, a failed compliance check).",
+     "example": "<div class=\"rounded-xl border-l-4 border-indigo-500 p-6 shadow-sm\"> for every testimonial or feature.",
+     "source": "https://www.react.doctor/docs/rules/react-doctor/no-side-tab-border ; https://github.com/pbakaus/impeccable ; https://github.com/AdrianKrebs/ai-design-checker"
+    },
+    {
+     "tell": "Grids of identical cards, each with an icon in a rounded square above a two-word title; cards nested inside cards",
+     "why": "The models default to three when the prompt doesn't say how many ('three is what the model picks when you did not say'). Impeccable's README says 'Don't wrap everything in cards or nest cards inside cards'. Its 15-tell list includes 'Icons in rounded squares above every heading' and 'Grids of identical cards'. Equal heights and equal weights tell the reader nobody decided what mattered most.",
+     "instead": "Rank the content and let the layout show the ranking. One project gets a full-width case study and the others get a line each. Put the icon beside the heading or drop it. Flatten nesting with spacing and dividers. Write in prose where a card would only hold one sentence.",
+     "example": "'Fast / Secure / Scalable' cards with Zap, Shield and TrendingUp Lucide icons in bg-indigo-50 rounded-lg tiles.",
+     "source": "https://gist.github.com/darthv95/aeff3e44287e0fe782a8d482d67ef2cc ; https://superdesign.dev/blog/fix-generic-ai-landing-page ; https://github.com/pbakaus/impeccable"
+    },
+    {
+     "tell": "A pill badge or 'eyebrow' chip floating above the H1",
+     "why": "Krebs's checker has a dedicated 'Headline badge: a pill badge floating above the H1' pattern. Impeccable's detector flags 'hero-eyebrow-chip / kicker-above-heading'. The badge usually holds empty news ('New', 'Introducing', 'Now with AI \u2728') to fill space above the headline.",
+     "instead": "Remove it. If the information is real (for example 'Currently: managing partner, Pacific Wellness'), write it as a plain line of text in the body type, or fold it into the headline.",
+     "example": "A rounded-full border with a pulsing green dot: '\u25cf Now in beta \u2014 v2.0 is live \u2192'.",
+     "source": "https://github.com/AdrianKrebs/ai-design-checker ; https://gist.github.com/darthv95/aeff3e44287e0fe782a8d482d67ef2cc"
+    },
+    {
+     "tell": "Stat banners and giant hero metrics with round numbers ('10K+ users \u00b7 99.9% uptime \u00b7 4.9\u2605')",
+     "why": "This is one of Krebs's 14 patterns. Impeccable's checklist marks round-number stats as a BLOCKER: 'Suspiciously round stats undermine trust.' The model invents plausible-sounding figures to fill a 'social proof' slot, so readers now discount the whole row.",
+     "instead": "Use only real, odd, sourced numbers with context, and put them where they explain something. For Kyle: '17 years in California cannabis', the exact number of migrations or releases shipped, real order counts from the POS. A number like '1,284' with a date beats '10K+'. If there's no real number, drop the row.",
+     "example": "Three big gradient numerals: '500+ Clients', '99%', '24/7'.",
+     "source": "https://github.com/AdrianKrebs/ai-design-checker ; https://raw.githubusercontent.com/wiki/Laith0003/ux-skill/Anti-AI-slop-ban-list.md"
+    },
+    {
+     "tell": "Default typefaces: Inter, Geist or Roboto everywhere, plus a second tier of 'templated display fonts' (Space Grotesk, Instrument Serif, Syne, Fraunces)",
+     "why": "Anthropic's own blocklist says 'Never use: Inter, Roboto, Open Sans, Lato, default system fonts'. It also admits Claude 'still tend[s] to converge on common choices (Space Grotesk, for example)' even after being told to vary. Krebs flags 'Space Grotesk, Instrument Serif, Geist, Syne, or Fraunces used as the page default'. The trendy alternatives have become the new defaults.",
+     "instead": "Choose type for a reason you can state in one sentence, ideally tied to his world (dispensary menus, compliance labels, wholesale manifests). Pair a distinctive display face with a quiet text face, and check it isn't on Krebs's list. Avoid monospace as a 'technical' shorthand, which Impeccable also flags.",
+     "example": "Inter 600 for H1 and Inter 400 for body, with tracking-tight, on every section.",
+     "source": "https://claude.com/blog/improving-frontend-design-through-skills ; https://github.com/AdrianKrebs/ai-design-checker"
+    },
+    {
+     "tell": "The 'second set' of defaults: beige/cream with an oversized italic serif headline, or near-black with a neon green accent",
+     "why": "Practitioners report that coding agents 'fall back to a second set of defaults the moment the first set is banned'. The examples given are warm cream with a terracotta accent, or near-black with a bright green highlight. The darthv95 gist (drawn from Impeccable's catalog) lists 'Defaulting to beige or cream with an oversized italic serif headline' as tell #15. Several anti-slop skills now ship cream/terracotta as a preset, so it is turning into a template. For a cannabis person, black with neon green is the most tempting trap because it also reads as stoner clich\u00e9.",
+     "instead": "Test the bold direction against both fallbacks before committing. If the palette is green, make it a specific, earned green (for example muted sage or deep forest from real packaging), never #22c55e on black. Make sure the layout and content are also non-default, because a new color on a stock skeleton still reads as generated.",
+     "example": "#FAF7F2 background, an italic 'Instrument Serif' 96px headline, a #C56A3C link color.",
+     "source": "https://gist.github.com/darthv95/aeff3e44287e0fe782a8d482d67ef2cc ; https://capitalandcompute.net/blog/fix-ai-slop-design/ (via search summary) ; https://skillselion.com/skills/bergside/awesome-design-md-skills/terracotta"
+    },
+    {
+     "tell": "Glassmorphism, colored glows and blurred gradient blobs ('aurora' / mesh orbs) behind the hero",
+     "why": "Krebs flags both 'Glassmorphism: backdrop-blur on translucent floating panels' and 'Colored glow: saturated box-shadow glow on buttons and cards'. Impeccable's CLI detects 'dark glows'. Generated design kits literally prescribe '2\u20134 blurred color blobs (mesh gradient) behind content'. These effects add depth without meaning anything.",
+     "instead": "Use at most one effect, and only where it does a job, such as a sticky nav over content. Get depth from real material: photography, scanned paper, a real product screenshot at full size. Keep shadows matched to what the element does.",
+     "example": "backdrop-blur-xl bg-white/10 border-white/20 cards over a purple-blue radial glow, with buttons glowing shadow-[0_0_30px_rgba(139,92,246,0.5)].",
+     "source": "https://github.com/AdrianKrebs/ai-design-checker ; https://github.com/pbakaus/impeccable ; https://bootcamp.uxdesign.cc/the-rise-of-linear-style-design-origins-trends-and-techniques-4fd96aab7646"
+    },
+    {
+     "tell": "'Perma dark' Linear-style pages: near-black background with muted grey body text and subtle glows",
+     "why": "Krebs lists 'Perma dark: dark background with muted grey body text' as a pattern. The style comes from Linear and spread to sites that, in one critic's words, adopt it 'even if it doesn't suit their brand'. LogRocket notes Linear itself has since cut back on color. Grey-on-black is also a legibility problem, and Impeccable warns against 'gray text on colored backgrounds'.",
+     "instead": "If he goes dark, make body text near-white with real contrast (WCAG AA or better), tint the black toward the brand hue, and have a reason for darkness (for example, the after-hours feel of a shop floor). Otherwise a light or mid-tone ground stands out more among product-role portfolios.",
+     "example": "#0A0A0A background, text-zinc-400 paragraphs, a faint radial glow top-center.",
+     "source": "https://github.com/AdrianKrebs/ai-design-checker ; https://anthonyhobday.com/blog/20230119.html ; https://blog.logrocket.com/?p=186781"
+    },
+    {
+     "tell": "Emoji used as icons or bullets (\ud83d\ude80 \u2728 \ud83d\udca1 \u2705) and the \u2728 sparkles symbol for anything 'AI'",
+     "why": "Krebs's checker flags 'Emoji nav: nav or sidebar items prefixed with emoji'. The anti-slop ban list says 'Emoji in headings look unprofessional' and that mixed line, filled and emoji icons 'look unplanned'. LLM-written HTML and markdown scatter emoji by habit. Nielsen Norman Group documents 'sparkle ambiguity': the \u2728 icon says 'AI happens here' and nothing about what actually happens.",
+     "instead": "Use no emoji in headings, nav or bullets. If icons are needed, use one consistent set (or custom marks drawn from his domain), always beside a text label. When describing AI-assisted work, say what the AI did in words ('Claude wrote the tests; I set the pricing rules') and skip the sparkle.",
+     "example": "'\ud83d\ude80 Features', '\u2728 AI-powered insights', '\u2705 Compliance made easy'.",
+     "source": "https://github.com/AdrianKrebs/ai-design-checker ; https://nngroup.com/articles/ai-sparkles-icon-problem/ ; https://raw.githubusercontent.com/wiki/Laith0003/ux-skill/Anti-AI-slop-ban-list.md"
+    },
+    {
+     "tell": "Formulaic section order and stock scaffolding: hero, logo strip, 3 features, '1 \u00b7 2 \u00b7 3' steps, testimonials, pricing, an FAQ accordion, a 'Ready to get started?' CTA, plus decorative 01/02/03 labels",
+     "why": "Krebs scores 'Numbered steps: a 1 \u00b7 2 \u00b7 3 step sequence' and 'FAQ accordion: Frequently asked questions with 3+ collapsible Q&As' as patterns. The darthv95 gist (drawn from Impeccable's catalog) flags 'Tiny numbered labels (01, 02, 03) when nothing is a sequence'. Guides describe generators reaching for 'the same seven headline formulas' and the same section order. A personal site laid out like a SaaS funnel looks generated before anyone reads a word.",
+     "instead": "Structure the site around his story and evidence, not a sales funnel. For example: what he ran (17 years, brokering to Pacific Wellness), what he built (the POS and Metrc work, with real screens), how he works with AI (the build log and decision records), and how to reach him. Use numbers only for real sequences. Write section headings as specific claims ('I built the till my budtenders use'), not 'Features' or 'How it works'.",
+     "example": "Headings like 'Why Choose Me', 'How It Works', 'What People Say', 'Ready to Work Together?'.",
+     "source": "https://github.com/AdrianKrebs/ai-design-checker ; https://superdesign.dev/blog/fix-generic-ai-landing-page ; https://gist.github.com/darthv95/aeff3e44287e0fe782a8d482d67ef2cc"
+    },
+    {
+     "tell": "Uniform 'default motion': every element fades up on scroll, bounce/elastic easing, pulsing dots, auto-scrolling logo marquees",
+     "why": "Impeccable's README says 'Don't use bounce/elastic easing (feels dated)' and its detector flags bounce easing. Its catalog lists 'Fade-up-on-scroll on every element' and 'Continuously animating elements'. The darthv95 gist (drawn from Impeccable's catalog) flags 'Pulsing dots, bouncy easing, hover zooms and auto-scrolling logo strips'. One write-up describes stock AI output as everything fading in from below on a ~300ms ease, which designers 'can spot in one scroll'. This is the Framer Motion whileInView y:40\u21920 default.",
+     "instead": "Animate only when something changes state. If there's a page-load moment, make it one orchestrated reveal (Anthropic: 'one well-orchestrated page load with staggered reveals'). Use a deliberate easing curve, and honor prefers-reduced-motion. Static is fine and often reads as more confident.",
+     "example": "<motion.section initial={{opacity:0,y:40}} whileInView={{opacity:1,y:0}}> wrapped around every block, plus an infinite 'Trusted by' logo marquee.",
+     "source": "https://github.com/pbakaus/impeccable ; https://gist.github.com/darthv95/aeff3e44287e0fe782a8d482d67ef2cc ; https://dev.to/kenimo49/framer-motion-view-transitions-api-4-ui-motion-patterns-that-stop-looking-ai-generated-25gg"
+    },
+    {
+     "tell": "Everything centered, the same border radius on everything, and the same padding on every section",
+     "why": "The ban list names 'Center alignment for everything', 'Identical border radius everywhere' (one radius 'flattens hierarchy') and 'Symmetric padding everywhere'. Its principles are 'Asymmetry beats symmetry' and 'Editorial beats decorative'. Krebs's 'Centered + Inter' pattern captures the hero version. Uniform values are what a utility-class generator produces when nobody makes a judgment call.",
+     "instead": "Left-align reading text, use a real grid with intentional asymmetry, and vary spacing to signal importance (more room before the key section). Vary radius by role, or commit to square corners, which also suits a bold direction.",
+     "example": "rounded-2xl on buttons, cards, images and inputs alike; py-24 on every section; text-center on every paragraph.",
+     "source": "https://raw.githubusercontent.com/wiki/Laith0003/ux-skill/Anti-AI-slop-ban-list.md ; https://github.com/AdrianKrebs/ai-design-checker"
+    },
+    {
+     "tell": "Interchangeable imagery: Corporate Memphis/'Alegria' flat people, glossy 3D isometric renders and blobs, AI-generated hero art, and placeholder testimonials or logos",
+     "why": "The flat-people style (Buck's 2017 'Alegria' system for Facebook) is widely described as 'generic', 'lazy' and 'soulless'. Glossy isometric and 3D-clay hero art is now sold as one-click generator presets, so it signals 'no real photos exist'. The ban list warns 'Stock photo + placeholder testimonials... half-real reads worse,' along with fake brand names and Jane Doe quotes.",
+     "instead": "Use only real artifacts: photos of Pacific Wellness (license-compliant, no customer faces), real screenshots of his POS and admin, hand-annotated sketches, scans of an old wholesale manifest with sensitive data redacted. Use testimonials only from real, named people with their permission. One imperfect real photo beats any generated render.",
+     "example": "A purple 3D isometric laptop with floating charts, or a flat illustration of diverse people high-fiving around a giant phone.",
+     "source": "https://eyeondesign.aiga.org/what-the-think-pieces-about-corporate-memphis-tell-us-about-the-state-of-illustration/ ; https://aesthetics.fandom.com/wiki/Corporate_Memphis ; https://morphic.com/ar/resources/images/hero-illustration-images ; https://raw.githubusercontent.com/wiki/Laith0003/ux-skill/Anti-AI-slop-ban-list.md"
+    }
+   ]
+  },
+  {
+   "angle": "writing-tells",
+   "summary": "The most reliable signs of AI prose in 2025-2026 are structural, not word-level. Banned-word lists go out of date: \"delve\" fell to about 1 in 1,000 ChatGPT chats by July 2025, and Graphite's October 2026 study measured roughly a 99% drop in em dashes in the newest Claude models. When a model loses one habit it picks up another, so the total number of tells stays about the same. What has stayed constant across model versions is a set of moves: claims that would fit anyone, contrast framing (\"not X, but Y\"), questions the writer asks and answers for drama (\"The result?\", \"Why this matters\"), inflated stakes, and LinkedIn's broetry, emoji and engagement-bait format, which LinkedIn's own editor-in-chief now names as slop. This matters because readers penalize suspected AI whether or not it is: about half the trust in a Raptive survey of 3,000 adults, and a penalty that held across 16 preregistered experiments (27,491 people) in the Wharton/NYU work. For Kyle, the strongest counter is content no model can produce: names, dates, dollar amounts, trade vernacular from 17 years in California cannabis, and opinions that someone could disagree with. Changing punctuation helps far less. Caveat: I could not open the primary Wikipedia guide, the Washington Post piece or the NYT piece directly (only a few sites were reachable). Those findings rely on secondary write-ups, cited as such.",
+   "findings": [
+    {
+     "tell": "1. Interchangeable, specific-free claims: sentences that would be equally true for any person, company or industry (\"I'm passionate about building products that solve real problems\", \"Cannabis is a rapidly evolving industry with unique challenges\"). No proper nouns, no dates, no figures, no named places.",
+     "why": "This is the strongest and most durable signal because it survives every model update. A model playing it safe goes to the most probable, broadest claim. LinkedIn's editor-in-chief Dan Roth lists 'bland, interchangeable takeaways' first among the things that get a post flagged as AI slop, and LinkedIn's guidance allows AI-assisted posts only if they carry an original idea. The giveaway is less any one phrase than the fact that nothing could only have been written by this person.",
+     "instead": "Run a swap test on every paragraph: if a competitor could paste it onto their site unchanged, rewrite it. Each claim needs at least one concrete anchor: a store name, a year, a dollar or unit figure, a tool, a regulation, a person's role. Use real numbers or leave them out; never invent a precise-sounding figure.",
+     "example": "Generic: 'I bring deep industry experience to every product I build.' Specific (Kyle fills in the real figures): 'I spent [N] years brokering wholesale flower in the legacy market before Pacific Wellness. That is why the POS I built flags [specific thing] at checkout: I have watched [specific failure] cost a store money.'",
+     "source": "https://hrexecutive.com/what-linkedins-editor-in-chief-says-gets-a-post-flagged-as-ai-slop/ ; https://news.bloomberglaw.com/artificial-intelligence/linkedin-is-cracking-down-on-ai-slop-with-new-reporting-tool"
+    },
+    {
+     "tell": "2. Contrast framing (also called negative parallelism or corrective framing): \"It's not X, it's Y\", \"This isn't just a tool, it's a movement\", \"Not a bug. Not a feature. A design flaw.\", \"rather than relying on X\".",
+     "why": "It has measured volume and it outlasts the word-level tells. The Washington Post's analysis of 328,744 ChatGPT messages found 'not just X, but Y' in about 6% of July 2025 chats. Graphite's 2026 study measured corrective framing ('not simply X') at more than 100x the human rate in OpenAI's newest model. LinkedIn's Dan Roth names 'not this, but that' as a red flag. Barron's counted the construction in Fortune 500 filings rising from about 50 (2023) to over 200 (2025). One plausible explanation is that human raters rewarded it during training because it sounds insightful. Human writers save it for one big moment; models use it in every paragraph.",
+     "instead": "State the positive claim directly and skip the straw man. Allow at most one contrast per piece, and only when someone actually holds the view you are contradicting; name who.",
+     "example": "AI: 'Compliance isn't a checkbox. It's a culture.' Human: 'Our Metrc manifests used to get rejected because [specific reason]. I built a check that catches it before we submit.'",
+     "source": "https://www.bostonglobe.com/2025/11/13/business/chatgpt-writing-style-clues/ (Washington Post analysis, syndicated) ; https://gizmodo.com/this-matters-researchers-identify-thousands-of-new-tells-in-ai-writing-2000820447 ; https://aiweekly.co/alerts/atlantic-ais-its-not-x-its-y-tic-proves-hardest-to-shake ; https://tropes.fyi/tropes/negative-parallelism"
+    },
+    {
+     "tell": "3. Reveal setups and questions the writer asks and answers: \"Here's the thing:\", \"Here's what most people miss\", \"But here's the catch\", \"The result? Chaos.\", \"Why does this matter?\", \"Why [X] matters\", \"This matters because...\".",
+     "why": "These announce that an insight is coming instead of delivering one. Graphite's October 2026 study (13,000 phrases at least 2x more common in AI than human text) found 'this matters' at about 116x the human rate in Claude Opus 5.5 and 'why [blank] matters' at about 92x, the top phrase tells in that model. The tropes.fyi catalog describes the Q&A form as a question nobody was asking, answered for drama. It is now the most recognizable LinkedIn hook format.",
+     "instead": "Delete the setup and start with the payoff. If a question is needed, it should be one a real customer or colleague asked; attribute it ('A budtender asked me last week why...').",
+     "example": "AI: 'Here's the thing most dispensary owners miss: data.' Human: 'Most of our shrink last quarter came from one SKU category, and the old POS couldn't show me that.' (Kyle fills in the real category and figures.)",
+     "source": "https://gizmodo.com/this-matters-researchers-identify-thousands-of-new-tells-in-ai-writing-2000820447 ; https://theaiinsider.tech/2026/10/05/graphite-study-finds-ai-models-still-leave-thousands-of-writing-tells/ ; https://tropes.fyi/tropes/rhetorical-qa ; https://gist.github.com/ossa-ma/dae6f9571534f3fbd1266a384be00e11"
+    },
+    {
+     "tell": "4. LinkedIn post formatting: dramatic one-line paragraphs ('broetry'), a stack of arrow or emoji bullets (\u2192, \ud83d\udc49, \u2705, \ud83d\ude80, \u2728), emojis at the start and end, ending with 'Thoughts?', 'Agree?', 'Follow for more' or '\u267b\ufe0f Repost if this helped'.",
+     "why": "LinkedIn's editor-in-chief names broetry and the recycle emoji plus comment-bait as slop signals, and LinkedIn added a 'seems like AI slop' report option. The Washington Post found 70% of ChatGPT messages contained an emoji by July 2025, with the green check mark used 11x more than humans use it. Originality.ai found likely-AI long-form LinkedIn posts got 45% less engagement than likely-original ones, and estimated 54% of long-form posts were likely AI (Oct 2024; detector-based, so treat as indicative).",
+     "instead": "Write in normal paragraphs of 2-4 sentences. Use a plain hyphen or numbers for a real list, and only when the content is a list. Emoji: none, or one that means something specific to Kyle. End when the point is made, or with a specific, answerable question ('Anyone else's Metrc sandbox rejecting [specific call]?') rather than 'Thoughts?'.",
+     "example": "Weak: '\ud83d\ude80 3 lessons from building my own POS:\\n\u2192 Start small\\n\u2192 Listen to users\\n\u2192 Iterate fast\\nAgree? \ud83d\udc47' Stronger: one paragraph about the day a budtender found the bug, what it was, and what changed.",
+     "source": "https://hrexecutive.com/what-linkedins-editor-in-chief-says-gets-a-post-flagged-as-ai-slop/ ; https://www.bostonglobe.com/2025/11/13/business/chatgpt-writing-style-clues/ ; https://originality.ai/pt/blog/ai-content-published-linkedin ; https://www.teamlewis.com/magazine/5-common-mistakes-to-avoid-in-ai-generated-linkedin-posts/"
+    },
+    {
+     "tell": "5. Inflated stakes and puffery: 'stands as a testament to', 'serves as', 'plays a pivotal/crucial role', 'rich heritage', 'a journey', making a small topic about the future of the industry, plus 'magic adverbs' (quietly, deeply, fundamentally, remarkably).",
+     "why": "Wikipedia's 'Signs of AI writing' guide (WikiProject AI Cleanup) catalogs promotional, exaggerated descriptors and 'serves as / stands as' in place of 'is'. Sam Kriss's NYT Magazine piece (Dec 2025) describes models that know subtlety matters and overcorrect by loudly calling everything 'quiet'. Graphite found Opus 5.5 far more likely to use superlatives. The verbs hide that nothing concrete is being said.",
+     "instead": "Use 'is'. Cut the adverb and check whether the sentence lost anything. Size the claim honestly: 'This saved our closing manager about 20 minutes a night' (if true) beats 'This fundamentally transforms dispensary operations.'",
+     "example": "AI: 'My POS stands as a testament to what's possible when operators build their own tools.' Human: 'I built the POS because [vendor] charged $[X]/month and still couldn't [specific thing].'",
+     "source": "https://techcrunch.com/2025/11/20/the-best-guide-to-spotting-ai-writing-comes-from-wikipedia/ ; https://www.beutlerink.com/blog/how-to-spot-ai-writing ; https://longreads.com/2025/12/04/why-does-a-i-write-like-that ; https://gist.github.com/ossa-ma/dae6f9571534f3fbd1266a384be00e11"
+    },
+    {
+     "tell": "6. Coined concept labels and branded frameworks: naming a made-up idea as if it were established ('the supervision paradox', 'The Operator-Builder Framework', 'the Compliance Flywheel'), often in title case with a capital-letter acronym.",
+     "why": "Listed as a model trope ('invented concept labels'): the model coins a compound term and treats it as canon, which sounds authoritative but has no source. On a portfolio site it reads as a personal brand built from a prompt.",
+     "instead": "Describe what you actually do in plain verbs. If you really do have a repeatable method, show it once with the real artifact (a screenshot of the actual checklist or spec) instead of a branded name.",
+     "example": "Instead of 'My R.E.A.L. Framework for Cannabis Product Design', write: 'I write the spec as the press release first, then build only what the release promised.' (true of this project's working-backwards practice)",
+     "source": "https://gist.github.com/ossa-ma/dae6f9571534f3fbd1266a384be00e11"
+    },
+    {
+     "tell": "7. Optimistic dismissal and motivational closers: 'Despite these challenges, the future is bright', 'The best is yet to come', 'The future belongs to those who build', closing quotable one-liners ('Every metric that rewards volume punishes leverage'), and ending on 'In summary' or 'Overall'.",
+     "why": "Wikipedia's guide flags formulaic summary/conclusion phrases and the 'despite challenges' paragraph that names a problem only to wave it away. The tropes catalog adds 'quotable one-liners' and 'never-ending conclusion'. Real people often stop when they have made the point, or end on something unresolved.",
+     "instead": "End on the last concrete thing: a number, a next step with a date, an open problem you have not solved. Leaving tension unresolved reads as more honest than a bow.",
+     "example": "AI: 'The cannabis industry is at an inflection point, and those who embrace technology will lead.' Human: 'Next: getting the Metrc sandbox to run [N] days without an error. I'm at [current number].'",
+     "source": "https://the-decoder.com/heres-how-to-spot-ai-writing-according-to-wikipedia-editors/ ; https://www.techspot.com/news/109186-subtle-signs-give-away-chatbot-writing-according-wikipedia.html ; https://gist.github.com/ossa-ma/dae6f9571534f3fbd1266a384be00e11"
+    },
+    {
+     "tell": "8. Rule of three as a reflex: every list, adjective string and paragraph lands on three ('fast, compliant, and customer-first'; 'I build, I learn, I ship').",
+     "why": "Kriss's NYT piece and Wikipedia's guide both list the rule of three. It is a weaker signal alone: a veteran speechwriter's human-written speeches drew 24 and 28 'AI tells' from a detection prompt, partly for triplets her speaker likes. The tell is the cadence repeating everywhere, which only a pattern-matcher produces.",
+     "instead": "Count your lists. Use the true number of items: two when there are two, five when there are five. Break at least half the triplets. Ask whether the third item is padding (it usually is).",
+     "example": "AI: 'Pacific Wellness is about quality, community, and trust.' Human: 'We stock [N] brands. I dropped [brand type] after [specific reason].'",
+     "source": "https://www.pw.org/content/artificial_poetry (summarizing Kriss, NYT Magazine, Dec 3 2025) ; https://gptzero.me/news/the-rule-of-three/ ; https://prorhetoric.com/in-a-veteran-speechwriters-hard-wrought-work-claude-finds-dozens-of-ai-tells/"
+    },
+    {
+     "tell": "9. Hedged, unattributed generalities: 'can help', 'may provide', 'It's worth noting', 'Importantly', 'experts say', 'industry reports suggest', 'studies show', 'as we all know'.",
+     "why": "Graphite found hedges like 'may provide' and 'can provide' among the signature habits of OpenAI's newest model. Wikipedia's guide and the tropes catalog list vague attributions ('experts', 'observers', 'several publications') as a classic sign: the model borrows authority it cannot cite. Hedged and anonymous at once, the sentence commits to nothing.",
+     "instead": "Either commit ('This cut our [metric] by [X]') or name the source ('California DCC's 2025 rule on [Y]', 'our Q3 numbers'). If you're unsure, say so personally ('I think, but haven't proven, that...'). A real person's uncertainty is specific; a model's hedge is generic.",
+     "example": "AI: 'Experts agree that seed-to-sale tracking can help improve compliance outcomes.' Human: 'Metrc rejected [N] of our transfers in [month]. Every one was the same field.'",
+     "source": "https://cryptobriefing.com/graphite-study-claude-opus-5-5-writing-tells/ ; https://gist.github.com/ossa-ma/dae6f9571534f3fbd1266a384be00e11 ; https://www.beutlerink.com/blog/how-to-spot-ai-writing"
+    },
+    {
+     "tell": "10. The overused-word list: delve, tapestry, landscape, leverage (verb), seamless, unlock, robust, streamline, harness, foster, pivotal, crucial, underscore, showcase, game-changer, elevate, navigate (the complexities of), ecosystem, dependable.",
+     "why": "Real but shifting. Kobak et al. (Science Advances 2025) found 'delves' at 28x, 'underscores' at 10.9x and 'showcasing' at 10.2x excess frequency in PubMed abstracts, and estimated at least 13.5% of 2024 abstracts were LLM-processed. GPTZero ranks phrases by AI-to-human ratio over 3.3M texts. But models drop famous words ('delve' fell to about 1 in 1,000 chats by July 2025) and pick up new ones (Graphite: 'dependable' at about 23-26x in Opus 5.5). One word is weak evidence; a cluster of three or four in one paragraph is strong.",
+     "instead": "Use the word you would say out loud to a vendor or a budtender. Keep a personal 'never' list for the site and posts, and check new drafts against GPTZero's live AI-vocabulary page, since the list changes with each model release.",
+     "example": "AI: 'Leveraging data to unlock seamless experiences across the cannabis landscape.' Human: 'Using our sales data so a regular's usual order is already on the screen when they walk up.'",
+     "source": "https://arxiv.org/html/2406.07016v5 ; https://github.com/berenslab/llm-excess-vocab ; https://gptzero.me/ai-vocabulary ; https://www.bostonglobe.com/2025/11/13/business/chatgpt-writing-style-clues/ ; https://gizmodo.com/this-matters-researchers-identify-thousands-of-new-tells-in-ai-writing-2000820447"
+    },
+    {
+     "tell": "11. Chatbot document formatting carried onto the page: every bullet starting with a bolded phrase, Title Case Headings, headings that are question words ('What We Do Differently', 'Why It Matters'), unicode arrows and curly quotes in plain contexts, a closing 'Key Takeaways' box.",
+     "why": "Wikipedia's guide lists title-case headings, heavy boldface and emojis in headers. The tropes catalog adds bold-first bullets and What/Why headers. On a personal site, a page that reads like a well-formatted chatbot answer reads as a chatbot answer. Curly quotes alone are weak and also come from normal word processors.",
+     "instead": "Sentence-case headings that say something ('I built the POS my store needed'), not labels ('Why It Matters'). Bold at most one phrase per section. Prose paragraphs for anything with reasoning; bullets only for real lists such as specs or a timeline.",
+     "example": "Swap 'Key Takeaways' with three bold-led bullets for a dated changelog or a 'what broke this week' note in plain text.",
+     "source": "https://the-decoder.com/heres-how-to-spot-ai-writing-according-to-wikipedia-editors/ ; https://erkansaka.net/2025/09/27/wikipedia-signs-of-ai-writing-guide/ ; https://gist.github.com/ossa-ma/dae6f9571534f3fbd1266a384be00e11"
+    },
+    {
+     "tell": "12. Em dashes used as dramatic pivots ('I built a POS \u2014 and it changed everything').",
+     "why": "Mostly perception now. The Washington Post found more than half of ChatGPT responses had an em dash by summer 2025 (up from under 1 in 10), which made it the folk tell; the claim spread from Reddit to LinkedIn starting about October 2024. Since then OpenAI added an opt-out and Graphite measured a roughly 99% drop in the newest Claude models. Several 2026 rechecks put current models below the human rate. Readers still penalize it on LinkedIn, so it costs trust even though it proves little.",
+     "instead": "Don't ban it, but limit it to one per piece and never as the setup for a reveal. Use a period, a colon or parentheses for most asides. On LinkedIn specifically, lean further away, because the audience's belief is what counts there.",
+     "example": "'I built a POS \u2014 and it changed everything.' becomes 'I built our POS because the old one couldn't do [X]. It took [N] months.'",
+     "source": "https://www.bostonglobe.com/2025/11/13/business/chatgpt-writing-style-clues/ ; https://amp.knowyourmeme.com/memes/chatgpt-em-dash ; https://salt.agency/blog/in-defence-of-the-em-dash-what-the-ai-writing-debate-gets-wrong/ ; https://www.mcgill.ca/oss/article/critical-thinking-student-contributors-technology/why-did-llms-steal-our-em-dashes"
+    },
+    {
+     "tell": "13. Synonym cycling (elegant variation) and the teaching voice: calling one thing a 'dashboard', then an 'interface', 'portal' and 'analytics hub'; narrating the explanation ('Let's break this down', 'Let's dive in', 'Think of it as...').",
+     "why": "Wikipedia's guide and the tropes catalog list both. Models are trained to avoid repeating words, so they rotate synonyms, which confuses product writing where one name should mean one thing. The tutor voice ('let's unpack') is the default register of a chatbot answering a question, not of an operator telling a story.",
+     "instead": "Pick one name per thing and keep it (product people call this a glossary or 'ubiquitous language'). Talk to the reader as a peer: no 'let's', no unrequested analogies.",
+     "example": "Keep 'the register screen' everywhere instead of rotating 'POS interface / checkout portal / sales hub'.",
+     "source": "https://gist.github.com/ossa-ma/dae6f9571534f3fbd1266a384be00e11 ; https://www.beutlerink.com/blog/how-to-spot-ai-writing"
+    },
+    {
+     "tell": "14. Uniform, polished rhythm: every sentence 15-25 words, grammatically complete, no fragments, no tangents. Treat this as a weak tell; be careful with it.",
+     "why": "'Burstiness' (variation in sentence length) is the folk test detectors cite, but a large 2026 vendor analysis of 5,935 matched pairs found sentence-length variance scored near chance (AUROC 0.521), with current models slightly more varied than humans. Models can also be told to vary rhythm. What still reads as human is not a mechanical length pattern but irregularity driven by thought: a digression, a correction, a sentence that runs long because the idea did. The Economist (via summaries) found models now use fewer commas, semicolons and parentheses than humans, so heavy-but-natural punctuation reads as human.",
+     "instead": "Don't mechanically alternate short and long sentences; that is a new formula. Write the way Kyle talks on the sales floor, then edit lightly. Leave in a parenthetical aside, a 'honestly', a sentence that starts with 'And'. Reading drafts aloud catches machine smoothness faster than any checker.",
+     "example": "Human rhythm: 'We tried three POS vendors. Two of them couldn't handle [specific case] (which, if you've worked a register on 4/20, you know is half the day), and the third wanted a two-year contract.'",
+     "source": "https://opace.agency/tools/ai/content-verification-integrity/research/ai-writing-myths-measured/ ; https://dev.to/dalei_gu/what-perplexity-and-burstiness-actually-measure-in-ai-detection-2adp ; https://www.mcgill.ca/oss/article/critical-thinking-student-contributors-technology/why-did-llms-steal-our-em-dashes"
+    },
+    {
+     "tell": "15. Missing human fingerprint (the positive opposite of every tell above): no trade vernacular, no admitted mistakes with consequences, no opinion someone could disagree with, no dates, no named people or places.",
+     "why": "This is the most useful positive signal. A model cannot invent Kyle's lived detail without fabricating it, and readers reward that detail. Suspicion of AI cut reader trust by nearly 50% in a Raptive survey of 3,000 US adults (industry-funded), and Wharton/NYU-led work (16 preregistered experiments, 27,491 people) found readers discount writing they believe is AI or AI-assisted because it feels less authentic. The cost of looking generic is real even when the writing is human. Cannabis has a vocabulary outsiders and models get wrong: 'legacy market', 'distro', manifests, COAs, 'the drop', budtenders, 'excise', tags.",
+     "instead": "Build a voice bank: the words Kyle actually uses with growers, distros and budtenders, and three or four stories only he can tell (a deal that went sideways in brokering, a regulator surprise, a POS bug a budtender caught). Use them as source material for every page and post. Take one unpopular, defensible position per piece (e.g. a view on Metrc, on vertical integration, on vendor POS contracts). Date everything. Name collaborators and tools, including that he builds with Claude; open disclosure plus specificity reads more trustworthy than hidden polish.",
+     "example": "Portfolio About line, generic: 'A seasoned cannabis professional passionate about technology.' Specific (Kyle to confirm details): '17 years in California cannabis: [N] brokering wholesale in the legacy market, now managing partner at Pacific Wellness. I build the software my store runs on, with Claude as my engineer, and I write about what breaks.'",
+     "source": "https://ppc.land/raptive-study-shows-ai-content-cuts-reader-trust-by-half/ ; https://zk8xobzkidue2qet2.mags.novamag.de/de/2026/research-shows-why-readers-consistently-devalue-ai-generated-creative- ; https://leonfurze.com/2026/07/05/aidr-when-readers-stop-trusting-writers/ ; https://dupple.com/learn/how-to-make-ai-write-like-a-human"
+    }
+   ]
+  },
+  {
+   "angle": "standout-sites",
+   "summary": "The personal sites that feel unmistakably human (Steph Ango, Robin Sloan, Craig Mod, Patrick Collison, Derek Sivers, Tom MacWright, Lynn Fisher, Julia Evans, Maggie Appleton, Andy Matuschak, Gwern, Brian Lovin, Rauno Freiberg, Frank Chimero) do not get there through decoration. They get there by showing evidence: a specific, odd mix of roles, dated logs of what the person is doing, collections with their own quirky labels, real handmade artifacts, and a short note on how the site was made. AI sameness is the statistically average page: a gradient hero, rounded feature cards, a generic sans-serif, and copy with no dates and no admissions. A human site carries proof of a particular life (numbers, dates, mistakes, opinions, rules only that person would invent), plus one signature design choice the owner can explain. For Kyle, the strongest raw material is what no template has: 17 years moving cannabis through California's legacy and licensed markets, a working dispensary, and software he built while running it. A caveat on sourcing: direct page fetches were blocked in this environment (DNS failure), so each claim below rests on search-result summaries of the site itself or of third-party coverage. Items marked \"from memory\" should be checked by eye before anyone quotes them.",
+   "findings": [
+    {
+     "tell": "Generic one-line identity (\"Product builder passionate about creating delightful experiences\") instead of a specific, slightly odd mix of roles",
+     "why": "An AI or a template produces the most probable self-description, and that sentence could belong to anyone. Human sites name a combination that only one person has. Robin Sloan calls himself \"a writer, printer, and manufacturer.\" Craig Mod is \"a writer, photographer, and walker living in Tokyo.\" Steph Ango opens with \"I'm Steph. You may also know me as kepano, currently the CEO of Obsidian.\"",
+     "instead": "Write a first line that only Kyle could have written, built from concrete nouns and the real path he took. For example: \"I've moved cannabis through California for 17 years: first as a wholesale broker in the legacy market, now as managing partner of Pacific Wellness, a licensed shop in [city]. I build the software we run on.\" Include the unglamorous part (the legacy market). Test it by swapping in another person's name: if the sentence still works, rewrite it.",
+     "example": "robinsloan.com (\"writer, printer, and manufacturer\"); craigmod.com bios (\"writer, photographer, and walker\"); stephango.com/about (\"You may also know me as kepano\")",
+     "source": "https://www.robinsloan.com/newsletters/all-of-that-ya-got/ ; https://craigmod.com/ridgeline/tags/introductions ; https://stephango.com/about"
+    },
+    {
+     "tell": "Default type and color (Inter or Geist, an indigo or violet gradient, rounded cards) chosen with no reason given",
+     "why": "Write-ups on AI design sameness point to the same handful of defaults: gradient heroes, rounded cards, a generic sans headline, and Tailwind's indigo-500. Distinctive sites have a typeface or palette with a backstory. Steph Ango designed the Flexoki palette \"for this site.\" Robin Sloan's blog \"leans hard on\" Job Clarendon, a typeface he made with Bethany Heck.",
+     "instead": "Choose one characterful typeface, plus at most one supporting face, that ties to Kyle's world. Candidates: a wood-type or Clarendon-style slab like old apothecary and dispensary signage, a typewriter face like a transfer manifest, or an industrial grotesk like Caltrans signs. Build the palette from something physical: a Pacific Wellness bag, the green on a California state cannabis label, faded sun on a Sprinter van. Then explain the choice in one sentence on a colophon page. A choice with a stated reason reads as taste; a default with no reason reads as generated.",
+     "example": "stephango.com (Flexoki palette, created for the site); robinsloan.com (Job Clarendon with Bethany Heck)",
+     "source": "https://stephango.com/about ; https://www.robinsloan.com/newsletters/all-of-that-ya-got/ ; https://www.925studios.co/blog/ai-slop-design-tells ; https://dev.to/lyd_lyd_d4869af25d33ce0eb/why-do-ai-generated-websites-all-look-the-same-k2j"
+    },
+    {
+     "tell": "No colophon or 'how this site is made' page; the process stays hidden",
+     "why": "Builders with taste show their tools and the attempts that failed. Steph Ango says his site is written in Obsidian, compiled with Jekyll and hosted on Netlify. Gwern's /design page documents the site's look (\"minimalist, with a dash of Art Nouveau\") and lists the \"many failed experiments/changes made along the way.\" Showing the process proves a person made decisions.",
+     "instead": "Add a short /colophon (or /how) page saying it plainly: \"I'm not a developer. I build with Claude. Here's how: I describe what the shop needs, Claude writes the code, a reviewer agent checks it, and I test it on the counter.\" Name the typeface and the reason, the hosting (Cloudflare), and two things that didn't work. For a product-role portfolio this candor is the differentiator, not a weakness.",
+     "example": "stephango.com/about (Obsidian \u2192 Jekyll \u2192 Netlify, Flexoki); gwern.net/design (failed experiments listed)",
+     "source": "https://stephango.com/about ; https://gwern.net/design"
+    },
+    {
+     "tell": "Timeless, undated content that could have been published any year (or by no one)",
+     "why": "A dated, regularly updated log is hard to fake and proves someone is maintaining the site. Derek Sivers' /now page (started October 2015) is a \"public declaration of priorities,\" and he links to it when he turns down invitations. Tom MacWright posts monthly 'recently' entries with real numbers, such as a 1:36:21 half marathon and a full Manhattan loop in 10 hours 43 minutes, and he moved his photos off Instagram onto his own site.",
+     "instead": "Add a /now page with a visible 'last updated' date. For example: \"October 2026: running Pacific Wellness day to day; pushing our POS through the Metrc sandbox until it runs for months without errors; reading the DCC's latest track-and-trace rules.\" Update it monthly. Each update is cheap proof that the site is alive and that a specific person is behind it.",
+     "example": "sive.rs (/now, plus the nownownow.com directory); macwright.com/2026/05/04/recently",
+     "source": "https://sive.rs/ ; https://institute.uschamber.com/now-a-word-that-represents-attention-focus-and-priority/ ; https://macwright.com/2026/05/04/recently ; https://macwright.com/2019/02/02/recently"
+    },
+    {
+     "tell": "Polished 'favorite books/tools' lists with no editorial signal, or no lists at all",
+     "why": "Lists with honest, idiosyncratic metadata show taste and candor at once. Patrick Collison's bookshelf catalogs the physical books he owns, admits he has read only about half of them, marks the great ones in green and the above-average ones in light blue, and does not rank them. The admission and the private color code are what make it his.",
+     "instead": "Build one collection only Kyle could curate, with his own grading system: \"Shelf: tools I actually run the shop on,\" \"Vendors I'd buy from again (and why),\" or \"Regs I've read cover to cover.\" Add an honest marker, such as \"used daily / tried and dropped / still deciding,\" and leave it unsorted or sort it by something personal.",
+     "example": "patrickcollison.com/bookshelf (read ~half; green = particularly great, light blue = above average; no order)",
+     "source": "https://techfeed.io/entries/5d1b7ae6ffec6b880995319b ; https://thomasyeddou.substack.com/p/how-books-shaped-the-collison-brothers"
+    },
+    {
+     "tell": "Images that are stock, AI-generated or abstract 3D blobs instead of real artifacts",
+     "why": "Julia Evans built a reputation on hand-drawn zines and comics. She shipped her first Linux comics zine knowing it \"had a few factual errors\" because she \"preferred having it out in the world.\" Craig Mod's newsletters are built on his own photographs from walks. Handmade and photographed artifacts carry fingerprints that generation smooths away.",
+     "instead": "Photograph the real things: the whiteboard where the POS checkout flow was sketched, the receipt printer printing the first real order, a redacted Metrc transfer manifest, the back-room safe log, his handwritten notes beside the Claude chat. Shoot them on his phone and keep the imperfect light. Use at most one consistent treatment, like the same crop and the same caption style. Avoid AI imagery entirely; its absence will be noticed.",
+     "example": "jvns.ca/blog/2017/11/25/linux-comics--zine-edition/ (shipped with known errors); craigmod.com/ridgeline/054 (photos of real objects from a walk)",
+     "source": "https://jvns.ca/blog/2016/08/29/how-i-made-a-zine/ ; https://jvns.ca/blog/2017/11/25/linux-comics--zine-edition/ ; https://craigmod.com/ridgeline/054"
+    },
+    {
+     "tell": "Every piece presented as finished, authoritative 'thought leadership'",
+     "why": "Human thinkers show how far along an idea is. Maggie Appleton's digital garden labels notes by maturity: seedling, budding, evergreen (from memory, verify on maggieappleton.com). Andy Matuschak's working notes are described as \"a thinking environment written mostly for himself.\" The uniform, finished tone of AI copy is a tell; visible uncertainty reads as a mind at work.",
+     "instead": "Tag each piece with its state, in Kyle's own vocabulary from the trade: \"Field note\" (raw observation from the floor), \"Working theory,\" \"Settled (I'd bet the shop on it).\" Allow short, unfinished posts. One concrete line like \"I was wrong about delivery minimums; here's what the numbers said\" beats a polished listicle.",
+     "example": "maggieappleton.com (growth-stage labels; from memory); notes.andymatuschak.org (public working notes)",
+     "source": "https://notes.andymatuschak.org/\u00a7Note-writing_systems ; https://www.myhub.ai/items/evergreen-notes-outlines-and-executable-writing-strategy-andy-matuschak ; https://waylonwalker.com/maggieappleton-digital-gardeners"
+    },
+    {
+     "tell": "Standard top-nav plus hero plus three cards, with nothing an owner chose on purpose about how you move through the site",
+     "why": "The most memorable sites have one navigation or interaction idea that expresses how the owner thinks. Matuschak's notes open side by side in 'stacked' panes, because he believes digital notes lack the 'peripheral vision' of index cards. Rauno Freiberg's site is styled like a desktop OS, with a dock and interface sounds, which fits an interaction designer. Josh Comeau's sound effects and heart button turned one skeptical reader from 'sound is tacky' to 'worth aiming for.'",
+     "instead": "Pick one signature idea that comes from Kyle's domain and can be justified in a sentence, then keep everything else quiet. Options: case studies laid out like a package label (UID, origin, 'tested by', 'received'); a project index styled like a transfer manifest; a small 'chain of custody' timeline for each project, from idea through build to running in the shop. One idea, done well. Stacking several gimmicks is its own template.",
+     "example": "notes.andymatuschak.org (stacked notes); rauno.me (OS-style dock and sounds, per third-party description); joshwcomeau.com (sound and heart button)",
+     "source": "https://notes.andymatuschak.org/zEZi3ytBhZHHweRYNAosQ1g ; https://uiuxshowcase.com/portfolio/rauno-freiberg/ ; https://www.greaterwrong.com/posts/ZnNeKw2Be8BR7bmeN/adamzerner-s-shortform/comment/Cy636pSSg8utELbuF"
+    },
+    {
+     "tell": "A site that looks 'finished forever,' with no visible history",
+     "why": "Lynn Fisher has redesigned lynnandtonic.com every year for about a decade, always starting from a blank CSS file, and she keeps the past versions in a public archive (e.g. /archive/2014, /archive/2021). The archive tells a story of growth that a single polished snapshot cannot. Her stated reasons: to finish at least one non-work project a year and to try new techniques. She also says openly that one year's refresh almost didn't happen because of burnout.",
+     "instead": "Mark the launch as a version, \"kylewilliams.co v1, October 2026,\" and plan to keep old versions at /archive/2026. For a learning-in-public builder whose stated goal is growth, a visible version history is direct evidence of the learning curve.",
+     "example": "lynnandtonic.com/archive/2014, lynnandtonic.com/archive/2021",
+     "source": "https://xd.adobe.com/ideas/perspectives/interviews/lynn-fishers-annual-portfolio-redesign-skills-sharp ; https://blog.andyet.com/2018/01/09/case-study-lynnandtonic-refresh/ ; https://lynnandtonic.com/archive/2014"
+    },
+    {
+     "tell": "Over-designed chrome masking thin content, or 'modern minimal' that is really the default template",
+     "why": "Frank Chimero's \"The Web's Grain\" argues for working with the web's natural grain: start from fluid, stacked, unstyled HTML, and avoid what he calls \"bicycle bear websites.\" Paul Graham's site is famously plain, and readers still single out its narrow line width as very readable. Restraint reads as confidence when the writing carries the page. AI sameness is decoration with nothing behind it.",
+     "instead": "Make the bold direction come from one or two decisions, such as type scale, a single strong color and an unusual layout grid. Everything else should be plain: a readable column of roughly 60 to 75 characters, no gratuitous animation, no feature-card rows. Spend the saved effort on the writing and the artifacts.",
+     "example": "frankchimero.com/blog/2015/the-webs-grain/; paulgraham.com (plain layout, narrow measure)",
+     "source": "https://frankchimero.com/blog/2015/the-webs-grain/ ; https://news.ycombinator.com/item?id=14488"
+    },
+    {
+     "tell": "Claims of impact with no proof that the thing is actually used",
+     "why": "Builders' sites show live evidence. Brian Lovin's site includes an AMA, a Hacker News reader, a listening history, a public activity feed and a 'Stack' page; one reviewer called it 'participatory like a social network.' Pieter Levels publishes real revenue numbers in public. Real usage data cannot be invented by a template.",
+     "instead": "Publish a few honest operating numbers from the software he built, framed for a product audience: orders processed through the POS, days in production, number of database migrations shipped, how long the Metrc sandbox has run without errors, plus a dated changelog. Clear any figures with the shop's compliance needs first. Even small numbers persuade when they are real and dated.",
+     "example": "brianlovin.com (AMA, Stack, Activity, Listening, per its llms.txt); levels.io (public revenue)",
+     "source": "https://brianlovin.com/llms.txt ; https://rosano.ca/ephemerata/022-dating-apps-brian-lovins-portfolio-so-good ; https://www.softwareseni.com/building-in-public-the-10-year-distribution-strategy-behind-solo-founder-revenue/"
+    },
+    {
+     "tell": "Writing in the frictionless AI register: balanced triplets, 'delve,' 'in today's fast-paced landscape,' no asides, no admissions, no money talk",
+     "why": "Distinctive writers leave fingerprints. Craig Mod describes his pop-up newsletters as \"forcing functions (my favorite kind of function)\" and says plainly that \"everything I do is powered by memberships and book sales.\" Julia Evans admits her errors in public. Sivers uses his /now page to explain why he says no. Parenthetical asides, opinions, admissions and plain talk about money are the voice tells AI rarely produces unprompted.",
+     "instead": "Write the way Kyle talks on the shop floor. Use trade vocabulary he actually uses (manifests, COAs, the legacy market, brokering, compliance holds), short declarative sentences, one aside per piece, and at least one admission or a number he's not proud of. Read each draft aloud. Cut any sentence a cannabis-tech marketing team could also have written. Keep his own phrasings, such as \"it looks the least like AI.\"",
+     "example": "craigmod.com/ridgeline/148/ (\"forcing functions (my favorite kind of function)\"); craigmod.com/ridgeline/133/ (\"powered by memberships and book sales\")",
+     "source": "https://craigmod.com/ridgeline/148/ ; https://craigmod.com/ridgeline/133/ ; https://jvns.ca/blog/2017/11/25/linux-comics--zine-edition/"
+    }
+   ]
+  },
+  {
+   "angle": "cannabis-culture",
+   "summary": "Respected California cannabis design has moved away from the leaf, generic green, stoner jokes and puns, but the \"elevated\" fix that replaced them (Apple-store minimalism, spa-like wellness pastels, generic SaaS) is now a cliche too. Critics call it sterile and say brands can't be told apart. The brands insiders respect each borrow one specific everyday form and own it: Lowell's cigarette flip-top, Kiva's chocolate bar, Cookies' streetwear script, Houseplant's mid-century homeware. They tell a real provenance story (farm, place, altitude, date) in the way wine does. Kyle's credible equivalent is the material of his own working life: jar tags, menu boards, receipts, wholesale manifests, compliance labels, Metrc screens, and the legacy-to-licensed transition he lived through, written in precise operator language (chemotype, sell-through, manifests) rather than slang or puns. For cannabis-tech hiring managers, what reads as a real insider is fluency with the constraints (California's universal symbol rules, label law, Metrc), not cannabis imagery. One project-specific risk: the product he will showcase is named SouthBay420, so it needs a one-line frame.",
+   "findings": [
+    {
+     "tell": "Pot-leaf icons, leaf favicons, leaf bullet points, or a leaf hidden in the logo, plus 'weed green' (#2E7D32-style kelly or neon green) as the brand color",
+     "why": "Packaging designers describe the leaf as a shortcut that ties a brand to stoner culture. Premium brands have dropped it. Pentagram's Leafs by Snoop identity was praised for leaving behind the mandala, tie-dye and fractal look common in cannabis. A hiring manager at a cannabis-tech company sees leaf-and-green every day on low-effort vendor decks, so on a candidate's site it reads as an outsider guessing what cannabis looks like.",
+     "instead": "Use no leaf anywhere: logo, favicon, dividers, 404 page. Pick the palette from Kyle's own world, not the plant: the black or white of the state universal symbol, kraft or manila from wholesale paperwork, thermal-receipt off-white, the dispensary's actual signage color. If a botanical cue is wanted, use one real macro photo of flower he handled, credited and dated.",
+     "example": "Leafs by Snoop (Pentagram, 2015) used a clean, colorful system with no psychedelic tropes. A Colorado brand's redesign (Packaging Digest) deliberately left behind 'the green color and leaf iconography that dominated the category.'",
+     "source": "https://www.brandknewmag.com/?p=9379 ; https://www.packagingdigest.com/packaging-design/package-redesign-shifts-a-coloradan-cannabis-brand-into-the-mainstream ; https://hyperallergic.com/pentagrams-high-end-design-for-snoop-doggs-marijuana-product-line ; https://www.leafly.com/news/strains-products/high-design-qa-with-a-cannabis-packaging-designer"
+    },
+    {
+     "tell": "Pun headlines and section titles: 'High hopes', 'Budding PM', 'Joint venture', 'Blunt truth', 'Elevated experience', 'Rolling with it', '4/20' date jokes, 'Kush'-anything",
+     "why": "Adweek's Max Lenderman argues the category's branding has become interchangeable and that brands need a purpose that doesn't rely on puns. Puns are also exactly what an AI writer produces when asked to sound 'on brand for cannabis', so they read as generated twice over.",
+     "instead": "Use plain declarative titles that state a fact or claim: 'Seventeen years selling cannabis; now building the software', 'What a register needs at 4:55 pm on a Friday'. If 4/20 comes up at all, use the real history insiders know (the Waldos, San Rafael High School, 1971, Marin County). Never use it as a joke.",
+     "example": "Avoid: 'Kyle Williams | Elevating Cannabis Retail'. Prefer: 'Kyle Williams. Managing partner, Pacific Wellness. I build the tools my store runs on.'",
+     "source": "https://develop.adweek.com/?p=1043560 ; https://www.history.com/articles/the-hazy-history-of-420 ; https://cannigma.com/history/real-420-origin-story-waldos-grateful-dead/"
+    },
+    {
+     "tell": "The 'Apple Store of weed' look: white space everywhere, thin sans, walnut-and-glass luxury, spa pastels, a 'wellness' tone that removes any trace of the culture",
+     "why": "MedMen invented this template (glass storefronts, iPads on walnut tables, a stated goal to 'get rid of stoner culture'). A Leafly review called it sterile and 'the shining symbol of the gentrification of weed'. Trade analysts describe a 'spa-worthy' cluster of brands copied from wellness and Apple/Method minimalism, 'bifurcated by sameness'. It is also the default look of AI site builders. To someone from the legacy side it signals a newcomer who doesn't respect where the industry came from.",
+     "instead": "Keep Kyle's bold direction, but anchor it in operator materials rather than luxury retail: dense information, real numbers, worn surfaces, the back room rather than the showroom. Bold should mean confident and specific, not glossy.",
+     "example": "MedMen's West Hollywood store (2017-18 coverage) versus a site whose hero image is the dispensary's own handwritten restock board or a stack of manifests.",
+     "source": "https://www.adweek.com/agencies/an-inside-look-at-medmen-lauded-as-the-apple-store-of-weed/ ; https://www.leafly.ca/profile/Vid-szhite ; https://old.designcurial.com/news/retailing-marijuana-8041553/ ; https://maekan.com/seeing-green-in-a-new-light-current-cannabis-branding-trends/"
+    },
+    {
+     "tell": "Treating compliance as invisible, or decorating and altering the state warning triangle (the California universal symbol) as a graphic motif",
+     "why": "California requires the universal symbol on the primary panel, unaltered except for resizing, black or white on a contrasting color, at least 0.5 inch tall. Labels also can't use cartoons or candy imitation, and can't name a county unless all the cannabis was grown there. Insiders design inside these rules daily. Someone who recolors or stylizes the symbol, or writes 'Humboldt' loosely, shows they haven't carried that responsibility.",
+     "instead": "Make compliance a visible part of the portfolio's design: show annotated real artifacts (a label with callouts for each required field, a Metrc sandbox manifest, an ID-check screen from the POS) with notes on what each constraint forced in the product. If the universal symbol appears, show it exactly to spec as an artifact, not as decoration.",
+     "example": "A case-study figure captioned: 'Why the receipt prints the license number first: DCC requires it, and auditors check it before anything else.'",
+     "source": "https://www.cannabis.ca.gov/licensees/cannaconnect-compliance-hub/labeling/non-manufactured-final-form ; https://www.cannabis.ca.gov/wp-content/uploads/sites/2/2024/06/labeling-checklist-manufactured-products.pdf ; https://cannabis.ca.gov/licensees/requirements-cannabis-goods"
+    },
+    {
+     "tell": "Vague 'passion for the plant' or 'deep roots in the industry' with no names, places, years or quantities",
+     "why": "The cues craft California brands are respected for are specifics borrowed from wine: appellations of origin written into state law (B&P Code 26063, petitions must document the 'legacy, history, and economic importance' of an area), Sun+Earth certification, farm listings that say 'estate grown at an elevation of 2,500 ft'. Lowell built its label around one named Central Coast farmer. Generic devotion language is exactly what language models produce.",
+     "instead": "Write with provenance-level specifics about himself: years, counties, store count, SKU count, number of vendors, the first year he held a license, what the register replaced. One concrete number per paragraph is a good rule.",
+     "example": "Avoid: 'With deep roots in California cannabis, I'm passionate about the plant.' Prefer: 'From 2009 to 2018 I brokered wholesale flower between Northern California farms and Bay Area buyers. Since then I've run a licensed storefront with about 40 vendors.' (Use his real numbers.)",
+     "source": "https://harris-sliwoski.com/ar/cannalawblog/california-cannabis-appellations-proposed-regulations-are-here/ ; https://www.leafly.com/news/industry/sun-earth-certified-eco-friendly-weed-mainstream ; https://greenstate.com/award/best-product-design-lowell ; https://en.wikipedia.org/wiki/Lowell_Herb_Co"
+    },
+    {
+     "tell": "Either hiding the legacy-market past, or romanticizing it as outlaw cool ('black market', 'trap', 'plug' aesthetic)",
+     "why": "'Legacy' is the respected insider term. Emerald Triangle farmers and advocates describe the move to licensing as recovery from drug-war trauma, distrust of government, and going from no rules to 'an oppressive number'. Cookies shows outlaw mystique can sell a consumer brand ('the romance of the black market'), but on a candidate's site it raises compliance-risk flags. Hiding the history throws away Kyle's rarest credential.",
+     "instead": "Use the word 'legacy' and frame the transition as product insight: he has seen both sides of the move from unregulated to licensed, so he understands why operators distrust state systems and why compliance UX has to be forgiving. Keep it non-incriminating: describe the market and the lessons, not specific transactions.",
+     "example": "'Before licensing I brokered wholesale in the legacy market. That's why I design the Metrc flow assuming the user is scared of the state system, because many operators were.'",
+     "source": "https://www.ganjapreneur.com/emerald-triangle-legacy-farmers-discuss-california-cannabis-industry ; https://www.thebluntness.com/posts/cannabis-and-legacy-amnesty ; https://www.happyscribe.com/public/the-daily/the-sunday-read-how-do-you-make-a-weed-empire-sell-it-like-streetwear"
+    },
+    {
+     "tell": "Budtender-101 product language: 'indica for couch-lock, sativa for energy', or THC % presented as the measure of quality",
+     "why": "Leafly's own staff say they prefer judging strains by cannabinoid and terpene profile, and its strain database is built on lab data. A 2021 Nature Plants study is widely cited for finding that store-labeled indica and sativa samples were genetically indistinct. A product candidate who repeats the three-bucket model reads as a consumer rather than a builder of menus and data products.",
+     "instead": "In case studies, talk about how the menu data model handles chemotype (dominant terpenes, total terpene %, cannabinoid ratios), why THC % inflation distorts shopper choice, and what he chose to show on the jar tag or menu card and why. Mention indica/sativa only as a legacy field the POS must still support.",
+     "example": "'Our product schema keeps the indica/sativa label because customers search for it, but the menu sorts by dominant terpene, because that predicted repeat purchases better at our counter.' (Use only if true.)",
+     "source": "https://www.leafly.com/news/cannabis-101/indica-vs-sativa-myth-or-fact ; https://cannigma.com/plant/terpenes/beyond-indica-sativa-and-hybrid-why-cannabis-terpene-profiles-are-the-future-of-classification/"
+    },
+    {
+     "tell": "Slang glossaries, or slang dropped in to sound authentic ('za', 'gas', 'loud', 'fire') in headlines or body text",
+     "why": "Slang changes by region and year. Weedmaps notes 'zaza' is not an official category and has no agreed meaning. Too much slang reads as a costume; defining it reads as writing for outsiders. Insider credibility comes from using one precise craft term correctly in passing: pheno hunting, a 'cut' or keeper, clone-only, a drop.",
+     "instead": "Use at most one or two craft terms per piece, correctly and without explanation, where they carry real meaning (e.g., a buyer's story about getting a clone-only cut onto shelves). Spend the rest of the vocabulary on operations terms hiring managers screen for: sell-through, days on hand, basket size, Metrc manifests, package tags, 280E, excise.",
+     "example": "Good: 'The vendor only had 40 units of the keeper cut, so the POS needed a per-customer limit.' Bad: 'We only stock that gas, zaza-tier flower.'",
+     "source": "https://weedmaps.com/learn/cannabis-and-its-evolution/what-is-zaza-smoke ; https://en.wiktionary.org/wiki/Appendix:Cannabis_slang ; https://www.edrosenthal.com/ask-ed-blog/2018/7/12/pheno-hunting-creating-the-worlds-greatest-strains"
+    },
+    {
+     "tell": "Stock imagery: smiling models holding joints toward the camera, handshake-over-chart business shots, sexualized 'Cannabis 1.0' images, AI-generated buds with impossible trichomes",
+     "why": "Ophelia Chong founded StockPot Images because the big agencies' cannabis photos were 'pot leaves and lame stoner stereotypes'. General stock tells (flat bright light, direct-to-camera smiles, no context) are also what image generators produce by default. Insiders can tell real flower from rendered flower at a glance.",
+     "instead": "Shoot his own phone photos in the store, back-of-house only and without customers' faces: the label printer, the vault shelf, a stack of manifests, the POS on the counter, the menu board mid-update, his hands on a scale. Leave them uncorrected and add a date and location caption. Real context beats polish.",
+     "example": "Caption style: 'Pacific Wellness back room, March 2026. The register's first test run, on a $90 thermal printer.'",
+     "source": "https://ganjapreneur.com/ophelia-chong-changing-public-perceptions-of-cannabis-with-stock-photography ; https://www.vice.com/en/article/ophelia-chong-stockpot-images/ ; https://motocms.com/blog/en/stock-photo-cliches-and-how-to-avoid-them"
+    },
+    {
+     "tell": "A visual identity built on generic 'cannabis' signals rather than one borrowed everyday form",
+     "why": "The brands insiders respect each take an object from another world and own it: Lowell's flip-top cigarette pack with a strike board, Kiva's chocolate-bar wrapper (Clio Cannabis awards for packaging that is compliant and child-resistant but still desirable), Cookies' blue script carried into streetwear, Houseplant's mid-century ashtrays and table lighters, Pentagram's Harmony Extracts set in Verlag. That one specific borrowing is what makes them recognizable.",
+     "instead": "Choose one form from Kyle's own working life and let it shape the whole site, for example the dispensary receipt or jar tag (monospaced figures, rules, label fields such as LIC #, BATCH, PKG DATE), or a wholesale invoice or manifest. Use it for case-study headers, the r\u00e9sum\u00e9 page and the footer. Because it is his, it can't look generic.",
+     "example": "Each case study opens with a receipt-style block: 'PROJECT: SouthBay POS / STORE: Pacific Wellness / SHIPPED: v1.x, 2026 / TESTS: npm run check passing', then the story.",
+     "source": "https://www.mmm-online.com/?p=71080 ; https://www.kivaconfections.com/news/kiva-wins-6-clio-awards ; https://www.newcannabisventures.com/kiva-confections-packaging-sets-a-high-bar-for-the-cannabis-industry/ ; https://www.pentagram.com/work/harmony-extracts/story ; https://design-milk.com/seth-rogens-cannabis-lifestyle-brand-houseplant-embraces-high-design/ ; https://workweek.com/2022/05/29/the-sweet-recipe-behind-cookies-success/"
+    },
+    {
+     "tell": "Menu-board and dashboard visuals that look like a SaaS template: hero, three feature cards, gradient blob, 'Seamless. Compliant. Scalable.'",
+     "why": "Cannabis-tech companies (Dutchie, Headset, Flowhub) already present in polished agency or in-house SaaS styles, so hiring managers there have seen thousands of these pages. A candidate copying that look adds nothing. Real dispensary menu boards and jar tags are dense tables read at a glance (tiers, $/eighth, THC and terpene %), and that information design is an operator's native skill.",
+     "instead": "Show information design he has actually done: before-and-after of a menu board or product card, a tiered price table, the register screen at peak hour, with one sentence on each decision (what got bigger, what got cut, why). Use tabular figures and real columns rather than marketing cards.",
+     "example": "A figure showing the old menu board (12 columns, unreadable from the line) next to the new one (tier, name, $/3.5 g, top terpene), captioned with the before/after time-to-order he observed.",
+     "source": "https://rno1.com/work/headset-creating-a-cannabis-data-revolution ; https://www.adweek.com/?p=1359836 ; https://support.getseed.io/seed-tv-menu-best-practices ; observation"
+    },
+    {
+     "tell": "Word choice that misreads the room: 'marijuana' as the default noun, or 'ganja', 'Mary Jane', 'the devil's lettuce', 'pot' in professional copy",
+     "why": "Industry and press usage has settled on 'cannabis' as the neutral term. Harborside calls it 'respectful, scientific', and CJR documents newsroom debates over the word. 'Marijuana' carries a prohibition-era, anti-Mexican history that some readers notice, though some insiders defend it. Cartoonish synonyms read as an outsider or a joke.",
+     "instead": "Default to 'cannabis'. Use 'weed' occasionally in first-person, conversational lines (insiders do). Use 'marijuana' only in legal or historical names (e.g., the 'Medicinal and Adult-Use Cannabis Regulation and Safety Act' is cannabis, but older statutes and the federal schedule say marijuana). Be consistent.",
+     "example": "'I've sold cannabis for 17 years' (professional) and 'the weed was never the hard part; the paperwork was' (voice), both on the same page, is natural. 'My journey with Mary Jane' is not.",
+     "source": "https://www.cjr.org/united_states_project/marijuana-terminology-pot-cannabis.php ; https://melmagazine.com/en-us/story/marijuana-v-cannabis-is-a-fight-for-the-soul-of-weed ; https://www.rollingstone.com/culture-council/articles/word-choice-matters-divisive-cannabinoid-language-can-impact-consumers-companies-1234795421/"
+    },
+    {
+     "tell": "Presenting a project named with '420' (the product is called SouthBay420) without context",
+     "why": "Many real local shops use 420 in their names, so to a store owner it is normal. To a hiring manager skimming a portfolio, a '420' project title can look like the pun register this research says to avoid, before they see the serious engineering (pricing in integer cents, Metrc integration, a test suite).",
+     "instead": "Lead with what the product is and who it serves, and put the name second: 'Online ordering + POS for a licensed California dispensary (codename SouthBay420)'. Alternatively, present it under a neutral case-study title and explain the name in one line as a nod to the local shop vernacular.",
+     "example": "Card title: 'A register and delivery system for one licensed dispensary.' Subline: 'Built with Claude, deployed as a single ZIP to Cloudflare. Repo: southbay420.'",
+     "source": "observation (/home/user/southbay420/README.md)"
+    },
+    {
+     "tell": "'Mission' and 'community' language added as decoration: vague social-equity or 'end the stigma' statements with no action behind them",
+     "why": "Respected brands tie advocacy to concrete commitments. Pentagram's work for Ben & Jerry's co-founder Ben Cohen's B3 brand is explicit that profits go to the Black cannabis community and justice reform. Old Pal frames community as refusing half-naked models and cartoons on its packs. Empty values statements are a hallmark of generated copy and of the corporate newcomers legacy operators distrust.",
+     "instead": "Only state a value if there is a specific act to point to: an expungement clinic the store supported, hiring from a social-equity program, a feature built for a real customer group (e.g., large-type receipts for older medical patients). Otherwise leave values implicit in the work.",
+     "example": "Avoid: 'Committed to destigmatizing cannabis for all.' Prefer: 'We added a medical-patient flag at the register after three regulars asked not to be upsold. Here is how it works.' (Use only if true.)",
+     "source": "https://www.dezeen.com/?p=1914172 ; https://mjbizdaily.com/how-old-pal-built-a-cannabis-brand-rooted-in-community/"
+    }
+   ]
+  }
+ ],
+ "checklist": {
+  "principles": [
+   "Being specific matters more than being different. Avoiding purple is not enough, because coding agents fall back to a second set of defaults (cream with an oversized italic serif, or near-black with neon green). Every color, typeface and layout choice should trace back to something in Kyle's real working life.",
+   "Show evidence instead of decoration: real photos, real screenshots, exact dated numbers, named people and places. A model cannot produce these without making them up, and readers reward them.",
+   "Every visible choice needs a one-sentence reason Kyle can state, and the colophon page writes that reason down. A choice with a reason reads as taste. A default with no reason reads as generated.",
+   "Rank things instead of repeating them. Equal cards, equal padding, a triplet in every list and the same sentence shape everywhere all tell the reader nobody decided what mattered most. Let the most important project and the most important claim take more room.",
+   "Show you belong through fluency with how the business works, not through cannabis imagery. Operator vocabulary, compliance constraints, Metrc and the move from the legacy market to licensing prove you are an insider. Leaves, puns and slang prove you are not.",
+   "Say openly that Claude does the coding, and say exactly what it did. Plain disclosure plus specific detail earns more trust than hidden polish, and suspected AI costs about half of reader trust whether or not it is true."
+  ],
+  "design_checklist": [
+   {
+    "check": "Headings use a typeface that is not Inter, Roboto, Open Sans, Lato, Geist or the system sans. No page uses Space Grotesk, Instrument Serif, Syne or Fraunces as its default face. Monospace is not used as shorthand for 'technical'.",
+    "why": "Anthropic's own guidance names Inter, Roboto, Open Sans and Lato as what its model converges on, and admits it still drifts to Space Grotesk. Krebs's checker flags the trendy alternatives as the new defaults."
+   },
+   {
+    "check": "No indigo or violet (Tailwind indigo-500 or violet family) on buttons, links or backgrounds, and no blue-to-purple gradients anywhere.",
+    "why": "Adam Wathan (creator of Tailwind) publicly apologized for indigo-500 making 'every AI generated UI on earth' indigo. Krebs scores indigo/violet calls to action as a standalone AI pattern."
+   },
+   {
+    "check": "The palette is neither of the 'second set' of defaults: not cream (~#FAF7F2) with an oversized italic serif headline and a terracotta accent, and not near-black with a bright green accent (~#22c55e). Any green on the site is a named color sampled from a real object, such as packaging or store signage.",
+    "why": "Practitioners report that agents switch to these two looks as soon as purple is banned. Near-black with neon green is also the stoner clich\u00e9, so it is doubly risky for a cannabis person."
+   },
+   {
+    "check": "The hero headline is one solid color. It has no gradient-clipped text (bg-clip-text) and no single word swapped into an italic, a second font or an accent color.",
+    "why": "Krebs lists both 'gradient-clipped hero text' and 'hero font mix' as deterministic AI patterns, and component libraries ship them as one-line drop-ins."
+   },
+   {
+    "check": "Nothing floats above the H1: no pill badge, eyebrow chip, kicker label or pulsing 'New / Now live' dot.",
+    "why": "Krebs ('Headline badge') and Impeccable's detector ('hero-eyebrow-chip') both flag it. It usually holds empty news."
+   },
+   {
+    "check": "The hero and all reading text are left-aligned. At least two different border radii are used by role, or corners are square throughout. Section padding is not identical on every section.",
+    "why": "The anti-slop ban list names 'center alignment for everything', 'identical border radius everywhere' and 'symmetric padding everywhere'. These uniform values are what a utility-class generator produces when no one makes a call."
+   },
+   {
+    "check": "No row of three equal cards with an icon in a rounded square over a two-word title. The lead project is shown at a visibly larger size (full width) than the others, and no card sits inside another card.",
+    "why": "Three is the model's pick when nobody gave a number. Impeccable lists identical card grids, icons in rounded squares and nested cards as top tells."
+   },
+   {
+    "check": "No card has a colored stripe of 3px or more on one edge, except for a real status (an alert, a failed compliance check).",
+    "why": "Impeccable calls the side-tab accent border 'the single most recognizable tell of AI-generated UI'. Krebs's checker and a React Doctor lint rule both detect it automatically."
+   },
+   {
+    "check": "There are no glass panels (backdrop-blur over translucent fills), no colored glow shadows on buttons or cards, and no blurred gradient blobs or 'aurora' orbs behind the hero.",
+    "why": "Krebs flags glassmorphism and colored glow, and Impeccable's CLI detects dark glows. Generated design kits literally prescribe '2-4 blurred color blobs', so these add depth without meaning anything."
+   },
+   {
+    "check": "If any page is dark, body text is near-white and passes WCAG AA (4.5:1). There is no grey-on-black paragraph text (the zinc-400 look), and the black is tinted toward the brand color.",
+    "why": "Krebs flags 'Perma dark: dark background with muted grey body text' as a pattern. It is the Linear look copied whether or not it suits the brand, and it is also hard to read."
+   },
+   {
+    "check": "Headings, nav, buttons and bullets contain no emoji, and the \u2728 sparkle icon is not used to mean AI. Any icons come from one consistent set and always sit next to a text label.",
+    "why": "Krebs's checker flags emoji in nav, and the ban list calls emoji in headings unprofessional. Nielsen Norman Group shows that \u2728 says 'AI happens here' and nothing about what actually happens."
+   },
+   {
+    "check": "When you scroll the page, sections do not all fade up into place, nothing bounces or uses elastic easing, there are no pulsing dots, and there is no auto-scrolling logo strip. With prefers-reduced-motion on, nothing moves.",
+    "why": "Impeccable and the darthv95 gist list fade-up on every element, bounce easing and constant animation as tells that designers 'can spot in one scroll'. Anthropic recommends at most one well-orchestrated reveal on page load."
+   },
+   {
+    "check": "Every image is a real photo or real screenshot with a date-and-place caption. There are zero AI-generated images, zero stock photos, no Corporate Memphis flat people and no glossy 3D isometric renders.",
+    "why": "Generated and stock imagery signals that 'no real photos exist'. The ban list warns that half-real content 'reads worse'. One imperfect real photo beats any render."
+   },
+   {
+    "check": "There is no stat banner of round numbers ('10K+', '99%', '24/7', '4.9\u2605'). Every number on the page is exact, carries a date and is placed next to what it explains.",
+    "why": "This is one of Krebs's 14 patterns. Impeccable marks round stats as a BLOCKER because 'suspiciously round stats undermine trust'."
+   },
+   {
+    "check": "The site's section order is not a SaaS funnel. There are no 'Features / How it works / Testimonials / FAQ / Ready to get started?' blocks, no FAQ accordion, and no 01/02/03 labels unless the items really are a sequence.",
+    "why": "Krebs scores numbered steps and FAQ accordions as patterns, and the darthv95 gist flags decorative numbered labels. A personal site laid out like a sales funnel looks generated before anyone reads a word."
+   },
+   {
+    "check": "Long-form text sits in a column of about 60 to 75 characters per line, with no decorative chrome around it.",
+    "why": "Frank Chimero's 'The Web's Grain' and the plain, narrow measure of Paul Graham's site show that restraint reads as confidence when the writing carries the page."
+   },
+   {
+    "check": "The site has exactly one signature device taken from Kyle's working life, for example a receipt- or manifest-style header block with fields like PROJECT / STORE / SHIPPED on every case study. It is the only gimmick on the site.",
+    "why": "Memorable sites (Matuschak's stacked notes, Rauno Freiberg's desktop-style dock) have one interaction idea that expresses how the owner thinks. Stacking several gimmicks becomes its own template."
+   },
+   {
+    "check": "Krebs's open-source ai-design-checker, run on the finished homepage, flags 0-1 patterns. Re-run it after every redesign.",
+    "why": "In Krebs's first sample of about 500 Show HN pages, 21% triggered 5 or more patterns. It is the closest thing to a measurable regression test for 'looks AI-made'."
+   }
+  ],
+  "writing_checklist": [
+   {
+    "check": "Swap test: every paragraph has at least one concrete anchor (a proper noun, a year, a dollar or unit figure, a named tool or regulation). No paragraph would still be true if a competitor pasted it onto their site.",
+    "why": "Claims that would fit anyone are the most durable AI signal across model versions. LinkedIn's editor-in-chief lists 'bland, interchangeable takeaways' first among the things that get a post flagged as slop."
+   },
+   {
+    "check": "At most one contrast frame per piece ('it's not X, it's Y', 'isn't just', 'not this, but that', 'rather than'), and only when a named someone actually holds the view being contradicted.",
+    "why": "The Washington Post found 'not just X, but Y' in about 6% of ChatGPT chats. Graphite measured corrective framing at more than 100x the human rate in a recent model. It is the hardest tell for models to shake."
+   },
+   {
+    "check": "Zero reveal setups or questions the writer asks and answers: 'Here's the thing', 'Here's what most people miss', 'The result?', 'Why X matters', 'This matters because'. Any question in the text is attributed to a real person who asked it.",
+    "why": "Graphite's October 2026 study found 'this matters' at about 116x and 'why [blank] matters' at about 92x the human rate in Claude Opus 5.5. These were the top phrase tells in that model."
+   },
+   {
+    "check": "Posts use paragraphs of 2-4 sentences. No post has three or more one-line paragraphs in a row, no stacks of arrow or emoji bullets (\u2192 \ud83d\udc49 \u2705 \ud83d\ude80), and no closing 'Thoughts?', 'Agree?', 'Follow for more' or '\u267b\ufe0f Repost'.",
+    "why": "LinkedIn's editor-in-chief names broetry and engagement bait as slop signals. Originality.ai found posts likely written by AI got 45% less engagement (detector-based, so indicative only)."
+   },
+   {
+    "check": "Zero puffery: no 'stands as / serves as a testament', 'plays a pivotal/crucial role', 'journey' or 'rich heritage', and none of the 'magic adverbs' (quietly, deeply, fundamentally, remarkably). Use 'is'.",
+    "why": "Wikipedia's Signs of AI writing guide catalogs 'serves as' replacing 'is' and promotional descriptors. Kriss (NYT Magazine) describes models overusing 'quiet' to sound subtle."
+   },
+   {
+    "check": "No invented branded frameworks or Title Case concept labels ('The Operator-Builder Framework', 'the Compliance Flywheel', R.E.A.L.). A method appears only as the real artifact (a screenshot of the actual checklist or spec).",
+    "why": "Invented concept labels sound authoritative but have no source. On a portfolio site they read as a personal brand built from a prompt."
+   },
+   {
+    "check": "The final sentence of each piece is something concrete: a number, a next step with a date, or an open problem. No 'the future is bright', 'the best is yet to come', 'In summary', 'Overall', and no quotable one-liner as the closer.",
+    "why": "Wikipedia's guide flags formulaic conclusions and 'despite challenges' optimism. Real writers stop when the point is made, or leave tension unresolved."
+   },
+   {
+    "check": "Count the lists and adjective strings in each piece. No more than half have exactly three items, and each list has its true number of items.",
+    "why": "The reflexive rule of three appears in both Kriss's NYT piece and Wikipedia's guide. One triplet is fine. A triplet cadence everywhere is what a pattern-matcher produces."
+   },
+   {
+    "check": "No unattributed authority or empty hedges: 'experts say', 'studies show', 'industry reports suggest', 'it's worth noting', 'importantly', 'can help', 'may provide'. Each claim either commits with a number or names its source, and personal uncertainty is stated specifically ('I think, but haven't proven, that...').",
+    "why": "Graphite found 'may provide' and 'can provide' among a newest model's signature habits. Wikipedia lists vague attribution as a classic tell, because the model borrows authority it cannot cite."
+   },
+   {
+    "check": "At most one word per piece from the never list: delve, tapestry, landscape, leverage (verb), seamless, unlock, robust, streamline, harness, foster, pivotal, crucial, underscore, showcase, game-changer, elevate, navigate, ecosystem, dependable. Re-check the list against gptzero.me/ai-vocabulary after each major model release.",
+    "why": "Kobak et al. (Science Advances) measured 'delves' at 28x excess frequency. Lists drift ('dependable' is newly about 23-26x in Opus 5.5). A cluster of three or four such words in one paragraph is strong evidence, while one word alone is weak."
+   },
+   {
+    "check": "Headings are in sentence case and state a claim ('I built the till my budtenders use'), never a label ('Why It Matters', 'What We Do Differently'). Each section has at most one bold phrase, bullets appear only for real lists, and there is no 'Key Takeaways' box.",
+    "why": "Wikipedia's guide and the tropes catalog flag title-case headings, heavy bold and bullets that start with bold. A page that reads like a well-formatted chatbot answer reads as a chatbot answer."
+   },
+   {
+    "check": "At most one em dash per piece, never as the setup for a reveal ('I built a POS \u2014 and it changed everything'). Aim for zero on LinkedIn.",
+    "why": "This is mostly perception now: Graphite measured a roughly 99% drop in the newest Claude models. LinkedIn readers still penalize it, and on LinkedIn the reader's belief is what counts."
+   },
+   {
+    "check": "One name per thing: a given object keeps the same name throughout a piece and across the site (e.g. always 'the register screen'). There is no tutor voice ('Let's dive in', 'Let's break this down', 'Think of it as...').",
+    "why": "Models rotate synonyms to avoid repetition, which confuses product writing. The teaching voice is a chatbot's default register, not an operator telling a story."
+   },
+   {
+    "check": "Each piece contains at least one admitted mistake with its consequence, at least one opinion a reasonable insider could disagree with, and at least one date.",
+    "why": "A model cannot invent Kyle's lived detail without fabricating it. Wharton/NYU-led experiments (27,491 people) and a Raptive survey found readers discount writing they suspect is AI because it feels less authentic."
+   },
+   {
+    "check": "Every number traces to a record Kyle can point to (POS data, a license, a calendar). No bracketed placeholder ([N], [vendor]) or invented precise-sounding figure ever ships, and figures are cleared for compliance before publishing.",
+    "why": "Invented precision is what a model produces to fill a slot. Real, odd, dated numbers persuade even when they are small."
+   },
+   {
+    "check": "The site has a /now page whose visible 'last updated' date is no more than about 31 days old. Every post shows its date and a state tag in Kyle's own words (e.g. 'Field note', 'Working theory', 'Settled').",
+    "why": "Derek Sivers' /now page and Tom MacWright's monthly 'recently' posts are hard to fake. Maturity labels like Maggie Appleton's show a mind at work instead of uniformly finished copy."
+   },
+   {
+    "check": "A colophon page says in plain words who did what ('I describe what the shop needs; Claude writes the code; a reviewer agent checks it; I test it on the counter'). It names the typeface and the reason for it, the host (Cloudflare), and two things that didn't work.",
+    "why": "Steph Ango and Gwern publish how their sites are made, including failed experiments. Showing the process proves a person made the decisions."
+   }
+  ],
+  "cannabis_cues": {
+   "borrow": [
+    "One everyday form from Kyle's own working life, used as the site's system the way Lowell owns the cigarette flip-top and Kiva owns the chocolate bar: a receipt, jar tag or wholesale manifest, with tabular figures, ruled lines and label fields such as LIC #, BATCH, PKG DATE.",
+    "A palette sampled from real objects, not the plant: kraft or manila from wholesale paperwork, thermal-receipt off-white, the black or white of the state universal symbol, Pacific Wellness's actual signage color.",
+    "Provenance-level specifics, the way wine uses appellations: years, counties, store and vendor counts, SKU counts, the year he first held a license, what the register replaced (his real figures only).",
+    "Compliance as visible design: annotated real artifacts (a label with callouts for each required field, a Metrc sandbox manifest, the POS ID-check screen), each with a note on what the rule forced in the product. Show the universal symbol only as an artifact, unaltered, black or white, at least 0.5 inch.",
+    "The word 'legacy', used plainly. Frame the move from the legacy market to licensing as product insight (operators distrust state systems, so compliance screens have to be forgiving) and keep it non-incriminating.",
+    "Operator vocabulary hiring managers screen for: sell-through, days on hand, basket size, Metrc manifests, package tags, 280E, excise, COAs, distro, budtender. Use at most one or two craft terms per piece (keeper cut, clone-only, the drop), correctly and without defining them.",
+    "Product data talk at the level of chemotype: dominant terpenes, total terpene %, cannabinoid ratios, why THC % inflation distorts shopper choice. Mention indica/sativa only as a legacy field the POS still supports because customers search for it.",
+    "Real back-of-house phone photos, uncorrected, captioned with date and place, with no customers' faces: the label printer, the vault shelf, a stack of manifests, the menu board mid-update, the register's first test print.",
+    "Information design he has actually done: a before-and-after menu board, a tiered price table, the register screen at peak hour, with one sentence on each decision.",
+    "'Cannabis' as the default professional noun, with occasional first-person 'weed' in voice lines ('the weed was never the hard part; the paperwork was').",
+    "If 4/20 comes up at all, its real history (the Waldos, San Rafael High School, 1971, Marin County), never as a joke.",
+    "Values stated only alongside a specific act (e.g. a feature built for a real customer group), the way Old Pal and B3 tie theirs to concrete commitments."
+   ],
+   "avoid": [
+    "A leaf anywhere: logo, favicon, bullets, dividers, 404 page. Also kelly or neon 'weed green' as the brand color.",
+    "Pun headlines and titles: 'High hopes', 'Budding PM', 'Joint venture', 'Blunt truth', 'Elevated experience', 'Rolling with it', 'Kush'-anything, 4/20 date jokes. Puns are also what an AI writes when asked to sound 'on brand for cannabis'.",
+    "The 'Apple Store of weed' look (MedMen's template): white space everywhere, thin sans, walnut and glass, spa pastels, a wellness tone that erases the culture. To legacy insiders it reads as a newcomer, and it is also the AI site-builder default.",
+    "Recoloring, stylizing or decorating the California universal symbol, and naming a county (e.g. 'Humboldt') loosely when the law restricts origin claims.",
+    "Romanticizing the black market (trap or plug aesthetic), which raises compliance-risk flags, and also hiding the legacy past, which throws away his rarest credential.",
+    "Budtender-101 language: 'indica for couch-lock, sativa for energy', or THC % as the measure of quality.",
+    "Slang dropped in to sound authentic ('za', 'gas', 'loud', 'fire'), and slang glossaries written for outsiders.",
+    "Stock or generated imagery: smiling models holding joints toward the camera, handshake-over-chart shots, sexualized 'Cannabis 1.0' images, AI-rendered buds with impossible trichomes.",
+    "Cannabis-tech SaaS styling: a hero, three feature cards, a gradient blob, 'Seamless. Compliant. Scalable.' Hiring managers at Dutchie, Headset and Flowhub see thousands of these.",
+    "'Marijuana' as the default noun (keep it for legal and historical names only), and 'Mary Jane', 'ganja', 'the devil's lettuce', 'pot' in professional copy.",
+    "Showing the SouthBay420 project without a frame. Lead with what it is ('Online ordering and POS for a licensed California dispensary') and put the codename second.",
+    "Decorative mission language ('end the stigma', 'committed to community', 'passion for the plant', 'deep roots in the industry') with no specific act, name, place or year behind it."
+   ]
+  },
+  "sources": [
+   "https://claude.com/blog/improving-frontend-design-through-skills",
+   "https://github.com/AdrianKrebs/ai-design-checker",
+   "https://github.com/pbakaus/impeccable",
+   "https://raw.githubusercontent.com/wiki/Laith0003/ux-skill/Anti-AI-slop-ban-list.md",
+   "https://gist.github.com/darthv95/aeff3e44287e0fe782a8d482d67ef2cc",
+   "https://x.com/adamwathan/status/1953510802159219096",
+   "https://www.react.doctor/docs/rules/react-doctor/no-side-tab-border",
+   "https://superdesign.dev/blog/fix-generic-ai-landing-page",
+   "https://capitalandcompute.net/blog/fix-ai-slop-design/ (seen via search summary only)",
+   "https://skillselion.com/skills/bergside/awesome-design-md-skills/terracotta",
+   "https://bootcamp.uxdesign.cc/the-rise-of-linear-style-design-origins-trends-and-techniques-4fd96aab7646",
+   "https://anthonyhobday.com/blog/20230119.html",
+   "https://blog.logrocket.com/?p=186781",
+   "https://nngroup.com/articles/ai-sparkles-icon-problem/",
+   "https://dev.to/kenimo49/framer-motion-view-transitions-api-4-ui-motion-patterns-that-stop-looking-ai-generated-25gg",
+   "https://eyeondesign.aiga.org/what-the-think-pieces-about-corporate-memphis-tell-us-about-the-state-of-illustration/",
+   "https://aesthetics.fandom.com/wiki/Corporate_Memphis",
+   "https://morphic.com/ar/resources/images/hero-illustration-images",
+   "https://www.925studios.co/blog/ai-slop-design-tells",
+   "https://dev.to/lyd_lyd_d4869af25d33ce0eb/why-do-ai-generated-websites-all-look-the-same-k2j",
+   "https://hrexecutive.com/what-linkedins-editor-in-chief-says-gets-a-post-flagged-as-ai-slop/",
+   "https://news.bloomberglaw.com/artificial-intelligence/linkedin-is-cracking-down-on-ai-slop-with-new-reporting-tool",
+   "https://www.bostonglobe.com/2025/11/13/business/chatgpt-writing-style-clues/ (Washington Post analysis, syndicated)",
+   "https://gizmodo.com/this-matters-researchers-identify-thousands-of-new-tells-in-ai-writing-2000820447",
+   "https://theaiinsider.tech/2026/10/05/graphite-study-finds-ai-models-still-leave-thousands-of-writing-tells/",
+   "https://cryptobriefing.com/graphite-study-claude-opus-5-5-writing-tells/",
+   "https://aiweekly.co/alerts/atlantic-ais-its-not-x-its-y-tic-proves-hardest-to-shake",
+   "https://tropes.fyi/tropes/negative-parallelism",
+   "https://tropes.fyi/tropes/rhetorical-qa",
+   "https://gist.github.com/ossa-ma/dae6f9571534f3fbd1266a384be00e11",
+   "https://originality.ai/pt/blog/ai-content-published-linkedin",
+   "https://www.teamlewis.com/magazine/5-common-mistakes-to-avoid-in-ai-generated-linkedin-posts/",
+   "https://techcrunch.com/2025/11/20/the-best-guide-to-spotting-ai-writing-comes-from-wikipedia/",
+   "https://the-decoder.com/heres-how-to-spot-ai-writing-according-to-wikipedia-editors/",
+   "https://www.techspot.com/news/109186-subtle-signs-give-away-chatbot-writing-according-wikipedia.html",
+   "https://erkansaka.net/2025/09/27/wikipedia-signs-of-ai-writing-guide/",
+   "https://www.beutlerink.com/blog/how-to-spot-ai-writing",
+   "https://longreads.com/2025/12/04/why-does-a-i-write-like-that",
+   "https://www.pw.org/content/artificial_poetry (summarizing Kriss, NYT Magazine, Dec 2025)",
+   "https://gptzero.me/news/the-rule-of-three/",
+   "https://prorhetoric.com/in-a-veteran-speechwriters-hard-wrought-work-claude-finds-dozens-of-ai-tells/",
+   "https://arxiv.org/html/2406.07016v5",
+   "https://github.com/berenslab/llm-excess-vocab",
+   "https://gptzero.me/ai-vocabulary",
+   "https://amp.knowyourmeme.com/memes/chatgpt-em-dash",
+   "https://salt.agency/blog/in-defence-of-the-em-dash-what-the-ai-writing-debate-gets-wrong/",
+   "https://www.mcgill.ca/oss/article/critical-thinking-student-contributors-technology/why-did-llms-steal-our-em-dashes",
+   "https://opace.agency/tools/ai/content-verification-integrity/research/ai-writing-myths-measured/",
+   "https://dev.to/dalei_gu/what-perplexity-and-burstiness-actually-measure-in-ai-detection-2adp",
+   "https://ppc.land/raptive-study-shows-ai-content-cuts-reader-trust-by-half/",
+   "https://leonfurze.com/2026/07/05/aidr-when-readers-stop-trusting-writers/",
+   "https://www.robinsloan.com/newsletters/all-of-that-ya-got/",
+   "https://craigmod.com/ridgeline/tags/introductions",
+   "https://craigmod.com/ridgeline/054",
+   "https://craigmod.com/ridgeline/133/",
+   "https://craigmod.com/ridgeline/148/",
+   "https://stephango.com/about",
+   "https://gwern.net/design",
+   "https://sive.rs/",
+   "https://institute.uschamber.com/now-a-word-that-represents-attention-focus-and-priority/",
+   "https://macwright.com/2026/05/04/recently",
+   "https://techfeed.io/entries/5d1b7ae6ffec6b880995319b",
+   "https://jvns.ca/blog/2016/08/29/how-i-made-a-zine/",
+   "https://jvns.ca/blog/2017/11/25/linux-comics--zine-edition/",
+   "https://notes.andymatuschak.org/\u00a7Note-writing_systems",
+   "https://waylonwalker.com/maggieappleton-digital-gardeners (growth-stage labels; verify on maggieappleton.com)",
+   "https://xd.adobe.com/ideas/perspectives/interviews/lynn-fishers-annual-portfolio-redesign-skills-sharp",
+   "https://lynnandtonic.com/archive/2014",
+   "https://frankchimero.com/blog/2015/the-webs-grain/",
+   "https://brianlovin.com/llms.txt",
+   "https://www.brandknewmag.com/?p=9379",
+   "https://www.packagingdigest.com/packaging-design/package-redesign-shifts-a-coloradan-cannabis-brand-into-the-mainstream",
+   "https://hyperallergic.com/pentagrams-high-end-design-for-snoop-doggs-marijuana-product-line",
+   "https://develop.adweek.com/?p=1043560",
+   "https://www.history.com/articles/the-hazy-history-of-420",
+   "https://www.adweek.com/agencies/an-inside-look-at-medmen-lauded-as-the-apple-store-of-weed/",
+   "https://maekan.com/seeing-green-in-a-new-light-current-cannabis-branding-trends/",
+   "https://www.cannabis.ca.gov/licensees/cannaconnect-compliance-hub/labeling/non-manufactured-final-form",
+   "https://www.cannabis.ca.gov/wp-content/uploads/sites/2/2024/06/labeling-checklist-manufactured-products.pdf",
+   "https://cannabis.ca.gov/licensees/requirements-cannabis-goods",
+   "https://harris-sliwoski.com/ar/cannalawblog/california-cannabis-appellations-proposed-regulations-are-here/",
+   "https://greenstate.com/award/best-product-design-lowell",
+   "https://www.ganjapreneur.com/emerald-triangle-legacy-farmers-discuss-california-cannabis-industry",
+   "https://www.leafly.com/news/cannabis-101/indica-vs-sativa-myth-or-fact",
+   "https://weedmaps.com/learn/cannabis-and-its-evolution/what-is-zaza-smoke",
+   "https://ganjapreneur.com/ophelia-chong-changing-public-perceptions-of-cannabis-with-stock-photography",
+   "https://www.kivaconfections.com/news/kiva-wins-6-clio-awards",
+   "https://www.pentagram.com/work/harmony-extracts/story",
+   "https://design-milk.com/seth-rogens-cannabis-lifestyle-brand-houseplant-embraces-high-design/",
+   "https://rno1.com/work/headset-creating-a-cannabis-data-revolution",
+   "https://www.cjr.org/united_states_project/marijuana-terminology-pot-cannabis.php",
+   "https://mjbizdaily.com/how-old-pal-built-a-cannabis-brand-rooted-in-community/",
+   "Note: the researchers could not open several primary pages directly (the Wikipedia guide, the Washington Post and NYT pieces, and most of the personal sites), so those claims rest on secondary write-ups. Check quotes by eye before reusing them publicly."
+  ]
+ },
+ "critique": {
+  "site_score": "6/18. Direction B passes on no indigo, left alignment with radii that vary by role, a full-width lead project, readable dark text, no emoji and no animation. Its scale, weight and confidence are worth keeping. What still reads as generated is the look underneath: near-black with lime, Inter Tight with \"techy\" mono, a lime second line in the headline, a kicker label, a stat banner, 01/02/03 labels, a three-column \"How I build\" with lime top bars, and a \"Let's build.\" closer. That is the stock \"dark SaaS\" template, and in cannabis the lime-on-black also reads as the stoner clich\u00e9.",
+  "site_changes": [
+   {
+    "issue": "The palette is #0d0e0b near-black with #c8f560 lime. This is one of the two looks agents fall back to once purple is banned (check 3), and neon green on black is the stoner clich\u00e9 for a cannabis person. The lime is not taken from anything in Kyle's life.",
+    "change": "Keep the dark ground and the high contrast, but replace the lime with one color sampled from a phone photo of a real object, such as Pacific Wellness's signage, its bag or packaging, or a kraft wholesale envelope. Give it a real name in the CSS (for example --pw-sign) and write on the colophon page where it came from. If no real object has a strong color, flip the page instead: thermal-receipt off-white or manila paper with black ink, and black or one sampled color as the only accent.",
+    "priority": "must"
+   },
+   {
+    "issue": "The headline \"17 years in cannabis. / Now I ship software.\" puts its second line in the lime accent (h1 .hl). The footer does the same with \"Let's / build.\". Krebs's checker flags this as the 'hero font mix' (check 4).",
+    "change": "Set the whole H1 in one color and keep the huge size, the 800 weight and the tight tracking, which give B its energy. Do the same for the footer heading. Let size and position create the emphasis, not color.",
+    "priority": "must"
+   },
+   {
+    "issue": "Headings use Inter Tight, a member of the Inter family that the model converges on. JetBrains Mono is used as shorthand for 'technical' in the kicker, the labels and the hero aside (check 1). The '//' comment-syntax prefix plays at being a developer, which Kyle says plainly he is not.",
+    "change": "For headings, use a heavy face Kyle can give a reason for. Barlow Condensed (800/900) on Google Fonts is one option: its designer describes it as drawn from California's public signage (highway signs, license plates). Verify that description on the font's own page before quoting it on the colophon. Use regular Barlow, or a readable serif, for body text. Allow monospace only inside the receipt/manifest block, where it copies a real thermal printer, and drop the '//' everywhere.",
+    "priority": "must"
+   },
+   {
+    "issue": "The kicker \"// OPERATOR TURNED PRODUCT BUILDER\" sits above the H1 (check 5), and the logo dot has a lime glow (box-shadow 0 0 14px), a colored glow (check 9).",
+    "change": "Delete the kicker. The H1 already says it. Remove the glow from the dot, or remove the dot and let the name stand alone.",
+    "priority": "must"
+   },
+   {
+    "issue": "Four stats sit in a banner (17y / 26 / 168 / 3), cut off from what they explain and without dates (check 14). '3 products built with AI' counts the TV app, which has no content yet. The figure 26 appears twice (stats and chips).",
+    "change": "Remove the banner. Put the numbers in the SouthBay420 manifest block (next item) with a date. Drop '3 products'. Keep '17 years in California cannabis' in the H1 and the bio, where it reads as a fact rather than a metric.",
+    "priority": "must"
+   },
+   {
+    "issue": "The site has no signature device from Kyle's working life (check 17). The rounded panels and pills could belong to any SaaS template.",
+    "change": "Make one manifest- or receipt-style header block the site's only device, used at the top of every case study and in short form on the homepage card. Set it with square corners, ruled lines, tabular figures and label:value fields. For SouthBay420, use only documented facts: PRODUCT Online ordering + register / STORE licensed California dispensary / STATUS In development, no store runs on it yet / RELEASES 26 (latest 1.21-1.23, Oct 1-7 2026) / TESTS 168 automated / DB CHANGES 26 migrations / HOST shop's own Cloudflare, upgrades by one ZIP / GO-LIVE BAR months in Metrc sandbox with no errors I can't fix. Add nothing else decorative.",
+    "priority": "must"
+   },
+   {
+    "issue": "The register screenshot is tilted (rotate -1.2deg) and has a heavy drop shadow, the Dribbble mockup trope. It has no caption, and the screen holds demo data that a reader could take for real sales (check 13).",
+    "change": "Show it flat and full width at real size, with a caption: 'The register, demo shop with sample data. October 2026.' Later, add one or two real, uncorrected phone photos from the back of the house with date and place captions and no customer faces, for example the register's first test print or the label printer.",
+    "priority": "must"
+   },
+   {
+    "issue": "The lead project's heading is the codename 'SouthBay420'. With 'Now I ship software' and '26 releases shipped', a reader may think it runs a store. The project doc says it doesn't, and that Pacific Wellness is moving to Dutchie.",
+    "change": "Lead with what it is: 'Online ordering and a register for a licensed California dispensary'. Put 'SouthBay420' second, as a small label, and put the 'in development, no store runs on it yet' status in the manifest. Saying this openly earns more trust than leaving readers to assume it.",
+    "priority": "must"
+   },
+   {
+    "issue": "The Canna Cash figure '2.7 s \u2192 0.03 s search' is still marked [OK?] in README.md, meaning it is not yet approved for publishing. Shown without its context, it is just a decorative number.",
+    "change": "Keep it off the page until Kyle approves it. Once approved, place it with its context: 'Balance search: 2.7 s \u2192 0.03 s per keystroke, at 19,500 transactions.'",
+    "priority": "must"
+   },
+   {
+    "issue": "The TV screen app card says 'Something new for the store floor' and 'Coming soon'. It is an empty slot, and it creates a two-card row whose second card holds nothing.",
+    "change": "Remove the card. Mention the TV app on a /now page once Kyle can say one real sentence about it. Canna Cash then stands alone under the lead project, at a smaller size, which also makes the ranking clearer.",
+    "priority": "must"
+   },
+   {
+    "issue": "The section order follows a SaaS funnel (check 15): numbered labels 01 / 02 / 03 on items that are not a sequence, a three-column 'How I build' block that plays the 'How it works' role, and a 'Let's build.' call to action at the end.",
+    "change": "Remove the numbers ('01 / FLAGSHIP', '02', '03 / IN PROGRESS'). Replace the three columns with one section whose heading makes a claim (see copy changes), followed by two or three plain sentences about the guard rails and the 15-mistakes fact. End with a plain contact line instead of a slogan.",
+    "priority": "should"
+   },
+   {
+    "issue": "Each 'How I build' column has a 3px lime border on its top edge (.how div border-top). This is the accent-stripe tell (check 8), and it is not marking a real status.",
+    "change": "Remove the stripes. If the section needs separation, use the same 1px rule as the rest of the page.",
+    "priority": "should"
+   },
+   {
+    "issue": "The post teaser has max-width 40em at 17px, roughly 85-90 characters per line, which is too wide (check 16). The card shows 'OCT 2026 \u00b7 BUILD LOG' with no exact date and no state tag.",
+    "change": "Set reading text to about 65ch on the homepage and on post pages, with no surrounding panel. Label the post '11 Oct 2026 \u00b7 Field note' (or whatever tag Kyle chooses in his own words).",
+    "priority": "should"
+   },
+   {
+    "issue": "There is no /now page and no colophon page (writing checks 16 and 17), even though 'who did what' is the core of Kyle's story.",
+    "change": "Add a /now page with a visible 'last updated' date (Loyalty ladder in progress, TV app, Metrc sandbox). Add a colophon in plain words: Kyle decides and tests, Claude writes the code, a reviewer agent checks it, it is hosted on Cloudflare, plus the typeface and the color source with their reasons, and two things that didn't work (Kyle supplies these). Link both from the footer.",
+    "priority": "should"
+   },
+   {
+    "issue": "Every section has the same 96px top padding, and the lead project gets about the same visual weight as the cards below it.",
+    "change": "Give the SouthBay420 case more room (manifest block plus a full-width flat screenshot) and tighten the minor sections. Uneven spacing shows someone decided what matters most.",
+    "priority": "could"
+   },
+   {
+    "issue": "Nothing yet measures the AI-look objectively (check 18). I estimate the current page would trigger about six of Krebs's patterns: accent word in the hero, headline badge, stat banner, numbered labels, colored glow and side border. I did not run the checker.",
+    "change": "After making the changes above, run github.com/AdrianKrebs/ai-design-checker on the homepage, aim for 0-1 flags, and re-run it after every redesign.",
+    "priority": "could"
+   }
+  ],
+  "copy_changes": [
+   {
+    "current": "// OPERATOR TURNED PRODUCT BUILDER",
+    "suggested": "(delete)",
+    "why": "It is a kicker label above the H1, it repeats what the H1 says, and the '//' plays at being a developer."
+   },
+   {
+    "current": "17 years in cannabis. / Now I ship software. (second line in lime)",
+    "suggested": "17 years in California cannabis. Now I build its software, with Claude. (one color)",
+    "why": "Adding 'California' makes it specific to Kyle. 'With Claude' discloses how the work gets done right in the headline, and one color removes the hero font-mix tell."
+   },
+   {
+    "current": "Not a developer by training. / In the AI era, I don't have to be one to ship. (in mono)",
+    "suggested": "I'm not a developer by training. I make the product calls and test every workflow myself; Claude writes the code inside guard rails I designed.",
+    "why": "The original is Kyle's own line, but set as a quotable one-liner in mono it reads like a slogan. Merged into the bio it reads as a plain statement of who does what."
+   },
+   {
+    "current": "17y / 26 releases shipped / 168 automated tests / 3 products built with AI",
+    "suggested": "(remove the banner; put 26 releases, 168 tests and 26 migrations in the SouthBay420 manifest with 'latest 1.21-1.23, Oct 1-7 2026')",
+    "why": "A stat banner is a tell. These numbers belong next to the project they describe, with a date, and '3 products' counts an unfinished one."
+   },
+   {
+    "current": "01 / FLAGSHIP \u00b7 SouthBay420",
+    "suggested": "Online ordering and a register for a licensed California dispensary \u00b7 SouthBay420, in development, no store runs on it yet",
+    "why": "Lead with what it is and put the codename second. Stating the status keeps the claims honest."
+   },
+   {
+    "current": "chips: 26 releases \u00b7 Purchase limits \u00b7 ID checks \u00b7 Security-hardened",
+    "suggested": "Daily purchase limits with a meter that locks Charge \u00b7 ID checks \u00b7 Edible potency caps \u00b7 Outside security review, fixed in 1.19",
+    "why": "'Security-hardened' is puffery. The replacements are specific California rules and a dated fix that anyone can check."
+   },
+   {
+    "current": "Online ordering, delivery tracking, loyalty, a staff console and an in-store register for a California dispensary, with state compliance built in.",
+    "suggested": "Online ordering, delivery tracking, loyalty, a staff console and an in-store register for a licensed California dispensary. It started as a pizza-ordering template. It runs on the shop's own Cloudflare account and upgrades by uploading one ZIP.",
+    "why": "'State compliance built in' fails the swap test. The pizza-template origin and the one-ZIP upgrade are odd, true details that only this project has."
+   },
+   {
+    "current": "Store credit and referrals for Pacific Wellness, connected to the store's point-of-sale. My first product. \u00b7 2.7 s \u2192 0.03 s search",
+    "suggested": "Loyalty and referrals for Pacific Wellness, connected to Blaze. My first product, built in six weeks. (Add 'Balance search: 2.7 s \u2192 0.03 s per keystroke, at 19,500 transactions' only after Kyle approves it.)",
+    "why": "This uses the same name for the thing as README.md, names the real POS and gives a real build time. The speed figure is still awaiting approval."
+   },
+   {
+    "current": "03 / IN PROGRESS \u00b7 TV screen app \u00b7 Something new for the store floor. \u00b7 Coming soon",
+    "suggested": "(remove; mention on /now once there is one real sentence)",
+    "why": "An empty placeholder card is exactly what a template produces."
+   },
+   {
+    "current": "How I build \u00b7 Problem first / Frameworks out loud / Guard rails on the AI",
+    "suggested": "Heading: 'Claude writes the code. I built the checks it has to pass.' Body: 'Hooks refuse dangerous actions, a check runs before Claude may say it's done, and a second AI reviews its work. On the reviewer's first day it found 15 problems; each was fixed with a test.'",
+    "why": "This replaces label headings and a triplet with one claim, and the claim comes with a number. 'Every product started from something I saw at my own store' fails the swap test until Kyle gives a real example, which README.md still marks [ask]."
+   },
+   {
+    "current": "Building in public \u00b7 OCT 2026 \u00b7 BUILD LOG",
+    "suggested": "Writing \u00b7 11 Oct 2026 \u00b7 Field note",
+    "why": "Gives an exact date and a state tag in Kyle's own words. 'Building in public' is a stock label."
+   },
+   {
+    "current": "The hard part isn't getting AI to write code. It's trusting code you can't read. On day one, the reviewer AI caught 15 mistakes in the first one's work.",
+    "suggested": "I can't read the code Claude writes, so I built guard rails around it. On its first day, the reviewer caught 15 mistakes.",
+    "why": "Removes an 'isn't X, it's Y' contrast frame, the most persistent AI writing tell, and uses one name per thing (Claude, the reviewer)."
+   },
+   {
+    "current": "Let's / build. \u00b7 Let's talk (nav)",
+    "suggested": "Footer heading: 'Email me.' Nav button: 'Email'. Optional line under it, if Kyle wants it public: 'I'm open to product roles in cannabis tech.'",
+    "why": "'Let's build' and 'Let's talk' are stock SaaS closers. Whether to say publicly that he is looking for a role is Kyle's decision, given he runs Pacific Wellness."
+   }
+  ],
+  "post_score": "8/15 applicable checks (the /now and colophon checks are site-level). Passes: no reveal setups, no puffery, no invented frameworks, list lengths OK, no empty hedges, no never-list words, claim-style title, no em dashes. Fails: two contrast frames ('isn't X. It's Y', 'by code, not just instructions'), arrow bullets plus hashtags, a quotable closer and a vague 'Next:' line, rotating names (my AI / the first AI / a second AI / the reviewer), one generic paragraph, no admitted mistake by Kyle, and an overclaim ('This year I shipped a full dispensary system', when no store runs on it).",
+  "post_rewrite": "Guard rails for an AI whose code I can't read\n\nI've spent 17 years in California cannabis, first in wholesale brokering and now as managing partner of Pacific Wellness, a licensed dispensary. I'm not a developer. I build software anyway, and Claude writes the code.\n\nMy biggest build is SouthBay420: online ordering, delivery tracking, loyalty, a staff console and an in-store register for a licensed California dispensary. It started as a pizza-ordering template. It's had 26 releases and has 168 automated tests.\n\nI can't read the code Claude writes, so I needed a way to trust it without reading it. This weekend I built guard rails around Claude. Some rules are now enforced by code: it can't delete or reset the live database, and it can't deploy without me.\n\nA check has to pass before Claude is allowed to say it's done. Then a second AI, the reviewer, goes over Claude's work. On its first day the reviewer caught 15 mistakes, and every one got fixed with a test.\n\nI think the job now, for someone like me, is knowing what good looks like and building the system that holds the AI to it. I'm going to write up how I build, in public, as I go.\n\nNo store runs on SouthBay420 yet, and that's on purpose. It goes live after months in the Metrc sandbox with no errors, or only errors I can fix, and once every feature is at least as good as what's on the market.",
+  "post_notes": [
+   "Removed: both contrast frames, the three arrow bullets, the hashtags, and the quotable closer. The post now ends on the go-live bar, which is a concrete open problem in Kyle's own words from the interview. The coding AI is called 'Claude' and the second one 'the reviewer' throughout, so no names rotate.",
+   "Accuracy fix: the draft said 'This year I shipped a full dispensary system'. The project doc says no store runs on it, and the dates of releases 1.1.1-1.13 are still [ask], so 'this year' can't be backed up. The rewrite drops both and adds 'no store runs on it yet', which is stated in projects/southbay420.md.",
+   "Accuracy fix: 'never touch the live database' became 'can't delete or reset the live database'. That matches the actual rule in the repo's CLAUDE.md; the hooks block destructive actions, not all access.",
+   "The 15 mistakes: docs/build-log/2026-10.md shows they came from two review rounds on 11 Oct 2026: 9 problems in the first round, then 6 gaps that the fixes themselves had opened. They were found in the harness work itself. If Kyle wants a more specific line, 'it found 9 problems, then 6 more that the fixes had opened' is accurate and more credible. The same entry records a finish-line check that missed edits in 6 of 8 runs. That was the AI's mistake, not Kyle's.",
+   "Still missing per the checklist, and only Kyle can supply it: one mistake of his own with its consequence (for example a call he got wrong while building the harness). I did not invent one. Add it as one short paragraph before the 'I think the job now' line.",
+   "Date: 'this weekend' is Sat-Sun 10-11 Oct 2026 (the harness commits are dated 11 Oct). If the post goes up after this week, change it to 'On October 11'. On the site, show the post date as 11 Oct 2026 with a state tag such as 'Field note'.",
+   "Kyle's call: he told us his background is 'mostly wholesale brokering in the legacy market'. Saying 'legacy market' plainly is the strongest insider credential he has, but whether to put it in public is his decision. Likewise his line 'I'm addicted to building' fits his voice and could open or close the post if he wants it.",
+   "LinkedIn format: no em dashes, no one-line paragraph stacks, no bullets, and no 'Thoughts?' at the end. If he wants a hashtag, use one at most."
+  ]
+ }
+}
