@@ -1,3 +1,9 @@
+---
+status: draft
+title: Guard rails for an AI whose code I can't read
+date: October 2026
+---
+
 # Draft post — edit into your own voice before posting
 
 I've spent 17 years in cannabis. I'm not a developer. This year I shipped a full dispensary system anyway (online ordering, a register, loyalty, 26 releases)

@@ -1,0 +1,13 @@
+{
+  "name": "builder-portfolio",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node site/build.mjs",
+    "preview": "node site/build.mjs --preview"
+  },
+  "dependencies": {
+    "fflate": "^0.8.3",
+    "marked": "^15.0.0"
+  }
+}
