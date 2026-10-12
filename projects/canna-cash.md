@@ -8,7 +8,8 @@ project that sparked the passion."_
 
 ## The problem
 
-**[ask]** What made you build it, and what did the store use before?
+Pacific Wellness wasn't running a loyalty program, and the owner wanted to explore what was possible
+before paying a vendor like Alpine IQ. So I built one.
 
 ## What it does
 
@@ -27,19 +28,20 @@ project that sparked the passion."_
 
 - **Rates as data, not code.** The owner can change earning tiers without a developer.
 - **Speed at the counter.** The September release rebuilt the balance index. Search went from 2.7 seconds
-  per keystroke to 0.03 seconds at 19,500 transactions **[OK?]**.
-- **[ask]** Why Supabase and Blaze? What did you decide not to build?
+  per keystroke to 0.03 seconds at 19,500 transactions.
+- **Supabase, to learn it.** I chose it for the database partly to learn it, and I'm still learning. Blaze
+  because it was the store's POS.
 
 ## How it was built
 
 Built with AI on Cloudflare Pages (a small server function) and Supabase (the database), with the Blaze
 Partner API for POS data. An "agentic deploy loop" stamped each build, so the AI could deploy and confirm
-which version was live. **[ask]** How did you test it with staff?
+which version was live. I tested it the way I test everything: staff ran the real workflow.
 
 ## What it led to
 
-SouthBay420's loyalty plan deliberately keeps Canna Cash separate. **[ask]** What did Canna Cash teach you
-that changed how you built SouthBay420?
+SouthBay420's loyalty plan deliberately keeps Canna Cash separate. The lesson that shaped everything after it: _"Having it not integrated with the POS was a pain point I
+didn't want to build further to overcome."_ So SouthBay420 puts loyalty inside the register.
 
 ## Evidence
 

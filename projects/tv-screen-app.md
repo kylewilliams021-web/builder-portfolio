@@ -1,4 +1,5 @@
 # TV screen app
 
-**[ask]** In progress. What it is, who it's for, and where it lives. It isn't on GitHub yet; pushing it to
-a repository lets it get the same harness and build log as SouthBay420 from day one.
+In progress. Pacific Wellness pays a menu-screen service about $250 a month for the TV menus in the store.
+I think I can build it for free, with better features and a better UX/UI. Same reason as everything else
+I've built: a real pain point running Pacific Wellness.

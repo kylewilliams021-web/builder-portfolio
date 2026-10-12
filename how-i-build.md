@@ -18,7 +18,7 @@ The split is explicit, because it's the honest answer to "did you build this?":
 
 ## My loop
 
-1. **Notice a problem** at the counter or in the numbers. **[ask]** where most of mine come from.
+1. **Notice a problem** at the counter or in the numbers. Most of mine come from real pain points running Pacific Wellness.
 2. **Frame it.** Who has it, what job they're trying to get done, what it costs today.
 3. **Research.** How competitors solve it, and what California law allows.
 4. **Decide.** Options with tradeoffs; I make the call and record why
@@ -36,7 +36,7 @@ use it, and the build logs record it.
 | Framework                                  | Where I used it                                                                                                                                                                                                                                  |
 | ------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | **Customer definition / discovery**        | Loyalty: _the stores_ are the customers, not just Pacific Wellness. So every loyalty rule became a store setting, and our own program ships as a demo preset (SouthBay420 P001)                                                                  |
-| **Jobs to be done**                        | Each product's users written as "when…, I want…, so…" (SouthBay420 product doc). **[ask]** confirm them in my words                                                                                                                              |
+| **Jobs to be done**                        | Each product's users and what they're trying to get done. My owner job for SouthBay420: "I want one integrated thing"; the budtender's: "The POS needs to just work"                                                                             |
 | **Prioritization: impact vs effort, risk** | Compliance: hard refusals only where a rule is clear-cut and cheap to check, warnings where judgment is needed, structure first (P003). Metrc isolated on its own branch so slow, risky work can't block fast work (P004)                        |
 | **Constraints as design input**            | No online card payments (card networks restrict cannabis), so pay at pickup or on delivery. The ladder is "Stairway to _Savings_", because California bans advertising free cannabis (P002)                                                      |
 | **Metrics**                                | Go-live criteria before launch (SouthBay420: months in the Metrc sandbox without errors I can't fix, every feature at least as good as the market's) and a North Star after it (stores running it). In the product, every register sale is timed |

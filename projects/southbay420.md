@@ -28,14 +28,17 @@ exploration: _"I'm amazed at where it's at… I'm just enjoying the ride."_ I bu
 standards so it could become a real product, but my store comes first. Pacific Wellness is moving to
 Dutchie: _"Building it is different from ready to go live. I need the best now for the store."_
 
-Who it serves, as jobs to be done (hypotheses to confirm):
+Who it serves, in my words. These come from real pain points running Pacific Wellness:
 
-- **Owner:** when I run a small dispensary, I want ordering, a register and loyalty I own and can change
-  myself, so I'm not renting tools that don't fit my shop.
-- **Budtender:** when there's a line, I want to check ID, find the member and ring the sale in seconds
-  without breaking a California rule.
-- **Customer:** when I order for pickup or delivery, I want to see what's really in stock and what deal I
-  get, so there are no surprises at the counter.
+- **The owner:** _"I want one integrated thing. POS, backend, Metrc, loyalty, outreach to customers, ecom,
+  analytics. I want it to look good, I want it to be intuitive and of course I want it stable."_
+- **The budtender:** _"I want to ring a sale fast, easily and without worrying about compliance. We do a lot
+  of discounts and promo days in the cannabis space and stores get busy. The POS needs to just work."_
+- **The customer:** a site that knows them and recommends products well, but that's easy to explore fully
+  if they want to.
+
+Why one integrated system: my first product, [Canna Cash](canna-cash.md), ran loyalty beside the POS, and
+_"having it not integrated with the POS was a pain point I didn't want to build further to overcome."_
 
 ## Constraints
 
@@ -71,14 +74,14 @@ release becomes a test.
 
 ## What shipped
 
-| When            | Releases   | Highlights                                                                                                               |
-| --------------- | ---------- | ------------------------------------------------------------------------------------------------------------------------ |
-| **[ask]** – Sep | 1.1.1–1.13 | From a pizza template to a dispensary: loyalty and referrals, age gate, POS, cash drawer, budtender PINs, member ID scan |
-| Sep 24          | 1.14       | Moved into a repository with tests; backend split into modules; register rebuilt around a sale model                     |
-| Sep 25          | 1.15–1.17  | Console redesign; separate addresses for shop, console and register; purchase limits, voids, end of day, timed sales     |
-| Sep 28–30       | 1.18–1.20  | Deals, brands, receipts, owner alerts; two-step sign-in and abuse limits after an outside review                         |
-| Oct 1–7         | 1.21–1.23  | Receiving and purchase orders; inventory redesign; structured product details, built names, compliance checks            |
-| Oct 9–          | next       | Loyalty: a visit ladder whose reward grows each step. Research found no cannabis POS with an escalating ladder           |
+| When      | Releases   | Highlights                                                                                                               |
+| --------- | ---------- | ------------------------------------------------------------------------------------------------------------------------ |
+| Sep 5–23  | 1.1.1–1.13 | From a pizza template to a dispensary: loyalty and referrals, age gate, POS, cash drawer, budtender PINs, member ID scan |
+| Sep 24    | 1.14       | Moved into a repository with tests; backend split into modules; register rebuilt around a sale model                     |
+| Sep 25    | 1.15–1.17  | Console redesign; separate addresses for shop, console and register; purchase limits, voids, end of day, timed sales     |
+| Sep 28–30 | 1.18–1.20  | Deals, brands, receipts, owner alerts; two-step sign-in and abuse limits after an outside review                         |
+| Oct 1–7   | 1.21–1.23  | Receiving and purchase orders; inventory redesign; structured product details, built names, compliance checks            |
+| Oct 9–    | next       | Loyalty: a visit ladder whose reward grows each step. Research found no cannabis POS with an escalating ladder           |
 
 ## How it was built
 
@@ -97,11 +100,13 @@ No store runs on it yet, by choice. My go-live criteria: months in the Metrc san
 errors I can fix), and every feature at least as good as what's on the market. After launch, the number
 I'd watch is stores running it.
 
-## What I learned
+## What it took
 
-**[ask]** Your three biggest lessons. Candidates from the record: compliance is a design input, not a
-checklist; never break what's already out there; a non-developer can ship serious software when the
-checks live outside the AI.
+In my words: _"Ambition, passion, iteration, fearlessness, comfort in unknown, willingness to go for it,
+fun, asking others what they think."_
+
+What I learned: build integrated from the start (Canna Cash taught me that), compliance is a design input
+rather than a checklist, and building something is different from it being ready to go live.
 
 ## Evidence
 

@@ -19,14 +19,14 @@ loyalty program, the POS.
 | Product                                    | What it is                                                                                                                   | Proof                                                                                                                                                                                                                    |
 | ------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | [SouthBay420](projects/southbay420.md)     | Online ordering, delivery tracking, loyalty, staff console and in-store register for a licensed California cannabis retailer | 26 releases, deployed at southbay420.com and in development toward its go-live bar; 168 automated tests; California rules built in (purchase limits, ID checks, potency caps); hardened after an outside security review |
-| [Canna Cash](projects/canna-cash.md)       | My first product, the one that sparked it all: loyalty and referrals for Pacific Wellness, connected to Blaze                | Built in six weeks; balance search cut from 2.7 s to 0.03 s per keystroke at 19,500 transactions **[OK?]**                                                                                                               |
-| [TV screen app](projects/tv-screen-app.md) | **[ask]** In progress                                                                                                        | **[ask]**                                                                                                                                                                                                                |
+| [Canna Cash](projects/canna-cash.md)       | My first product, the one that sparked it all: loyalty and referrals for Pacific Wellness, connected to Blaze                | Built in six weeks; balance search cut from 2.7 s to 0.03 s per keystroke at 19,500 transactions                                                                                                                         |
+| [TV screen app](projects/tv-screen-app.md) | In progress: TV menu screens for the store, to replace a $250-a-month service                                                | Coming soon                                                                                                                                                                                                              |
 
 All three started from problems I see at my own store.
 
 ## How I work, in 30 seconds
 
-- **Problem first.** Each product started from a problem I had myself. **[ask]** one example.
+- **Problem first.** Each product started from a real pain point running Pacific Wellness.
 - **Frameworks out loud.** Discovery and jobs to be done, prioritization, metrics, and working backwards
   from the release note. Each case study shows where I used them.
 - **The AI in my own hands, with guard rails.** Hooks stop the AI from breaking what must never break, an
