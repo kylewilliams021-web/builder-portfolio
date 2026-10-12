@@ -79,3 +79,17 @@ No store runs on SouthBay420 yet, and that's on purpose. It goes live after mont
 - Date: 'this weekend' is Sat-Sun 10-11 Oct 2026 (the harness commits are dated 11 Oct). If the post goes up after this week, change it to 'On October 11'. On the site, show the post date as 11 Oct 2026 with a state tag such as 'Field note'.
 - Kyle's call: he told us his background is 'mostly wholesale brokering in the legacy market'. Saying 'legacy market' plainly is the strongest insider credential he has, but whether to put it in public is his decision. Likewise his line 'I'm addicted to building' fits his voice and could open or close the post if he wants it.
 - LinkedIn format: no em dashes, no one-line paragraph stacks, no bullets, and no 'Thoughts?' at the end. If he wants a hashtag, use one at most.
+
+## Measured (2026-10-12)
+
+Scored with Adrian Krebs's open-source checker (github.com/AdrianKrebs/ai-design-checker; 14 deterministic
+"AI design" patterns; lower is better), run locally on the same machine:
+
+| Page                              | Score | Patterns flagged                                                  |
+| --------------------------------- | ----- | ----------------------------------------------------------------- |
+| Direction C (operator)            | 36    | Templated font, hero font mix, accent stripe, stat banner, badge  |
+| Direction B (bold), first version | 21    | Hero font mix, accent stripe, perma dark                          |
+| Direction A (editorial)           | 7     | Hero font mix                                                     |
+| New site, dark theme, home        | 0     | none                                                              |
+| New site, paper theme, home       | 0     | none                                                              |
+| New site, dark theme, case study  | 7     | Perma dark (a dark site with no light option)                     |

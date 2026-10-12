@@ -5,6 +5,7 @@ a real session, recorded in that project's build log.
 
 | Date       | Concept                    | What it means                                                                                                                                                   | Where                      |
 | ---------- | -------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------- |
+| 2026-10-12 | Measure, don't guess        | Taste calls can be checked: an independent checker scored the first design 21 and the rebuilt one 0 | Website |
 | 2026-10-12 | Distributional convergence | Why AI output looks the same: a model picks the most common choice; ban one default and it falls back to the next (dark + neon green, cream + big italic serif) | Research: not-AI checklist |
 | 2026-10-12 | Go-live criteria           | The bar a product must clear before real customers use it (also called launch or exit criteria)                                                                 | Interview: SouthBay420     |
 | 2026-10-12 | Demand validation          | Testing whether anyone wants something before investing in it (e.g. would stores use it if open-sourced?)                                                       | Interview: SouthBay420     |
