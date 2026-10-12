@@ -38,6 +38,11 @@ whoever is involved in product. **Answered** above. Public history wording: "who
 - Open-sourcing SouthBay420 to see whether other stores would use it (online, trade shows). Big tradeoffs,
   including timing while applying to Dutchie: decide after the application settles.
 
+## Website (decided 2026-10-12)
+
+- Direction **B (bold)**: "it looks the least like AI." Public email: Gmail for now. Resume download: off
+  for now. Canna Cash: set aside, "the project that sparked the passion."
+
 ## This week
 
 - [ ] Decide the framing above.

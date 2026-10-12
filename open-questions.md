@@ -28,7 +28,6 @@ that asked, and the question is deleted from here.
 ## Canna Cash
 
 - [ ] What made me build it, and what did the store use before?
-- [ ] Is it still in use? By how many customers? **[OK?]**
 - [ ] Why Supabase and Blaze? What did I decide not to build?
 - [ ] OK to publish "search from 2.7 s to 0.03 s at 19,500 transactions"?
 
