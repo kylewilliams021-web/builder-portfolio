@@ -21,7 +21,7 @@ five minutes. Every page must be true, specific and quick to skim.
 
 ## Working with the owner
 
-17 years in cannabis; managing partner of Pacific Wellness; moving into tech (cannabis tech first, open to
+15 years in cannabis (since 2011; matches the resume); managing partner of Pacific Wellness; moving into tech (cannabis tech first, open to
 anything). Private context: `private/job-search.md`. The work is "as much building, as it is learning by
 doing, as it is showcasing", so:
 

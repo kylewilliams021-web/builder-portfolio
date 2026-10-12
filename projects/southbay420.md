@@ -47,7 +47,10 @@ _"having it not integrated with the POS was a pain point I didn't want to build 
 - **California law, in the product.** Daily purchase limits by product kind and weight, with a live meter
   that locks Charge. ID checks. Edible potency caps. No "candy" names, no health claims, no advertising
   _free_ cannabis.
-- **Metrc,** the state's track-and-trace system.
+- **Metrc,** the state's track-and-trace system. SouthBay420 is validated by Metrc as a California
+  third-party integrator, and Metrc issued production keys. On its own branch it reports sales to Metrc,
+  reads them back and voids them, verified end to end in the California sandbox (October 1, 2026), and it
+  has synced more than 10,000 sandbox packages.
 - **No marketing texts.** Carriers ban cannabis SMS, so texting stays off until there's a compliant
   provider.
 - **Run by a non-developer.** Upgrades are one ZIP, the database updates itself, and every message is

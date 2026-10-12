@@ -1,3 +1,7 @@
+---
+status: draft
+---
+
 # TV screen app
 
 In progress. Pacific Wellness pays a menu-screen service about $250 a month for the TV menus in the store.

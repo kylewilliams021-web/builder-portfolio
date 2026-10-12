@@ -4,7 +4,7 @@
 
 ## Where I am (2026-10-11)
 
-- 17 years in cannabis; managing partner of Pacific Wellness ("I make all decisions aside from writing
+- 15 years in cannabis (2011 on; the resume and site must match); managing partner of Pacific Wellness ("I make all decisions aside from writing
   checks"). Wanted to move into tech since 2023; AI is "a personal renaissance".
 - Applied to a **BDR role at Dutchie** on Thursday 2026-10-08, referred by Lela (sales manager). No reply
   yet as of Sunday. Goal: get in, then move toward product.

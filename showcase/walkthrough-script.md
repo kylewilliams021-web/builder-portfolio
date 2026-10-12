@@ -11,7 +11,7 @@ In the `southbay420` folder: `npm run demo`. Then open three tabs: `http://local
 
 ## The walkthrough
 
-1. **(15 s) Who and why.** "I'm Kyle. I've been in cannabis 17 years and I'm managing partner of Pacific
+1. **(15 s) Who and why.** "I'm Kyle. I've been in cannabis 15 years and I'm managing partner of Pacific
    Wellness. I built this with AI to solve problems at my own store." **[ask]** One sentence on the
    problem that started it.
 2. **(40 s) The register.** Add three products; attach a member and show the points and "repeat last

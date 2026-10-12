@@ -30,7 +30,8 @@ The split is explicit, because it's the honest answer to "did you build this?":
 
 ## Frameworks, with real examples
 
-These are my calls, described in framework terms. Since October 2026 I name the framework at the moment I
+Most of these I learned in CareerFoundry's product management certificate (2023). These are my calls,
+described in framework terms. Since October 2026 I name the framework at the moment I
 use it, and the build logs record it.
 
 | Framework                                  | Where I used it                                                                                                                                                                                                                                  |
