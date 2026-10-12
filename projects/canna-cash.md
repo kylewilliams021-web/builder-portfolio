@@ -3,7 +3,8 @@
 **In short.** A store-credit loyalty and referral program for Pacific Wellness, a licensed California
 dispensary, connected to the store's Blaze point-of-sale. Customers check their balance on a public page.
 Staff add members, credit and redeem, log referrals and sync purchases from Blaze. Built August 6 –
-September 17, 2026; it was my first product. **[ask]** Is it still in use?
+September 17, 2026; It was my first product, and the one that started everything: I've mostly set it aside since, but _"it's the
+project that sparked the passion."_
 
 ## The problem
 
