@@ -26,7 +26,7 @@ page still has an unanswered [ask] or an unapproved [OK?].
 - [ ] Customer job, in my words: "a site that knows me and recommends products well, but that's easy to
       explore fully if I want to." Right?
 - [ ] My LinkedIn URL for the site.
-- [ ] Where the TV screen app lives today (folder, tool), so it can get its own repository.
+- [x] The TV screen app lives in its own private repository, kylewilliams021-web/tv-signage.
 
 ## Showcase
 
