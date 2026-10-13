@@ -52,6 +52,15 @@ paragraph, one name per thing.
 ## Keeping it current
 
 Source material lives in each product repository: `docs/PRODUCT.md`, `docs/build-log/`,
-`docs/product-decisions/`, `CHANGELOG.md`. At least monthly, curate new build-log entries into the case
+`docs/product-decisions/`, `CHANGELOG.md`. The index of every log is the private repository
+**`kylewilliams021-web/builder-log`** (its `README.md`). It also holds the Canna Cash log (`canna-cash.md`)
+and entries about the owner himself: career, portfolio, how he works (`builder/<YYYY-MM>.md`). TV signage
+logs live in `kylewilliams021-web/tv-signage` under `docs/build-log/`.
+
+**Posts are drafted from the build logs** (owner's call, 2026-10-13). Each draft in `posts/` starts from a
+log entry and the owner's own quotes in it, and links the entry it came from. Posts go to two places, both
+published by the owner: the posts section of kylewilliams.co (live when he uploads the site ZIP) and
+LinkedIn. If builder-log is not attached to this session, ask the owner to add it rather than working
+from memory. At least monthly, curate new build-log entries into the case
 studies, timeline and learning log. Interview the owner a few questions at a time from
 `open-questions.md`; ask their opinion before giving yours, and teach the concept behind each question.
