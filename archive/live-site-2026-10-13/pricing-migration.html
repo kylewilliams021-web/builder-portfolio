@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>465 SKUs repriced overnight — Kyle, Pacific Wellness</title>
+<meta name="description" content="A California retailer converted 465 SKUs from tax-inclusive to pre-tax shelf pricing in a single overnight cutover, with no change to what any customer pays. The tax model, five platform defects, and the verification protocol that caught them.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/style.css">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="canonical" href="https://kylewilliams.co/pricing-migration/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Kyle Williams">
+<meta property="og:title" content="465 SKUs repriced overnight. No receipt total moved.">
+<meta property="og:description" content="Converting a retail catalogue from tax-inclusive to pre-tax shelf pricing in one overnight cutover, and the five undocumented platform defects found on the way through.">
+<meta property="og:url" content="https://kylewilliams.co/pricing-migration/">
+<meta property="og:image" content="https://kylewilliams.co/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="465 SKUs repriced overnight. No receipt total moved.">
+<meta name="twitter:description" content="Converting a retail catalogue from tax-inclusive to pre-tax shelf pricing in one overnight cutover, and the five undocumented platform defects found on the way through.">
+<meta name="twitter:image" content="https://kylewilliams.co/assets/og.png">
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <h1>465 SKUs repriced overnight. No receipt total moved.</h1>
+        <p class="standfirst">California retailers price out the door: the shelf number is what you pay, three stacked taxes buried inside it. That convention makes every menu listing look about 39% more expensive than a competitor quoting pre-tax. I converted the whole catalogue in one overnight cutover and found five platform defects on the way through.</p>
+        <p class="byline">I run retail operations at Pacific Wellness in Sherman Oaks, California, and took this cutover end to end on the night of 15 September 2026 — on Blaze POS, with a synced Weedmaps menu downstream of it.</p>
+      </div>
+      <div class="stack">
+        <h2>One SKU, both sides</h2>
+        <p class="was">Before, the shelf read $65.00 with the taxes inside it.</p>
+        <div class="row"><span>Shelf price</span><span>46.82</span></div>
+        <div class="row"><span>City tax, 10%</span><span>4.68</span></div>
+        <div class="row"><span>Excise, 15%</span><span>7.73</span></div>
+        <div class="row"><span>Sales tax, 9.75%</span><span>5.77</span></div>
+        <div class="row total"><span>Customer pays</span><span>$65.00</span></div>
+        <p class="note">Identical to the day before, and repeated across 460 repriced SKUs.</p>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<section>
+  <div class="wrap narrow">
+    <h2 class="sec">An optics problem with a compliance floor under it</h2>
+    <p class="lead">Menu platforms display the shelf price. A store quoting out the door shows a number that already contains all three taxes; a store quoting pre-tax shows a number 38.8% smaller for the identical jar. Side by side on the same screen, we looked expensive because we were the ones being literal.</p>
+    <p>After the cutover our eighth displays at <b>$14.41</b> where a competitor quoting out the door shows <b>$20.00</b>. Same product, same money at the register.</p>
+    <p>That last clause is what made this hard. It was not a price change. Every customer had to pay exactly what they paid the day before, to the dollar, because the total is what people remember and what the menu comments notice. The shelf number was allowed to move. The total was not.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap narrow">
+    <h2 class="sec">The math, and the one flag it all hangs on</h2>
+    <p>The three taxes compound in a fixed order. Each is levied on the running total of the ones before it, and the register rounds the result to the nearest whole dollar.</p>
+    <div class="formula">
+      <div>city&nbsp;&nbsp;&nbsp;= 10%&nbsp;&nbsp;&nbsp;&times; sticker</div>
+      <div>excise = 15%&nbsp;&nbsp;&nbsp;&times; (sticker + city)</div>
+      <div>sales&nbsp;&nbsp;= 9.75% &times; (sticker + city + excise)</div>
+      <div>total&nbsp;&nbsp;= rounded to the nearest whole dollar</div>
+      <div class="hint">combined multiplier = 1.10 &times; 1.15 &times; 1.0975 = <b>1.3883375</b></div>
+    </div>
+    <p>Every old price divided by 1.3883375 gives the pre-tax sticker that rings the same total. The entire migration is that one division — provided the platform is actually compounding in that order.</p>
+    <p>One setting controls it: <i>calculate excise tax after city tax</i>. Switched off, the multiplier becomes 1.371875 and every price in the store is wrong by 1.2% — small enough to survive a spot check, large enough to be a year-long tax exposure. I verified that flag first and never touched it again.</p>
+    <p>Nearest-dollar rounding does one favour: it absorbs the cent of arithmetic drift across the catalogue, so no SKU needed hand-tuning. It also hides a defect, which is defect five.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="narrow">
+      <h2 class="sec">What changed in the platform</h2>
+      <p>Seven company-level settings, three consumer types across two tax tabs, and a mass update on every inventory record. Four of the seven changed. The other three had to be confirmed unchanged, which is different work and just as easy to get wrong.</p>
+    </div>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>Setting</th><th>Value</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td>Includes state excise</td><td>Enabled</td><td>unchanged</td></tr>
+          <tr><td>Excise line item on receipt</td><td>Enabled</td><td>changed</td></tr>
+          <tr><td>Excise taxes included in total</td><td>Disabled</td><td>changed</td></tr>
+          <tr><td>State excise rate</td><td>15.00%</td><td>unchanged</td></tr>
+          <tr><td>Calculate excise after city tax</td><td>Enabled</td><td>load-bearing, do not touch</td></tr>
+          <tr><td>Product prices include excise, default</td><td>Disabled</td><td>changed</td></tr>
+          <tr><td>Surcharge subject to excise</td><td>Disabled</td><td>unchanged</td></tr>
+          <tr><td>Adult use: city and sales</td><td>10% and 9.75%, both post-taxed</td><td>sales row taxes excise</td></tr>
+          <tr><td>Medicinal, both types</td><td>City 10% post-taxed, sales 0% inactive</td><td>changed</td></tr>
+          <tr><td>Non-cannabis tab</td><td>Sales 9.75% post-taxed, all types</td><td>changed</td></tr>
+          <tr><td>Inventory: price includes excise</td><td>No, on all 466 products</td><td>mass update</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="narrow">
+      <h2 class="sec">Five defects, and what I did about each</h2>
+      <p>None are documented. All five are reproducible. Two of them will silently corrupt every price in a store, and one hides the evidence on three quarters of the catalogue.</p>
+    </div>
+
+    <div class="defect">
+      <div class="n">1</div>
+      <div>
+        <h3>The importer rejects its own exporter's output</h3>
+        <p>The product importer rejects non-ASCII characters in the name field, including names the platform's own exporter had just produced. Seventeen products carrying <code>™</code>, <code>é</code> or <code>ñ</code> bounced. Only the name field is validated this way — description passed with non-ASCII intact on 127 rows, brand on one.</p>
+        <p><span class="tag">What I did.</span> Transliterated names to ASCII in the import file, left description and brand alone, and kept the original strings so display names could be restored afterward.</p>
+      </div>
+    </div>
+
+    <div class="defect">
+      <div class="n">2</div>
+      <div>
+        <h3>The flag that decides the price lives where the import can't reach it</h3>
+        <p>Whether a price is tax-inclusive is stored on the store inventory record, not the company product. The company product page has no such field and the 38-column import file has no such column. So the import cheerfully loads pre-tax prices into records still flagged tax-inclusive.</p>
+        <p><span class="tag">Consequence if missed.</span> The register reads $14.41 as tax-inclusive, backs the taxes out to a $10.38 base, and charges $14.41 — roughly <b>28% under</b> on every SKU in the store, with no error raised anywhere.</p>
+        <p><span class="tag">What I did.</span> Ran it as a separate mass update across all 466 inventory records, and verified it before loading a single price.</p>
+      </div>
+    </div>
+
+    <div class="defect">
+      <div class="n">3</div>
+      <div>
+        <h3>The tax form renders stale defaults for eight seconds</h3>
+        <p>Open a consumer type for editing and every tax order field shows <i>pre-taxed</i> for about eight seconds, regardless of what is saved. Save inside that window and you write those defaults back, silently undoing the conversion you just made.</p>
+        <p><span class="tag">What I did.</span> Waited for the form to populate, compared it against the read-only view, and treated the confirmation dialog as the only trustworthy check — it enumerates exactly what is about to change, which the form itself does not.</p>
+      </div>
+    </div>
+
+    <div class="defect">
+      <div class="n">4</div>
+      <div>
+        <h3>Saves fail silently</h3>
+        <p>One save was lost to a dropped connection with no error surfaced and a success state rendered anyway. I caught it only because I was reloading between steps.</p>
+        <p><span class="tag">What I did.</span> Made reload-and-read-back-from-server the rule after every save. A success message and the post-save render are both client-side optimism, and neither is evidence.</p>
+      </div>
+    </div>
+
+    <div class="defect">
+      <div class="n">5</div>
+      <div>
+        <h3>Rounding conceals a tax misconfiguration on 76% of the catalogue</h3>
+        <p>Because totals round to the nearest dollar, <b>349 of 460 SKUs ring an identical total</b> whether or not sales tax is correctly levied on the excise. Only 111 expose the difference. My first test item rang $35.00 under both configurations — a 41-cent error that vanished into rounding.</p>
+        <p><span class="tag">What I did.</span> Stopped verifying against totals. Verification reads the sales tax line on the receipt: on a $46.82 item it must read <b>$5.77</b>, not $5.02. A total-based check would have passed a broken store.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="narrow">
+      <h2 class="sec">Verification</h2>
+      <p>Six SKUs spread across the price range, rung up without completing the transactions, plus one discounted item — discounts now come off the pre-tax base rather than a tax-inclusive price, so they needed their own check.</p>
+    </div>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>SKU</th><th>Product</th><th class="num">Sticker</th><th class="num">Must ring</th></tr></thead>
+        <tbody>
+          <tr><td>FLO-09a1479b8</td><td>Acai Runtz Smalls 3.5g</td><td class="num">$14.41</td><td class="num">$20.01</td></tr>
+          <tr><td>FLO-0ee75676d</td><td>Acai Runtz Smalls 7g</td><td class="num">$25.21</td><td class="num">$35.00</td></tr>
+          <tr><td>PF7APRO1</td><td>Autumn Brands Preroll 14pk</td><td class="num">$44.66</td><td class="num">$62.00</td></tr>
+          <tr><td>P8B6PRO1</td><td>Birdies Classic Hybrid 3pk</td><td class="num">$10.08</td><td class="num">$13.99</td></tr>
+          <tr><td>EDI-700ef113f</td><td>Breez Extra Strength Nighttime</td><td class="num">$46.82</td><td class="num">$65.00</td></tr>
+          <tr><td>VAP-415ef2e68</td><td>Cizi 1G 510 Cart Blue Dream</td><td class="num">$12.97</td><td class="num">$18.01</td></tr>
+        </tbody>
+        <caption>Two known failure signatures. A total about 28% low means the excise-inclusive flag is still set on inventory. Totals off by about 1.2% mean the compound-ordering flag got switched off.</caption>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="narrow">
+      <h2 class="sec">Promotions were the second migration</h2>
+      <p>Promotions apply to the pre-tax subtotal. Every dollar figure in every active promotion had been written as an out-the-door figure, so each one silently became 38.8% more generous the moment the catalogue converted.</p>
+      <p>The rule that fell out of it: <b>if a promotion names a dollar amount, it is broken; if it names a percentage or a ratio, it is fine.</b> Percentage discounts, BOGO, buy-two-get-one and penny items all scale themselves. Basket minimums, fixed dollar discounts, fixed dollar deal prices, loyalty tier breaks and flat-priced bundles all had to be divided through.</p>
+    </div>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>Promotion</th><th class="num">Was</th><th class="num">Now</th></tr></thead>
+        <tbody>
+          <tr><td>Loyalty basket minimum and discount</td><td class="num">40.00 / 5.00</td><td class="num">28.80 / 3.60</td></tr>
+          <tr><td>Lighters, two for</td><td class="num">5.00</td><td class="num">3.60</td></tr>
+          <tr><td>House flower 7g</td><td class="num">35.00</td><td class="num">25.21</td></tr>
+          <tr><td>House flower 14g</td><td class="num">65.00</td><td class="num">46.82</td></tr>
+          <tr><td>House flower 28g</td><td class="num">120.00</td><td class="num">86.43</td></tr>
+          <tr><td>Big Nugs 7g</td><td class="num">55.00</td><td class="num">39.62</td></tr>
+          <tr><td>Big Nugs 14g, three configurations</td><td class="num">100.00</td><td class="num">72.03</td></tr>
+          <tr><td>Big Nugs 28g, five configurations</td><td class="num">180.00</td><td class="num">129.65</td></tr>
+          <tr><td>Joints, five for</td><td class="num">15.00</td><td class="num">10.80</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="narrow">
+      <div class="callout">
+        <h3>Why the basket minimum is $28.80 and not $28.81</h3>
+        <p>$40.00 divided by 1.3883375 is $28.8115. Rounding down rather than up costs nothing and buys a cent of slack, which matters because our best-selling all-in-one vape lands at exactly $28.81 pre-tax and would otherwise sit precisely on the threshold. The platform does not document whether the comparison is <code>&gt;</code> or <code>&gt;=</code>, so I designed so that it cannot matter.</p>
+        <p>The discount side is the same reasoning in reverse. A $3.60 pre-tax discount reaches the register as $5.00 off and holds at every basket size. A $5.00 pre-tax discount would have handed the customer $6.94 of value and read as $7.00 off — a 39% overrun on a promotion nobody would have thought to re-check.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap narrow">
+    <h2 class="sec">Rollback, and closing the tail</h2>
+    <p>The cutover ran with a written rollback in hand: re-import the preserved price file, re-enable the excise default, return every tax order to pre-taxed across both tabs and all three consumer types, set the adult-use sales row back to not taxing excise, restore the receipt line item and the included-in-total flag, then mass update inventory back to tax-inclusive — reloading and verifying after each step. It was never needed. It existed so that the decision to proceed at eleven at night was a cheap one.</p>
+    <h3>The three items left open at dawn, and how each closed</h3>
+    <ul>
+      <li><b>The 466th product.</b> There were 466 active inventory products and only 465 in the export the import was built from, so one was ringing about 39% high somewhere in the catalogue. Finding it took one sort: every converted price lands on an odd cent, so any whole-dollar figure that isn't a known exception is a survivor of the old basis. It turned out not to be a timing gap at all — it was a 1.5g preroll I had created twice. The discrepancy that looked like a race against the export was a duplicate record wearing a race's clothes, which is worth knowing the next time a count comes up one short. Corrected.</li>
+      <li><b>The sample SKU</b> parked at a test price is back to a penny.</li>
+      <li><b>Customer-facing copy has caught up.</b> Menu banners, the store's about section, the deal that had been titled around a tax-inclusive price, the first-time offer, the second menu platform, the webstores, the business listing and in-store signage all now quote the same basis the register does.</li>
+    </ul>
+    <p>The migration is closed. What follows is the part that outlives it.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap narrow">
+    <h2 class="sec">What I'd change in the product</h2>
+    <p>I ran this as an operator because there was nobody else to run it. But four of the five defects are product decisions rather than bugs, and none of them would be expensive to reverse.</p>
+    <ul>
+      <li>Tax-inclusive versus tax-exclusive should be a first-class migration primitive with a dry run and a diff, not a checkbox in company settings that several unrelated record types quietly depend on.</li>
+      <li>Any field that can put a whole catalogue 28% under should be reachable by the same mechanism that sets the prices. The excise-inclusive flag belongs in the product import schema.</li>
+      <li>A form must not render plausible, wrong, editable values before server state resolves, and a save confirmation should be a server read-back rather than optimistic UI. Eight seconds of a spinner would have been better than eight seconds of a lie, and if the platform can't confirm the write it shouldn't draw the success state.</li>
+      <li>Verification tooling should surface per-tax-line deltas rather than totals. Totals hid this defect on 76% of the catalogue; a tool that compared tax lines would have caught it on the first item, which is the difference between an hour of work and a week of wrong prices nobody noticed.</li>
+    </ul>
+    <p>The general case is the promotions one. A platform that lets a price mean two different things, and then stores only the number, has handed every migration risk to whoever happens to be standing at the counter. Storing the basis alongside the amount is a one-column change that would have converted nine promotions automatically instead of leaving an operator to find them by hand at midnight.</p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap narrow">
+    <p class="name">Kyle Williams</p>
+    <p>Managing Partner, Pacific Wellness — Sherman Oaks, California. Retail operations, purchasing, financials, POS administration and analytics. Fifteen years in cannabis, from delivery in 2011 through a decade of wholesale brokering.</p>
+    <p style="margin-top:14px"><a href="https://www.linkedin.com/in/kylewilliams021/" style="color:var(--accent);text-decoration:none;border-bottom:1px solid var(--rule);padding-bottom:1px">linkedin.com/in/kylewilliams021</a></p>
+  <p style="margin-top:10px"><a href="/files/pricing-migration.pdf" style="color:var(--accent);text-decoration:none;border-bottom:1px solid var(--rule)">Download this case study as a PDF</a> &nbsp;·&nbsp; <a href="/" style="color:var(--accent);text-decoration:none;border-bottom:1px solid var(--rule)">All work</a></p>
+  </div>
+</footer>
+
+</body>
+</html>

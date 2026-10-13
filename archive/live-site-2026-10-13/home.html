@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kyle Williams — retail operations and POS systems</title>
+<meta name="description" content="Cannabis retail operator and systems builder. Case studies on a 465-SKU pricing migration, promotional economics, and a loyalty product built on a POS partner API.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/style.css"><style>
+  .hero{padding:80px 0 4px}
+  h1{font-size:clamp(2rem,4.2vw,2.85rem);max-width:17ch;margin-bottom:22px;text-wrap:balance}
+  .hero .standfirst{max-width:44ch}
+  .hero .byline{max-width:44ch;margin-top:16px}
+
+  /* ledger panel — the one bold object */
+  .ledger{background:var(--panel);border:1px solid var(--rule);padding:22px 22px 18px}
+  .ledger h2{font-family:var(--sans);font-size:.72rem;font-weight:600;letter-spacing:.04em;
+             color:var(--muted);margin:0 0 3px}
+  .ledger .was{font-family:var(--sans);font-size:.84rem;color:var(--ink-soft);
+               margin:0 0 15px;line-height:1.5}
+  .ledger p{margin:0}
+  .ledger .was{margin:0 0 15px}
+  .ledger .note{font-family:var(--sans);font-size:.79rem;color:var(--muted);
+                margin:15px 0 0;line-height:1.5}
+
+  /* work list */
+  .work{border-top:2px solid var(--accent);margin:10px 0 0}
+  .item{border-bottom:1px solid var(--rule);padding:30px 0 26px;
+        display:grid;grid-template-columns:46px 1fr;gap:0 18px}
+  .item .n{font-family:var(--sans);font-size:1.05rem;font-weight:700;color:var(--accent);
+           line-height:1.9;font-variant-numeric:tabular-nums}
+  .item h3{margin:0 0 10px;font-family:var(--serif);font-size:1.5rem;font-weight:600;
+           line-height:1.24;letter-spacing:-.012em;max-width:34ch;text-wrap:balance}
+  .item h3 a{color:var(--ink);text-decoration:none;
+             border-bottom:1px solid transparent;padding-bottom:2px}
+  .item h3 a:hover{color:var(--accent);border-bottom-color:var(--accent)}
+  .item p{margin:0 0 16px;font-size:1.02rem;color:var(--ink-soft);max-width:62ch}
+  .stats{display:flex;flex-wrap:wrap;gap:16px 40px;margin:0;font-family:var(--sans)}
+  .stats div{line-height:1.25}
+  .stats .v{display:block;font-size:1.22rem;font-weight:600;color:var(--accent);
+            font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+  .stats .k{display:block;font-size:.76rem;color:var(--muted);margin-top:3px}
+
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:44px}
+  .cols h3{font-family:var(--sans);font-size:.74rem;font-weight:600;letter-spacing:.04em;
+           color:var(--muted);margin:0 0 12px}
+  .cols ul{padding-left:1.05em;margin:0;font-size:.98rem}
+  .cols li{margin-bottom:7px}
+  .contact a{color:var(--accent);text-decoration:none;border-bottom:1px solid var(--rule)}
+
+  @media (max-width:860px){
+    .item{grid-template-columns:1fr;gap:0}
+    .item .n{line-height:1.4;margin-bottom:4px}
+    .item h3{max-width:none}
+  }
+  @media (max-width:700px){
+    .hero{padding:48px 0 0}
+    h1{max-width:none}
+    .hero .standfirst,.hero .byline{max-width:none}
+    .cols{grid-template-columns:1fr;gap:28px}
+    .stats{gap:14px 28px}
+  }
+</style>
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="canonical" href="https://kylewilliams.co/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Kyle Williams">
+<meta property="og:title" content="Kyle Williams — retail operations and POS systems">
+<meta property="og:description" content="Cannabis retail operator and systems builder. Case studies on a 465-SKU pricing migration, promotional economics, and a loyalty product built on a POS partner API.">
+<meta property="og:url" content="https://kylewilliams.co/">
+<meta property="og:image" content="https://kylewilliams.co/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Kyle Williams — retail operations and POS systems">
+<meta name="twitter:description" content="Cannabis retail operator and systems builder. Case studies on a 465-SKU pricing migration, promotional economics, and a loyalty product built on a POS partner API.">
+<meta name="twitter:image" content="https://kylewilliams.co/assets/og.png">
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <h1>I run a retail store, and I build the systems it runs on.</h1>
+        <p class="standfirst">Managing Partner at a licensed cannabis dispensary in Sherman Oaks, California — retail operations, purchasing, financials, POS administration and analytics. Fifteen years in the industry, from a delivery service in 2011 through a decade brokering wholesale flower.</p>
+        <p class="byline">Three pieces of work below. Each one is real, measured at my own store, and ends with what I'd change in the software.</p>
+      </div>
+
+      <div class="ledger">
+        <h2>THE EVIDENCE</h2>
+        <p class="was">One store in Sherman Oaks, April&ndash;September 2026. Every figure on this site comes from its own transaction data.</p>
+        <p class="row"><span>Tickets analyzed</span><span>4,449</span></p>
+        <p class="row"><span>SKUs repriced in one night</span><span>465</span></p>
+        <p class="row"><span>Platform defects documented</span><span>5</span></p>
+        <p class="row"><span>Discount spend with no lift</span><span>$8,000/yr</span></p>
+        <p class="row total"><span>Customer totals changed</span><span>0</span></p>
+        <p class="note">The tax multiplier that had to hold to get that zero: 1.3883375.</p>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<section style="padding-top:46px">
+  <div class="wrap">
+    <div class="work">
+
+      <div class="item">
+        <div class="n">01</div>
+        <div>
+          <h3><a href="/pricing-migration/">465 SKUs repriced overnight. No receipt total moved.</a></h3>
+          <p>Converting a whole catalogue from tax-inclusive to pre-tax shelf pricing in a single cutover, holding every customer total unchanged — and the five undocumented platform defects found on the way through, two of which silently misprice an entire store.</p>
+          <div class="stats">
+            <div><span class="v">465</span><span class="k">SKUs converted</span></div>
+            <div><span class="v">5</span><span class="k">defects documented</span></div>
+            <div><span class="v">76%</span><span class="k">of the catalogue hides the bug</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="n">02</div>
+        <div>
+          <h3><a href="/promo-economics/">The promotions cleared their hurdle. The store still lost money.</a></h3>
+          <p>A derived break-even model for vendor-funded discounts, four brands tested against it, three passing — and the store-level analysis that overturned the result. The unit of analysis was wrong, and it had been wrong in the direction that flatters promotions.</p>
+          <div class="stats">
+            <div><span class="v">F = d/(1−d)</span><span class="k">required frontload</span></div>
+            <div><span class="v">$8,000</span><span class="k">per year, given away</span></div>
+            <div><span class="v">19.4%</span><span class="k">recoverable from vendors</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="n">03</div>
+        <div>
+          <h3><a href="/canna-cash/">A loyalty product that stores nothing about the customer</a></h3>
+          <p>Five design decisions behind a cash-back program built on a POS partner API — build versus buy, cash versus points, paper versus app — each with the alternative named, what the choice cost, and what would make me choose differently.</p>
+          <div class="stats">
+            <div><span class="v">3 pts</span><span class="k">margin cost, against 9 for promos</span></div>
+            <div><span class="v">88,179</span><span class="k">phantom points found</span></div>
+            <div><span class="v">$28.80</span><span class="k">threshold, not $28.81</span></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2 class="sec">Why I'm looking</h2>
+    <div class="narrow" style="padding:0;max-width:64ch">
+      <p>I've worked for myself since my early twenties. I've built things that worked and things that didn't, and I know by now what I'm actually good at: finding the thing that's broken in a retail system and fixing it properly, then writing down why it broke.</p>
+      <p>At one store, that work stops at one store. I found five defects in our POS last month and had nowhere to send them. I'd rather do that work somewhere it reaches thousands of retailers than one — and I'd rather do it alongside people who are better than me at parts of it, which is not something a one-man operation can offer.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <h3>WHAT I'M LOOKING FOR</h3>
+        <ul>
+          <li>Implementation and onboarding</li>
+          <li>Solutions engineering</li>
+          <li>Enterprise customer success</li>
+          <li>Product management, retail and POS</li>
+        </ul>
+        <p style="font-size:.95rem;color:var(--ink-soft);margin-top:14px">Remote, from Los Angeles. Cannabis technology or retail technology more broadly — a point of sale is a point of sale.</p>
+      </div>
+      <div>
+        <h3>WHAT I'VE ACTUALLY DONE</h3>
+        <ul>
+          <li>POS administration end to end — tax configuration, product imports, promotions, menu sync</li>
+          <li>Partner API integration and read-only data pulls</li>
+          <li>Transaction analysis: retention cohorts, promotional lift, margin and vendor recovery</li>
+          <li>Purchasing, vendor negotiation and reimbursement claims</li>
+          <li>State regulatory compliance and inspection</li>
+          <li>Product management certificate, CareerFoundry</li>
+          <li>BA Economics, UC Riverside</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap contact">
+    <h2 class="sec">Get in touch</h2>
+    <p><a href="mailto:kylewilliams021@gmail.com">kylewilliams021@gmail.com</a><br>
+    <a href="https://www.linkedin.com/in/kylewilliams021/">linkedin.com/in/kylewilliams021</a><br>
+    <a href="/files/kyle-williams-resume.pdf">Resume (PDF)</a></p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Kyle Williams — Los Angeles, California. Figures throughout are from my own store's transaction data, April to September 2026.</p>
+  </div>
+</footer>
+
+</body>
+</html>

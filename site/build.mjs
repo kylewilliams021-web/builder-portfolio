@@ -8,8 +8,8 @@
 //   ... -- --out site/dist-paper  build somewhere else (for comparing themes)
 //
 // Published: site/home.html (front page), how-i-build.md, timeline.md, now.md, colophon.md, projects/*.md
-// (except `status: draft`) and posts with `status: published`. Never published: private/, research/,
-// open-questions.md, CLAUDE.md, learning-log.md, site/directions/.
+// (except `status: draft`), notes/*.md (field notes) and posts with `status: published`. Never published:
+// private/, research/, archive/, open-questions.md, CLAUDE.md, learning-log.md, site/directions/.
 
 import fs from 'node:fs';
 import path from 'node:path';
@@ -62,6 +62,8 @@ function siteLink(href) {
   if (/^(https?:|mailto:|#|\/)/.test(href)) return href;
   const clean = href.replace(/^(\.\.\/)+/, '').replace(/^\.\//, '');
   if (ROUTES[clean]) return ROUTES[clean];
+  const note = clean.match(/^notes\/([\w-]+)\.md(#.*)?$/);
+  if (note) return `/notes/${note[1]}/${note[2] || ''}`;
   const project = clean.match(/^projects\/([\w-]+)\.md(#.*)?$/) || clean.match(/^([\w-]+)\.md(#.*)?$/);
   if (project && fs.existsSync(path.join(root, 'projects', `${project[1]}.md`))) return `/work/${project[1]}/${project[2] || ''}`;
   if (/^(img|projects\/img)\//.test(clean)) return '/' + clean.replace(/^projects\//, '');
@@ -114,7 +116,8 @@ function gate(file, text) {
 
 function layout({ title, description, body, active = '' }) {
   const nav = [
-    ['/work/southbay420/', 'Work', 'work'],
+    ['/#products', 'Products', 'work'],
+    ['/notes/', 'Field notes', 'notes'],
     ['/writing/', 'Writing', 'writing'],
     ['/now/', 'Now', 'now'],
   ]
@@ -197,6 +200,17 @@ const posts = fs
     slug: p.f.replace(/\.md$/, ''),
     ...markdownPage(`posts/${p.f}`, `writing/${p.f.replace(/\.md$/, '')}`, 'writing', { postMeta: true }),
   }));
+// Field notes: write-ups of problems worked through while running the store (notes/*.md).
+const notes = fs
+  .readdirSync(path.join(root, 'notes'))
+  .filter((f) => f.endsWith('.md'))
+  .sort()
+  .map((f) => ({ slug: f.replace(/\.md$/, ''), ...markdownPage(`notes/${f}`, `notes/${f.replace(/\.md$/, '')}`, 'notes', { postMeta: true }) }));
+const noteItems = notes
+  .map((n) => `<li><a href="/notes/${n.slug}/">${esc(n.title)}</a><p>${esc(n.meta.description || '')}</p></li>`)
+  .join('');
+page('notes', layout({ title: `Field notes · ${config.name}`, active: 'notes', body: `<section class="wrap prose"><h1>Field notes</h1><p>Problems I worked through running Pacific Wellness, with the numbers.</p><ul class="notes">${noteItems}</ul></section>` }));
+
 const postLine = (p) =>
   `<a href="/writing/${p.slug}/">${esc(p.title)}</a><span class="meta">${esc([p.meta.date, p.meta.tag].filter(Boolean).join(' · '))}${p.meta.status !== 'published' ? ' · draft' : ''}</span>`;
 const list = posts.length ? posts.map((p) => `<li>${postLine(p)}</li>`).join('') : '<li>First post coming soon.</li>';

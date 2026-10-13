@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The promotions cleared their hurdle. The store still lost money.</title>
+<meta name="description" content="A retail promo economics study: a derived break-even model for vendor-funded discounts, four brands that passed it, and the store-level test that overturned the result.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/style.css"><style>
+  .bars{margin:26px 0 6px;font-family:var(--sans)}
+  .bar-row{display:grid;grid-template-columns:78px 1fr 62px;align-items:center;gap:12px;margin-bottom:9px}
+  .bar-row .day{font-size:.85rem;color:var(--ink-soft)}
+  .bar-track{background:var(--panel);height:22px;position:relative}
+  .bar-fill{background:var(--ink-soft);height:22px}
+  .bar-row.clean .bar-fill{background:var(--accent)}
+  .bar-row .val{font-size:.85rem;font-variant-numeric:tabular-nums;text-align:right;font-weight:500}
+  .bar-legend{font-family:var(--sans);font-size:.83rem;color:var(--muted);margin:14px 0 0;line-height:1.55}
+  .twoup{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--rule);background:var(--panel)}
+  .twoup > div{padding:20px 20px 18px}
+  .twoup > div + div{border-left:1px solid var(--rule)}
+  .twoup h3{margin:0 0 3px;font-family:var(--sans);font-size:.78rem;font-weight:600;color:var(--muted)}
+  .twoup .big{font-family:var(--serif);font-size:2rem;font-weight:700;line-height:1.1;letter-spacing:-.01em;margin:0 0 6px}
+  .twoup p{font-family:var(--sans);font-size:.85rem;color:var(--ink-soft);margin:0;line-height:1.5}
+  .twoup .win .big{color:var(--accent)}
+  @media (max-width:700px){
+    .twoup{grid-template-columns:1fr}
+    .twoup > div + div{border-left:none;border-top:1px solid var(--rule)}
+    .bar-row{grid-template-columns:64px 1fr 56px;gap:9px}
+  }
+</style>
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="canonical" href="https://kylewilliams.co/promo-economics/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Kyle Williams">
+<meta property="og:title" content="The promotions cleared their hurdle. The store still lost money.">
+<meta property="og:description" content="A derived break-even model for vendor-funded discounts, four brands that passed it, and the store-level test that overturned the result.">
+<meta property="og:url" content="https://kylewilliams.co/promo-economics/">
+<meta property="og:image" content="https://kylewilliams.co/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The promotions cleared their hurdle. The store still lost money.">
+<meta name="twitter:description" content="A derived break-even model for vendor-funded discounts, four brands that passed it, and the store-level test that overturned the result.">
+<meta name="twitter:image" content="https://kylewilliams.co/assets/og.png">
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <h1>Three of four promotions cleared their hurdle. The store still lost money on them.</h1>
+        <p class="standfirst">I derived a break-even model for vendor-funded discounts, tested four brands against it, and three passed. Then I asked a different question — not whether each brand's units moved, but whether the store made more money on the days it discounted — and the answer reversed. The unit of analysis was wrong, and it had been wrong in the direction that flatters promotions.</p>
+        <p class="byline">Ninety days of transaction data from the dispensary I run in Sherman Oaks, California — 4,449 tickets, 7,558 sales lines, April to September 2026. Brands are anonymized; they are live vendor relationships.</p>
+      </div>
+      <div class="twoup">
+        <div class="win">
+          <h3>Wednesday</h3>
+          <p class="big">$530</p>
+          <p>Gross profit per day. No promotions running at all.</p>
+        </div>
+        <div>
+          <h3>Saturday</h3>
+          <p class="big">$444</p>
+          <p>Three stacked cost-share promotions plus a daily 30% off.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<section>
+  <div class="wrap narrow">
+    <h2 class="sec">The trade every vendor offers</h2>
+    <p class="lead">A brand wants shelf position and volume, so it offers free goods on the purchase order — frontload — in exchange for the retailer running a deep discount on its products. The retailer's discount is real money off the top line. The vendor's free goods are real units at zero cost. The question is whether the second covers the first.</p>
+    <p>Nobody I buy from has ever presented that trade as arithmetic. It arrives as a percentage and a reciprocal favour. So I worked out what the break-even actually is.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap narrow">
+    <h2 class="sec">The model</h2>
+    <p>Buy <i>N</i> units at cost <i>C</i>, receive <i>F·N</i> free, sell everything at price <i>P</i> discounted by <i>d</i>. Hold gross profit equal to the undiscounted baseline of <i>N(P − C)</i> and the whole thing collapses:</p>
+    <div class="formula">
+      <div>N(1 + F) &middot; P(1 &minus; d) &minus; NC = N(P &minus; C)</div>
+      <div>(1 + F)(1 &minus; d) = 1</div>
+      <div class="hint"><b>F = d / (1 &minus; d)</b></div>
+    </div>
+    <p>Cost drops out. The frontload needed to survive a discount does not depend on the margin of the product being discounted, which means the same answer applies to a 40% SKU and a 58% SKU — and which is why the intuition that "we can afford it on the high-margin stuff" is wrong.</p>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>Discount offered</th><th class="num">Frontload required to break even</th></tr></thead>
+        <tbody>
+          <tr><td>15%</td><td class="num">17.6%</td></tr>
+          <tr><td>20%</td><td class="num">25.0%</td></tr>
+          <tr><td>25%</td><td class="num">33.3%</td></tr>
+          <tr><td>30%</td><td class="num">42.9%</td></tr>
+          <tr><td>40%</td><td class="num">66.7%</td></tr>
+        </tbody>
+        <caption>Read it in reverse and it gets uncomfortable: a 20% frontload — a good deal, by the standards of what actually shows up on a purchase order — supports a 16.7% discount, not the 30% that is typically asked for alongside it.</caption>
+      </table>
+    </div>
+    <p>If the discount runs deeper than break-even, the promotion has to buy volume to compensate. At our 53% full-price margin, a 30% discount with a 20% frontload leaves gross profit at 70% of baseline, so the promotion needs <b>1.43× the units</b> just to draw level. That is the number to hold against any promotion, and it is the number nobody quotes.</p>
+    <p>The model assumes the free units sell through at the discounted price and that unit volume is otherwise unchanged. Both assumptions are generous to the promotion, which is deliberate — if the trade fails under generous assumptions, it fails.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="narrow">
+      <h2 class="sec">The first test, and the answer I got wrong</h2>
+      <p>I measured each brand's sales lines per 100 tickets on promotion days against non-promotion days, normalizing for traffic so a busy week couldn't masquerade as lift. Each brand's hurdle is its own break-even multiple, from the model above at its actual discount depth.</p>
+    </div>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>Brand</th><th class="num">Promo days</th><th class="num">Non-promo</th><th class="num">Lift</th><th class="num">Hurdle</th><th>Verdict</th></tr></thead>
+        <tbody>
+          <tr><td>Brand A</td><td class="num">30.86</td><td class="num">18.15</td><td class="num">1.70×</td><td class="num">2.34×</td><td>misses</td></tr>
+          <tr><td>Brand B</td><td class="num">39.91</td><td class="num">21.44</td><td class="num">1.86×</td><td class="num">1.81×</td><td>clears</td></tr>
+          <tr><td>Brand C</td><td class="num">8.60</td><td class="num">2.23</td><td class="num">3.85×</td><td class="num">3.44×</td><td>clears</td></tr>
+          <tr><td>Brand D</td><td class="num">8.27</td><td class="num">3.48</td><td class="num">2.37×</td><td class="num">2.30×</td><td>clears</td></tr>
+        </tbody>
+        <caption>Lines per 100 tickets, 90 days. Note how thin two of the three passes are — Brand B clears by 0.05 and Brand D by 0.07. A result that survives only in the third decimal is a result asking to be checked another way.</caption>
+      </table>
+    </div>
+    <div class="narrow">
+      <p>Three of four cleared. Taken at face value, that says keep the promotions, drop Brand A, carry on. I very nearly wrote that up and sent it to the vendors as a scorecard.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="narrow">
+      <h2 class="sec">The store-level test overturns it</h2>
+      <p>The brand-level question is "did this brand's units move." The store-level question is "did we make more money." Those are not the same question, and only the second one pays anybody. So I put the promotional calendar against days of the week and looked at gross profit per day.</p>
+    </div>
+
+    <div class="bars">
+      <div class="bar-row"><span class="day">Monday</span><span class="bar-track"><span class="bar-fill" style="width:100%"></span></span><span class="val">$548</span></div>
+      <div class="bar-row"><span class="day">Tuesday</span><span class="bar-track"><span class="bar-fill" style="width:86.3%"></span></span><span class="val">$473</span></div>
+      <div class="bar-row clean"><span class="day">Wednesday</span><span class="bar-track"><span class="bar-fill" style="width:96.7%"></span></span><span class="val">$530</span></div>
+      <div class="bar-row"><span class="day">Thursday</span><span class="bar-track"><span class="bar-fill" style="width:99.1%"></span></span><span class="val">$543</span></div>
+      <div class="bar-row"><span class="day">Friday</span><span class="bar-track"><span class="bar-fill" style="width:94.5%"></span></span><span class="val">$518</span></div>
+      <div class="bar-row"><span class="day">Saturday</span><span class="bar-track"><span class="bar-fill" style="width:81.0%"></span></span><span class="val">$444</span></div>
+      <p class="bar-legend">Gross profit per day by weekday. Wednesday, in red, is the only day carrying no promotions at all.</p>
+    </div>
+
+    <div class="scroll">
+      <table>
+        <thead><tr><th>Day</th><th class="num">Tickets/day</th><th class="num">GP/ticket</th><th class="num">GP/day</th><th class="num">Margin</th><th class="num">Discount rate</th><th>Promotions running</th></tr></thead>
+        <tbody>
+          <tr><td>Monday</td><td class="num">35.8</td><td class="num">$15.33</td><td class="num">$548</td><td class="num">51.6%</td><td class="num">19.7%</td><td>one BOGO</td></tr>
+          <tr><td>Tuesday</td><td class="num">35.5</td><td class="num">$13.35</td><td class="num">$473</td><td class="num">49.0%</td><td class="num">16.9%</td><td>Brand A 30% off</td></tr>
+          <tr><td>Wednesday</td><td class="num">36.0</td><td class="num">$14.71</td><td class="num">$530</td><td class="num">51.0%</td><td class="num">19.2%</td><td>none</td></tr>
+          <tr><td>Thursday</td><td class="num">35.5</td><td class="num">$15.28</td><td class="num">$543</td><td class="num">49.9%</td><td class="num">17.0%</td><td>two</td></tr>
+          <tr><td>Friday</td><td class="num">36.6</td><td class="num">$14.14</td><td class="num">$518</td><td class="num">49.0%</td><td class="num">21.2%</td><td>two, one at 40%</td></tr>
+          <tr><td>Saturday</td><td class="num">33.2</td><td class="num">$14.40</td><td class="num">$444</td><td class="num">47.6%</td><td class="num">23.5%</td><td>three stacked, plus a daily 30%</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="narrow">
+      <p>The finding is in the first column, and it is the one I did not expect. <b>Traffic barely moves.</b> Tickets per day sit between 33.2 and 36.6 across days carrying wildly different promotional loads — and the heaviest-discount day of the week is the <i>least</i> busy one. The customers the discounts were supposed to buy do not appear. What changes instead is gross profit per ticket, which is exactly what you would expect if the discounts are being harvested by people who were coming in anyway.</p>
+      <p>Saturday is the clearest case: three stacked cost-share promotions and a daily 30% off produce the lowest traffic, the lowest margin, the lowest gross profit and the highest discount rate in the week. Wednesday runs nothing and beats it by <b>$86 a day</b>.</p>
+      <p>Measured against Wednesday, the three heaviest days give up about <b>$155 a week</b> — roughly <b>$8,000 a year</b>, or 4.5% of annual gross profit, on promotions that three of four brand-level tests said were working.</p>
+      <p>I'd rather state the weakness than have someone find it: promotions are not randomly assigned to days, and Saturday has its own traffic character that has nothing to do with discounting. This is observational, not an experiment. But the confound runs the wrong way for the promotional case — if discounts drove traffic, the most-discounted day should not be the quietest one in the week.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap narrow">
+    <h2 class="sec">One brand ran the experiment for me</h2>
+    <p>Brand E discounts 30% every single day. That is the "deep discount in exchange for frontload" trade in its purest form, running continuously for five months on a shelf where nothing else does it — a natural experiment I did not have to design.</p>
+    <p>Brand E returns a <b>31.4% blended margin</b>, 25.8% on units that actually sold at a price, against a 38.7% discount rate. It is the worst-performing brand on the shelf. Meanwhile Brand F, which runs no promotion at all and carries a 4.8% discount rate, turned $7,209 of net sales into <b>$3,415 of gross profit</b> — more than double Brand E's contribution.</p>
+    <p>Two brands, opposite strategies, and the one giving away the most money is losing to the one giving away almost none.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="narrow">
+      <h2 class="sec">Who is actually funding these</h2>
+      <p>Vendors reimburse a contracted share of promotional discount, between 15% and 30% depending on the agreement. I built a claim system to collect it on a cost-of-goods basis, so I know precisely what comes back. Over sixty days:</p>
+    </div>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>Brand</th><th class="num">Discount given</th><th class="num">Credit recoverable</th><th class="num">Recovery</th></tr></thead>
+        <tbody>
+          <tr><td>Brand A</td><td class="num">$2,558</td><td class="num">$443</td><td class="num">17.3%</td></tr>
+          <tr><td>Brand B</td><td class="num">$1,988</td><td class="num">$405</td><td class="num">20.4%</td></tr>
+          <tr><td>Brand E</td><td class="num">$1,113</td><td class="num">$205</td><td class="num">18.4%</td></tr>
+          <tr><td>Brand G</td><td class="num">$892</td><td class="num">$229</td><td class="num">25.6%</td></tr>
+          <tr><td>Brand C</td><td class="num">$814</td><td class="num">$146</td><td class="num">17.9%</td></tr>
+          <tr><td>Brand H</td><td class="num">$437</td><td class="num">$93</td><td class="num">21.3%</td></tr>
+          <tr><td>Brand D</td><td class="num">$339</td><td class="num">$60</td><td class="num">17.9%</td></tr>
+          <tr><td>All seven</td><td class="num">$8,141</td><td class="num">$1,581</td><td class="num">19.4%</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="narrow">
+      <p>The retailer funds about <b>80 cents of every promotional dollar</b>. Across all brands, sixty days of discounts came to $14,424 — roughly $7,200 a month against $15,100 a month of gross profit. Half of the store's gross profit is being handed back over the counter, four fifths of it out of the retailer's own pocket, in a program described on every sales call as vendor-funded.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap narrow">
+    <h2 class="sec">The reframe: the value was never in the discount</h2>
+    <p>Chasing the cash credits led somewhere better. Free goods — units received at zero cost — have produced <b>$15,163 of gross profit</b> since April. That is <b>24.8% of every gross-profit dollar the store has made</b>, off 13.3% of sales lines, and roughly four times what the cash credit program returns.</p>
+    <p>Verified against eight purchase orders: $2,233 of free goods against $12,156 paid, an <b>18.4% frontload</b>. One order was approximately 68% frontload — 97 free units on an $835 purchase.</p>
+    <p>So put the measured frontload back into the model. An 18.4% frontload supports a discount of 18.4 ÷ 118.4 = <b>15.5%</b>. The store was running 30% and 40%. The vendors were, on average, delivering about half of what their own asks required — and the gap is the $8,000 a year the day-of-week table found.</p>
+    <p>That reframes the negotiation entirely. Cash credit is worth 19.4% of discount given and arrives two purchase orders later. Frontload is worth four times as much, arrives immediately, and carries no discount obligation at all unless one is agreed. The conversation to have with a vendor is not "what's your promo support" — it's "send more units."</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap narrow">
+    <h2 class="sec">And then the free goods leaked</h2>
+    <p>Finding where the profit came from also exposed where it was going. Of 144 free units received across two purchase orders, 18 rang at a penny under an unrelated promotion and 8 sold at full shelf price. The rest were consumed without a record of who got them or why. That is approximately <b>$830 of pure gross profit</b> — units with no cost against them at all — converted into roughly nothing.</p>
+    <p>Two adjacent leaks, same shape: buy-one-get-one promotions gave away $634 of real cost of goods, and 105 sales lines with no promotion attached rang at about zero while carrying $107 of cost. None of it was theft. All of it was a system that treats a zero-cost unit and a full-cost unit as the same object, and lets a discount rule reach a unit that was already free.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap narrow">
+    <h2 class="sec">What I'd change in the product</h2>
+    <p>Every finding above required exporting the data and rebuilding the question outside the system that holds it. None of it should have.</p>
+    <ul>
+      <li>A promotion should carry a funding source and a cost-share rate as first-class fields, so the platform can report discount net of vendor credit instead of gross. Right now the retailer's own reporting tells them what a promotion cost and nothing about who paid for it.</li>
+      <li>Free goods should be a modelled object, not a zero in the cost column. A receiving flow that marks zero-cost units, reporting that separates them from purchased inventory, and a rule that stops a percentage promotion from discounting a unit that is already free.</li>
+      <li>Promotional reporting should be traffic-normalized by default. Raw unit counts make every promotion look successful, because discounting a product does increase sales of that product — that is not the question anybody is actually asking.</li>
+      <li>The break-even belongs in the promotion builder. Enter a depth, get the frontload required and the volume multiple needed if the frontload isn't there. It's one line of arithmetic and it would change what retailers agree to on the phone.</li>
+    </ul>
+    <p>The one that matters most is the cheapest: a single view of gross profit per day with promotional load overlaid on it. That one chart overturned four separate brand-level analyses and found $8,000 a year. Every retailer on every platform has the data for it sitting in their own transaction table, and not one of them is shown it.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap narrow">
+    <h2 class="sec">Limitations</h2>
+    <p>One store, ninety days, a single market. Promotions are not randomly assigned to days or brands, so every comparison here is observational — the day-of-week result is a strong signal, not a causal estimate, and I would not present it as one. The break-even model assumes free units sell through at the discounted price. Sixty-day and since-opening windows are used where each is stated. The transaction export does not populate unit quantity, so all of this is line-based rather than unit-based, which will understate baskets where a customer took two of the same item. And the store's own house brand is recorded at zero cost on 71 lines, producing $3,670 of gross profit that isn't real — enough to move house-brand margin from 58.7% to 52.3%, which is why it is excluded above and why I found it worth mentioning rather than quietly fixing.</p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap narrow">
+    <p class="name">Kyle Williams</p>
+    <p>Managing Partner, Pacific Wellness — Sherman Oaks, California. Retail operations, purchasing, financials, POS administration and analytics. Fifteen years in cannabis, from delivery in 2011 through a decade of wholesale brokering.</p>
+    <p style="margin-top:14px"><a href="https://www.linkedin.com/in/kylewilliams021/" style="color:var(--accent);text-decoration:none;border-bottom:1px solid var(--rule);padding-bottom:1px">linkedin.com/in/kylewilliams021</a></p>
+  <p style="margin-top:10px"><a href="/files/promo-economics.pdf" style="color:var(--accent);text-decoration:none;border-bottom:1px solid var(--rule)">Download this case study as a PDF</a> &nbsp;·&nbsp; <a href="/" style="color:var(--accent);text-decoration:none;border-bottom:1px solid var(--rule)">All work</a></p>
+  </div>
+</footer>
+
+</body>
+</html>

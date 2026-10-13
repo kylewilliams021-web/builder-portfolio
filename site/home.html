@@ -1,27 +1,76 @@
 <section class="hero wrap">
   <h1>I run a dispensary. I'm a man of the AI era and I'm addicted to building.</h1>
-  <p class="bio">I'm managing partner of Pacific Wellness, a licensed dispensary in Sherman Oaks. I've been in California cannabis since 2011: I founded a medical delivery service, then spent a decade as a wholesale broker. I'm not a developer by training. I make the product calls and test every workflow myself; Claude writes the code inside guard rails I designed.</p>
+  <p class="bio">I'm a product builder and managing partner of Pacific Wellness, a licensed dispensary in Sherman Oaks. I've worked in California cannabis since 2011. I find the problems in my own store, make the product calls and test every workflow at the counter. Claude Code and Codex write the code.</p>
 </section>
 
-<section class="lead wrap">
-  <div class="lead-text">
-    <p class="label">SouthBay420 · in development</p>
-    <h2><a href="/work/southbay420/">Online ordering and a register for a licensed California dispensary</a></h2>
-    <p>Menu and delivery, customer accounts with loyalty, a staff console and an in-store register. California rules are built into the sale: daily purchase limits with a meter that locks Charge, ID checks, edible potency caps. Metrc validated it as a third-party integrator and issued production keys.</p>
-    <p>No store runs on it yet. I'm holding it back until it has run for months in the Metrc sandbox without errors I can't fix and every feature is at least as good as what's on the market.</p>
-    <p><a class="more" href="/work/southbay420/">Read the case study</a></p>
-  </div>
-  {{manifest:southbay420}}
-  <figure class="shot">
-    <img src="/img/southbay420/register.png" alt="The SouthBay420 register with a member attached and three items in the sale">
-    <figcaption>Register screen from the demo shop (sample data, October 2026).</figcaption>
-  </figure>
+<section class="products" id="products">
+  <article class="product product-lead wrap">
+    <div class="product-text">
+      <p class="label">SouthBay420 · in development · 26 releases</p>
+      <h2><a href="/work/southbay420/">Online ordering and a register for a licensed California dispensary</a></h2>
+      <p>Menu and delivery, customer accounts with loyalty, a staff console and an in-store register. California rules are built into the sale: daily purchase limits with a meter that locks Charge, ID checks and edible potency caps. Metrc validated it as a third-party integrator and issued production keys.</p>
+      <p>No store runs on it yet. It goes live after months in the Metrc sandbox without an error I can't fix.</p>
+      <p><a class="more" href="/work/southbay420/">How I built it</a></p>
+    </div>
+    {{manifest:southbay420}}
+    <figure class="shot shot-wide">
+      <img src="/img/southbay420/register.png" alt="The SouthBay420 register with a member attached and three items in the sale">
+      <figcaption>The register. Demo shop with sample data, October 2026.</figcaption>
+    </figure>
+    <div class="shot-pair">
+      <figure class="shot">
+        <img src="/img/southbay420/console-home.png" alt="The owner's console: today's sales, the last 14 days and what needs attention" loading="lazy">
+        <figcaption>The owner's console.</figcaption>
+      </figure>
+      <figure class="shot shot-phone">
+        <img src="/img/southbay420/shop-phone.png" alt="The online menu on a phone" loading="lazy">
+        <figcaption>The menu on a phone.</figcaption>
+      </figure>
+    </div>
+  </article>
+
+  <article class="product wrap">
+    <div class="product-text">
+      <p class="label">PW TV Screens · live in my store</p>
+      <h2><a href="/work/tv-screen-app/">Menu screens for my store's five TVs</a></h2>
+      <p>The store paid a screen service $250 a month. On October 9 I wrote a spec to replace it, and by that afternoon there was a backend, an admin page and a Fire TV app. All five TVs have run on it since October 12.</p>
+      <p>Neighbouring TVs share one clock and stagger the day's specials, so two screens side by side never show the same one. I run it from my phone.</p>
+      <p><a class="more" href="/work/tv-screen-app/">How I built it</a></p>
+    </div>
+    {{manifest:tv-screen-app}}
+    <figure class="shot shot-wide">
+      <img src="/img/tv-screens/schedule.png" alt="One screen's weekly schedule, with staggered rules shared with two other screens" loading="lazy">
+      <figcaption>One screen's week. Admin page in demo mode, October 2026.</figcaption>
+    </figure>
+  </article>
+
+  <article class="product product-small wrap">
+    <figure class="shot shot-phone">
+      <img src="/img/canna-cash/balance-check-phone.png" alt="The Canna Cash balance check on a phone" loading="lazy">
+      <figcaption>Customers check their balance at cash.pacificwellness.uk.</figcaption>
+    </figure>
+    <div class="product-text">
+      <p class="label">Canna Cash · my first product</p>
+      <h2><a href="/work/canna-cash/">Store credit and referrals for Pacific Wellness</a></h2>
+      <p>[ask] Staff add credit and log referrals at the counter, and customers look up their balance by name or phone. Balance search went from 2.7 seconds to 0.03 seconds per keystroke at 19,500 transactions.</p>
+      <p>It taught me the lesson SouthBay420 is built on: loyalty that sits outside the register is a pain to run.</p>
+    </div>
+  </article>
 </section>
 
-<section class="second wrap">
-  <p class="label">Canna Cash · my first product</p>
-  <h2><a href="/work/canna-cash/">Loyalty and referrals for Pacific Wellness</a></h2>
-  <p>Built between August 6 and September 17, 2026. Balance search went from 2.7 seconds to 0.03 seconds per keystroke, at 19,500 transactions. It also taught me the lesson SouthBay420 is built on: loyalty that sits outside the point-of-sale is a pain to run.</p>
+<section class="notes-home wrap">
+  <h2>Field notes from the counter</h2>
+  <p class="intro">Running the store means running its software. These are problems I worked through on our point of sale, with the numbers.</p>
+  <ol class="note-list">
+    <li>
+      <a href="/notes/pricing-migration/">465 SKUs repriced overnight. No receipt total moved.</a>
+      <p>Out-the-door to pre-tax shelf prices in one night, with every customer paying the same total. Five POS defects the vendor doesn't document, and what I'd change in the product.</p>
+    </li>
+    <li>
+      <a href="/notes/promo-economics/">Every brand test said the promotions worked. The store still lost money.</a>
+      <p>A break-even for vendor discounts (F = d / (1 − d)), the brand test that passed, and the gross-profit-per-day chart that overturned it.</p>
+    </li>
+  </ol>
 </section>
 
 <section class="checks wrap">

@@ -2,27 +2,104 @@
   "southbay420": {
     "title": "SouthBay420",
     "rows": [
-      ["Product", "Online ordering + in-store register"],
-      ["Store", "Licensed California dispensary"],
-      ["Status", "In development; no store runs on it yet"],
-      ["Started", "5 Sep 2026"],
-      ["Releases", "26 (latest 1.23, 7 Oct 2026)"],
-      ["Tests", "168 automated"],
-      ["Metrc", "Validated integrator; production keys issued"],
-      ["Hosting", "The shop's own Cloudflare; upgrades by one ZIP"],
-      ["Go-live bar", "Months in the Metrc sandbox with no errors I can't fix"]
+      [
+        "Product",
+        "Online ordering + in-store register"
+      ],
+      [
+        "Store",
+        "Licensed California dispensary"
+      ],
+      [
+        "Status",
+        "In development; no store runs on it yet"
+      ],
+      [
+        "Started",
+        "5 Sep 2026"
+      ],
+      [
+        "Releases",
+        "26 (latest 1.23, 7 Oct 2026)"
+      ],
+      [
+        "Tests",
+        "168 automated"
+      ],
+      [
+        "Metrc",
+        "Validated integrator; production keys issued"
+      ],
+      [
+        "Hosting",
+        "The shop's own Cloudflare; upgrades by one ZIP"
+      ],
+      [
+        "Go-live bar",
+        "Months in the Metrc sandbox with no errors I can't fix"
+      ]
     ]
   },
   "canna-cash": {
     "title": "Canna Cash",
     "rows": [
-      ["Product", "Loyalty and referrals"],
-      ["Store", "Pacific Wellness, Sherman Oaks"],
-      ["Built", "6 Aug - 17 Sep 2026"],
-      ["Point of sale", "Blaze (Partner API)"],
-      ["Database", "Supabase"],
-      ["Search", "2.7 s to 0.03 s per keystroke, 19,500 transactions"],
-      ["Status", "Set aside; the project that started it all"]
+      [
+        "Product",
+        "Loyalty and referrals"
+      ],
+      [
+        "Store",
+        "Pacific Wellness, Sherman Oaks"
+      ],
+      [
+        "Point of sale",
+        "Blaze (Partner API)"
+      ],
+      [
+        "Database",
+        "Supabase"
+      ],
+      [
+        "Search",
+        "2.7 s to 0.03 s per keystroke, 19,500 transactions"
+      ],
+      [
+        "Status",
+        "Set aside; the project that started it all"
+      ]
+    ]
+  },
+  "tv-screen-app": {
+    "title": "PW TV Screens",
+    "rows": [
+      [
+        "Product",
+        "Menu screens for in-store TVs"
+      ],
+      [
+        "Store",
+        "Pacific Wellness, Sherman Oaks"
+      ],
+      [
+        "Status",
+        "Live on all 5 TVs since 12 Oct 2026"
+      ],
+      [
+        "Replaces",
+        "A $250-a-month screen service"
+      ],
+      [
+        "Spec to build",
+        "About 4 hours, 9 Oct 2026"
+      ],
+      [
+        "Player",
+        "Native Fire TV app, works offline"
+      ],
+      [
+        "Admin",
+        "Runs from my phone"
+      ]
     ]
   }
 }
